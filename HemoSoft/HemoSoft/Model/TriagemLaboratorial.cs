@@ -28,6 +28,7 @@ namespace HemoSoft.Model
         public bool Hiv { get; set; }
         public StatusTriagem StatusTriagem { get; set; }
         public TipoSanguineo TipoSanguineo { get; set; }
+        public Doacao Doacao { get; set; }
 
         public override string ToString()
         {

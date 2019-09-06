@@ -11,6 +11,7 @@ namespace HemoSoft.Model
         public int Pulso { get; set; }
         public StatusTriagem StatusTriagem { get; set; }
         public double Temperatura { get; set; }
+        public Doacao Doacao { get; set; }
 
         public override string ToString()
         {

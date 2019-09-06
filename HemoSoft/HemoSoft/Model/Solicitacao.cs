@@ -9,5 +9,7 @@ namespace HemoSoft.Model
     {
         [Key] public int IdSolicitacao { get; set; }
         public DateTime DataSolicitacao { get; set; }
+        public Doacao Doacao { get; set; }
+        public Solicitante Solicitante { get; set; }
     }
 }

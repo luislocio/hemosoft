@@ -15,6 +15,8 @@ namespace HemoSoft.Model
         public int GripeUltimaVez { get; set; }
         public bool Tatuagem { get; set; }
         public int TatuagemUltimaVez { get; set; }
+        public Doacao Doacao { get; set; }
+
 
         public override string ToString()
         {

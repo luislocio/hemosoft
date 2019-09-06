@@ -11,6 +11,13 @@ namespace HemoSoft.Model
         public bool HepatiteB { get; set; }
         public bool HepatiteC { get; set; }
         public bool Hiv { get; set; }
+        public Doacao Doacao { get; set; }
+
+        public Doador Doador
+        {
+            get => default(Doador);
+            set { }
+        }
 
         public override string ToString()
         {

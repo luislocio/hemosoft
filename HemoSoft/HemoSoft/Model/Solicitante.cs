@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HemoSoft.Model
@@ -12,6 +13,7 @@ namespace HemoSoft.Model
         public string Responsavel { get; set; }
         public string Senha { get; set; }
         public StatusUsuario StatusUsuario { get; set; }
+        public List<Solicitacao> Solicitacoes { get; set; }
 
         public override string ToString()
         {

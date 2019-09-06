@@ -15,8 +15,15 @@ namespace HemoSoft.Model
     [Table("Doacoes")]
     public class Doacao
     {
-        [Key] public int idDoacao { get; set; }
-        public DateTime dataDoacao { get; set; }
+        [Key] public int IdDoacao { get; set; }
+        public DateTime DataDoacao { get; set; }
         public StatusDoacao StatusDoacao { get; set; }
+        public Doador Doador { get; set; }
+        public Triador Triador { get; set; }
+        public Solicitacao Solicitacao { get; set; }
+        public TriagemClinica TriagemClinica { get; set; }
+        public TriagemLaboratorial TriagemLaboratorial { get; set; }
+        public ImpedimentosTemporarios ImpedimentosTemporarios { get; set; }
+        public ImpedimentosDefinitivos ImpedimentosDefinitivos { get; set; }
     }
 }
