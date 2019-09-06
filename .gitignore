@@ -9,6 +9,8 @@
 *.userosscache
 *.sln.docstates
 
+*/desktop.ini
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -328,3 +330,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/HemoSoft/HemoSoft/desktop.ini
+/HemoSoft/HemoSoft/Utils/desktop.ini
+/HemoSoft/HemoSoft/Properties/desktop.ini
+/HemoSoft/HemoSoft/Model/desktop.ini
+/HemoSoft/HemoSoft/Migrations/desktop.ini

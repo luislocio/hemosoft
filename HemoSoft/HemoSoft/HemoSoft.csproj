@@ -76,6 +76,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201909061900541_Configuration.cs" />
+    <Compile Include="Migrations\201909061900541_Configuration.Designer.cs">
+      <DependentUpon>201909061900541_Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Context.cs" />
     <Compile Include="Model\Doacao.cs" />
     <Compile Include="Model\Doador.cs" />
     <Compile Include="Model\ImpedimentosDefinitivos.cs" />
@@ -100,6 +106,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201909061900541_Configuration.resx">
+      <DependentUpon>201909061900541_Configuration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -114,6 +123,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
     <Folder Include="Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
