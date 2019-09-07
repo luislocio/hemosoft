@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HemoSoft.View"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="MainWindow" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Assets/home.png" ShowInTaskbar="False" Title="HemoSoft">
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridMenu}">

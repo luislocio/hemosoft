@@ -26,10 +26,10 @@
         <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,70">
             <TextBlock Text="LOGIN" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
             <StackPanel VerticalAlignment="center" Margin="10">
-                <TextBox materialDesign:HintAssist.Hint="Matricula/CNPJ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                <PasswordBox materialDesign:HintAssist.Hint="Senha" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <TextBox x:Name="txtUsuario" materialDesign:HintAssist.Hint="Matricula/CNPJ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <PasswordBox x:Name="txtSenha" materialDesign:HintAssist.Hint="Senha" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
-        <Button VerticalAlignment="Bottom" Margin="0,55" Width="150" Content="ENTRAR"/>
+        <Button x:Name="btnLogin" VerticalAlignment="Bottom" Margin="0,55" Width="150" Content="ENTRAR" Click="BtnLogin_Click"/>
     </Grid>
 </Window>
