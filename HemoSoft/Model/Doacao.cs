@@ -20,7 +20,7 @@ namespace HemoSoft.Model
         public StatusDoacao StatusDoacao { get; set; }
         public Doador Doador { get; set; }
         public Triador Triador { get; set; }
-        [Required] public Solicitacao Solicitacao { get; set; }
+        public Solicitacao Solicitacao { get; set; }
         [Required] public TriagemClinica TriagemClinica { get; set; }
         [Required] public TriagemLaboratorial TriagemLaboratorial { get; set; }
         [Required] public ImpedimentosTemporarios ImpedimentosTemporarios { get; set; }
