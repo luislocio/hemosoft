@@ -35,5 +35,25 @@ namespace HemoSoft.View
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserControl usc = null;
+            GridPage.Children.Clear();
+
+            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            {
+                case "CadastrarDoador":
+                    usc = new CadastrarDoador();
+                    GridPage.Children.Add(usc);
+                    break;
+                case "BuscarDoador":
+                    usc = new BuscarDoador();
+                    GridPage.Children.Add(usc);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

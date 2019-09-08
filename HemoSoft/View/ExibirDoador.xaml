@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="HemoSoft.View.ExibirDoador"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HemoSoft.View"
+             mc:Ignorable="d" 
+             VerticalAlignment="Center"
+             HorizontalAlignment="Center"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Nome: " x:Name="textNomeGui" Width="150" TextAlignment="Right" ></TextBlock>
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textNome"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="CPF: " x:Name="textCpfGui" Width="150" TextAlignment="Right" ></TextBlock>
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textCpf"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Genero: " x:Name="textGeneroGui" Width="150" TextAlignment="Right" ></TextBlock>
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textGenero"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Estado Civil: " x:Name="textEstadoCivilGui" Width="150" TextAlignment="Right" ></TextBlock>
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textEstadoCivil"></TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,40" Width="400">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:"/>
+                <DataGrid x:Name="dataGridDoacao"  Height="200" Margin="0,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="#Doação" Binding="{Binding IdDoacao}"/>
+                        <DataGridTextColumn Header="Data" Binding="{Binding DataDoacao}"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding StatusDoacao}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

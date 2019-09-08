@@ -10,10 +10,17 @@ namespace HemoSoft.DAL
     class DoadorDAO
     {
         private static Context ctx = SingletonContext.GetInstance();
-        public static void CadastrarDoador(Doador d)
+        public static bool CadastrarDoador(Doador d)
         {
+            if (BuscarDoadorPorCpf(d) != null)
+            {
+                return false;
+            }
+
             ctx.Doadores.Add(d);
             ctx.SaveChanges();
+            return true;
+
         }
 
         public static Doador BuscarDoadorPorNomeCompleto(Doador d)
@@ -30,7 +37,7 @@ namespace HemoSoft.DAL
             return ctx.Doadores.Where
                 (x => x.NomeCompleto.Contains(d.NomeCompleto)).ToList();
         }
-        
+
 
         public static Doador BuscarDoadorPorCpf(Doador d)
         {

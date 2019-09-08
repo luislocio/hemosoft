@@ -12,11 +12,19 @@
                 <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridPage}">
+                <EasingDoubleKeyFrame KeyTime="0" Value="958"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="818"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MenuClose">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridMenu}">
                 <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridPage}">
+                <EasingDoubleKeyFrame KeyTime="0" Value="818"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="958"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -32,9 +40,9 @@
 
     <Grid Background="#CCCCCC">
         <Grid Height="60" VerticalAlignment="Top" Background="#FF6699CC">
-            <TextBlock Text="HemoSoft" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White" FontWeight="Bold"/>
+            <TextBlock Text="HemoSoft" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White" />
         </Grid>
-        <Grid x:Name="GridMenu"  Width="60" HorizontalAlignment="Left" Background="#FF185A9C">
+        <Grid x:Name="GridMenu"  Width="200" HorizontalAlignment="Left" Background="#FF185A9C">
             <StackPanel>
                 <Grid Height="150" Background="White">
                     <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
@@ -44,14 +52,14 @@
                         <materialDesign:PackIcon Foreground="#FF185A9C" Kind="Menu" Width="25" Height="25"/>
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListViewItem Height="60">
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListView_SelectionChanged">
+                    <ListViewItem Height="60" x:Name="CadastrarDoador" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="HumanGreeting" Height="25" Width="25" Margin="10" Foreground="White"/>
                             <TextBlock Text="Cadastrar Doador" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="BuscarDoador">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountSearch" Height="25" Width="25" Margin="10" Foreground="White"/>
                             <TextBlock Text="Buscar Doador" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
@@ -59,7 +67,16 @@
                     </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="BloodBag" Height="25" Width="25" Margin="10" Foreground="White"/>
+                            <Viewbox Width="25" Height="25" Margin="10">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M14 1H10C5 1 5 3 5 3V15C5 15 5 17 10 
+                                          17V19H11V20C11 21.21 11.8 23 14 
+                                          23H18V21H14C13.19 21 13 20.45 13 
+                                          20V19H14V17C19 17 19 15 19 15V3C19 3 19 1 14 1M17 
+                                          12H14V11H17V12M17 5H14V6H17V8H14V9H17V10H7V3.5C7.3 3.32 8.13 3 10 
+                                          3H14C15.88 3 16.7 3.32 17 3.5V5Z" Fill="White" />
+                                </Canvas>
+                            </Viewbox>
                             <TextBlock Text="Buscar Doações" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
@@ -71,6 +88,9 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
+        </Grid>
+        <Grid x:Name="GridPage" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="958" Height="680">
+
         </Grid>
     </Grid>
 </Window>

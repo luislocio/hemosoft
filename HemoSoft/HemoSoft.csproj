@@ -73,9 +73,30 @@
     <Compile Include="DAL\SolicitacaoDAO.cs" />
     <Compile Include="DAL\SolicitanteDAO.cs" />
     <Compile Include="DAL\TriadorDAO.cs" />
+    <Compile Include="View\BuscarDoador.xaml.cs">
+      <DependentUpon>BuscarDoador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CadastrarDoador.xaml.cs">
+      <DependentUpon>CadastrarDoador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExibirDoador.xaml.cs">
+      <DependentUpon>ExibirDoador.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\BuscarDoador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CadastrarDoador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExibirDoador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
