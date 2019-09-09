@@ -1,4 +1,5 @@
-﻿using HemoSoft.Model;
+﻿using HemoSoft.DAL;
+using HemoSoft.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +43,7 @@ namespace HemoSoft.View
             textEstadoCivil.Text = Doador.EstadoCivil.ToString();
             textGenero.Text = Doador.Genero.ToString();
 
-            dataGridDoacao.ItemsSource = Doador.Doacoes;
+            dataGridDoacao.ItemsSource = DoacaoDAO.BuscarDoacaoPorDoador(Doador); ;
         }
     }
 }

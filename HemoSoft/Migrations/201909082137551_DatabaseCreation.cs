@@ -3,7 +3,7 @@ namespace HemoSoft.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class criacao_model : DbMigration
+    public partial class DatabaseCreation : DbMigration
     {
         public override void Up()
         {
@@ -15,18 +15,20 @@ namespace HemoSoft.Migrations
                         DataDoacao = c.DateTime(nullable: false),
                         StatusDoacao = c.Int(nullable: false),
                         Doador_IdDoador = c.Int(),
+                        Solicitacao_IdSolicitacao = c.Int(),
                         Triador_IdTriador = c.Int(),
                     })
                 .PrimaryKey(t => t.IdDoacao)
                 .ForeignKey("dbo.Doadores", t => t.Doador_IdDoador)
                 .ForeignKey("dbo.ImpedimentosDefinitivos", t => t.IdDoacao)
                 .ForeignKey("dbo.ImpedimentosTemporarios", t => t.IdDoacao)
-                .ForeignKey("dbo.Solicitacoes", t => t.IdDoacao)
+                .ForeignKey("dbo.Solicitacoes", t => t.Solicitacao_IdSolicitacao)
                 .ForeignKey("dbo.Triadores", t => t.Triador_IdTriador)
                 .ForeignKey("dbo.TriagensClinicas", t => t.IdDoacao)
                 .ForeignKey("dbo.TriagensLaboratoriais", t => t.IdDoacao)
                 .Index(t => t.IdDoacao)
                 .Index(t => t.Doador_IdDoador)
+                .Index(t => t.Solicitacao_IdSolicitacao)
                 .Index(t => t.Triador_IdTriador);
             
             CreateTable(
@@ -46,15 +48,12 @@ namespace HemoSoft.Migrations
                 c => new
                     {
                         IdImpedimentosDefinitivos = c.Int(nullable: false, identity: true),
-                        AntecedenteAvc = c.Boolean(nullable: false),
-                        HepatiteB = c.Boolean(nullable: false),
-                        HepatiteC = c.Boolean(nullable: false),
-                        Hiv = c.Boolean(nullable: false),
-                        Doador_IdDoador = c.Int(),
+                        AntecedenteAvc = c.Boolean(),
+                        HepatiteB = c.Boolean(),
+                        HepatiteC = c.Boolean(),
+                        Hiv = c.Boolean(),
                     })
-                .PrimaryKey(t => t.IdImpedimentosDefinitivos)
-                .ForeignKey("dbo.Doadores", t => t.Doador_IdDoador)
-                .Index(t => t.Doador_IdDoador);
+                .PrimaryKey(t => t.IdImpedimentosDefinitivos);
             
             CreateTable(
                 "dbo.ImpedimentosTemporarios",
@@ -126,12 +125,12 @@ namespace HemoSoft.Migrations
                 c => new
                     {
                         IdTriagemLaboratorial = c.Int(nullable: false, identity: true),
-                        FatorRh = c.Int(nullable: false),
-                        HepatiteB = c.Boolean(nullable: false),
-                        HepatiteC = c.Boolean(nullable: false),
-                        Hiv = c.Boolean(nullable: false),
-                        StatusTriagem = c.Int(nullable: false),
-                        TipoSanguineo = c.Int(nullable: false),
+                        FatorRh = c.Int(),
+                        HepatiteB = c.Boolean(),
+                        HepatiteC = c.Boolean(),
+                        Hiv = c.Boolean(),
+                        StatusTriagem = c.Int(),
+                        TipoSanguineo = c.Int(),
                     })
                 .PrimaryKey(t => t.IdTriagemLaboratorial);
             
@@ -142,15 +141,14 @@ namespace HemoSoft.Migrations
             DropForeignKey("dbo.Doacoes", "IdDoacao", "dbo.TriagensLaboratoriais");
             DropForeignKey("dbo.Doacoes", "IdDoacao", "dbo.TriagensClinicas");
             DropForeignKey("dbo.Doacoes", "Triador_IdTriador", "dbo.Triadores");
-            DropForeignKey("dbo.Doacoes", "IdDoacao", "dbo.Solicitacoes");
             DropForeignKey("dbo.Solicitacoes", "Solicitante_IdSolicitante", "dbo.Solicitantes");
+            DropForeignKey("dbo.Doacoes", "Solicitacao_IdSolicitacao", "dbo.Solicitacoes");
             DropForeignKey("dbo.Doacoes", "IdDoacao", "dbo.ImpedimentosTemporarios");
             DropForeignKey("dbo.Doacoes", "IdDoacao", "dbo.ImpedimentosDefinitivos");
-            DropForeignKey("dbo.ImpedimentosDefinitivos", "Doador_IdDoador", "dbo.Doadores");
             DropForeignKey("dbo.Doacoes", "Doador_IdDoador", "dbo.Doadores");
             DropIndex("dbo.Solicitacoes", new[] { "Solicitante_IdSolicitante" });
-            DropIndex("dbo.ImpedimentosDefinitivos", new[] { "Doador_IdDoador" });
             DropIndex("dbo.Doacoes", new[] { "Triador_IdTriador" });
+            DropIndex("dbo.Doacoes", new[] { "Solicitacao_IdSolicitacao" });
             DropIndex("dbo.Doacoes", new[] { "Doador_IdDoador" });
             DropIndex("dbo.Doacoes", new[] { "IdDoacao" });
             DropTable("dbo.TriagensLaboratoriais");

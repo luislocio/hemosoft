@@ -22,12 +22,12 @@ namespace HemoSoft.Model
     public class TriagemLaboratorial
     {
         [Key] public int IdTriagemLaboratorial { get; set; }
-        public FatorRh FatorRh { get; set; }
-        public bool HepatiteB { get; set; }
-        public bool HepatiteC { get; set; }
-        public bool Hiv { get; set; }
-        public StatusTriagem StatusTriagem { get; set; }
-        public TipoSanguineo TipoSanguineo { get; set; }
+        public FatorRh? FatorRh { get; set; }
+        public bool? HepatiteB { get; set; }
+        public bool? HepatiteC { get; set; }
+        public bool? Hiv { get; set; }
+        public StatusTriagem? StatusTriagem { get; set; }
+        public TipoSanguineo? TipoSanguineo { get; set; }
         public Doacao Doacao { get; set; }
 
         public override string ToString()
