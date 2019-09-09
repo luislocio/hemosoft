@@ -37,6 +37,7 @@ namespace HemoSoft.View
 
             if (usuarioAutenticado == true)
             {
+                // TODO: Passar usuario como parametro
                 MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
                 this.Close();

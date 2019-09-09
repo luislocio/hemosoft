@@ -19,7 +19,7 @@ namespace HemoSoft.View
             InitializeComponent();
         }
 
-        private void ButonCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (textNome.Text.Equals("") || textCpf.Text.Equals("") || boxEstadoCivil.SelectionBoxItem.Equals("") || boxGenero.SelectionBoxItem.Equals(""))
             {
