@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using HemoSoft.DAL;
+using HemoSoft.Model;
+using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HemoSoft.View
@@ -30,10 +33,11 @@ namespace HemoSoft.View
             UserControl usc = null;
             GridPage.Children.Clear();
 
-            //Triador triador = new Triador {
-            //    NomeCompleto ="triador1",
-            //    Matricula="triador1",
-            //    Senha="senhatriador1",
+            //Triador triador = new Triador
+            //{
+            //    NomeCompleto = "triador1",
+            //    Matricula = "triador1",
+            //    Senha = "senhatriador1",
             //    StatusUsuario = StatusUsuario.Ativo,
             //};
 
@@ -108,6 +112,10 @@ namespace HemoSoft.View
                     break;
                 case "BuscarDoador":
                     usc = new BuscarDoador();
+                    GridPage.Children.Add(usc);
+                    break;
+                case "CadastrarDoacao":
+                    usc = new CadastrarDoacao();
                     GridPage.Children.Add(usc);
                     break;
                 default:

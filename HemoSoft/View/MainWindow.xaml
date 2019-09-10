@@ -42,7 +42,7 @@
         <Grid Height="60" VerticalAlignment="Top" Background="#FF6699CC">
             <TextBlock Text="HemoSoft" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White" />
         </Grid>
-        <Grid x:Name="GridMenu"  Width="200" HorizontalAlignment="Left" Background="#FF185A9C">
+        <Grid x:Name="GridMenu"  Width="60" HorizontalAlignment="Left" Background="#FF185A9C">
             <StackPanel>
                 <Grid Height="150" Background="White">
                     <Button x:Name="ButtonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
@@ -65,7 +65,7 @@
                             <TextBlock Text="Buscar Doador" VerticalAlignment="Center" Margin="20 10" Foreground="White"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" x:Name="CadastrarDoacao">
                         <StackPanel Orientation="Horizontal">
                             <Viewbox Width="25" Height="25" Margin="10">
                                 <Canvas Width="24" Height="24">
