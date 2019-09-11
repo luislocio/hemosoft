@@ -7,36 +7,29 @@
              mc:Ignorable="d" 
              VerticalAlignment="Center"
              HorizontalAlignment="Center"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Foreground="Gray">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
     <Grid Width="380">
-        <TextBlock Text="CADASTRO DOAÇÃO" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
+        <TextBlock Text="CADASTRO DOAÇÃO" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" FontSize="18"/>
         <StackPanel VerticalAlignment="Center" Margin="0,20">
             <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Peso" x:Name="textPeso"  Margin="0,10" FontFamily="Roboto" FontSize="18"/>
             <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Pulso" x:Name="textPulso" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
             <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Temperatura" x:Name="textTemperatura" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
-            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Bebeu nas ultimas 12 horas?" x:Name="textBebida" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Bebeu nas ultimas 12 horas?" Margin="0,10,0,5" FontFamily="Roboto" FontSize="18"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não"/>
             <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não" Margin="0,0,20,0"/>
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim"/>
+                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim" Margin="0,0,20,0" VerticalAlignment="Center"/>
+                <TextBox Width="40"/>
             </StackPanel>
-            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Gravidez recente?" x:Name="textGravidez" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não" Margin="0,0,20,0"/>
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Parto Normal(90 dias)" Margin="0,0,20,0"/>
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Parto Cesárea(180 dias)"/>
-            </StackPanel>
-            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Gripe/resfriado nos ultimos 7 dias?" x:Name="textGripé" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não" Margin="0,0,20,0"/>
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim"/>
-            </StackPanel>
-            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Tatuagem nos ultimos 12 meses?" x:Name="textTatuagem" Margin="0,10" FontFamily="Roboto" FontSize="18"/>
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não" Margin="0,0,20,0"/>
-                <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim"/>
-            </StackPanel>
-
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Gravidez recente?" Margin="0,10,0,5" FontFamily="Roboto" FontSize="18"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Parto Normal(90 dias)"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Parto Cesárea(180 dias)"/>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Gripe/resfriado nos ultimos 7 dias?" Margin="0,10,0,5" FontFamily="Roboto" FontSize="18"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim"/>
+            <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Tatuagem nos ultimos 12 meses?" Margin="0,10,0,5" FontFamily="Roboto" FontSize="18"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Não"/>
+            <RadioButton Style="{StaticResource MaterialDesignUserForegroundRadioButton}" Content="Sim"/>
             <Button x:Name="ButtonCadastrar" Width="100" HorizontalAlignment="Right" Margin="0,15,0,0" Content="Cadastrar" Click="ButtonCadastrar_Click"/>
         </StackPanel>
     </Grid>

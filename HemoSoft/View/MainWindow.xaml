@@ -38,9 +38,9 @@
         </EventTrigger>
     </Window.Triggers>
 
-    <Grid Background="#CCCCCC">
+    <Grid Background="WhiteSmoke">
         <Grid Height="60" VerticalAlignment="Top" Background="#FF6699CC">
-            <TextBlock Text="HemoSoft" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="White" />
+            <TextBlock Text="HemoSoft" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" />
         </Grid>
         <Grid x:Name="GridMenu"  Width="60" HorizontalAlignment="Left" Background="#FF185A9C">
             <StackPanel>
