@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HemoSoft.View"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" Height="768" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="Assets/home.png" ShowInTaskbar="False" Title="HemoSoft">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Height="600"
+        Width="800"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Icon="Assets/home.png"
+        ShowInTaskbar="False"
+        Title="HemoSoft">
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridMenu}">
@@ -13,8 +20,8 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="200"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridPage}">
-                <EasingDoubleKeyFrame KeyTime="0" Value="958"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="818"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="740"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="600"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="MenuClose">
@@ -23,8 +30,8 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.Target="{Binding ElementName=GridPage}">
-                <EasingDoubleKeyFrame KeyTime="0" Value="818"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="958"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="600"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="740"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -89,8 +96,8 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <Grid x:Name="GridPage" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="958" Height="680">
 
-        </Grid>
+            <Grid x:Name="GridPage" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="734" Height="511"/>
+
     </Grid>
 </Window>
