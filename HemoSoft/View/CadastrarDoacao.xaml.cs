@@ -22,6 +22,11 @@ namespace HemoSoft.View
     /// </summary>
     public partial class CadastrarDoacao : UserControl
     {
+        bool bebida;
+        bool gripe;
+        bool tatuagem;
+        Gravidez gravidez;
+
         public CadastrarDoacao()
         {
             InitializeComponent();
@@ -29,54 +34,64 @@ namespace HemoSoft.View
         private void RadioButtonBebidaNao_Click(object sender, RoutedEventArgs e)
         {
             textBebida.IsEnabled = false;
+            this.bebida = false;
         }
 
         private void RadioButtonBebidaSim_Click(object sender, RoutedEventArgs e)
         {
             textBebida.IsEnabled = true;
+            this.bebida = true;
         }
 
         private void RadioButtonGravidezNao_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = false;
+            this.gravidez = Gravidez.Nenhuma;
         }
 
         private void RadioButtonGravidezNormal_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = true;
+            this.gravidez = Gravidez.PartoNormal;
         }
 
         private void RadioButtonGravidezCesarea_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = true;
+            this.gravidez = Gravidez.Cesarea;
         }
 
         private void RadioButtonGripeNao_Click(object sender, RoutedEventArgs e)
         {
             textGripe.IsEnabled = false;
+            this.gripe = false;
         }
 
         private void RadioButtonGripeSim_Click(object sender, RoutedEventArgs e)
         {
             textGripe.IsEnabled = true;
+            this.gripe = true;
         }
 
         private void RadioButtonTatuagemNao_Click(object sender, RoutedEventArgs e)
         {
             textTatuagem.IsEnabled = false;
-
+            this.tatuagem = false;
         }
 
         private void RadioButtonTatuagemSim_Click(object sender, RoutedEventArgs e)
         {
             textTatuagem.IsEnabled = true;
+            this.tatuagem = true;
+
         }
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Validar campos do formulário
+            if (textPeso.Text.Equals("") || textPulso.Text.Equals("") || textTemperatura.Text.Equals(""))
+            {
 
-            // TODO: Utilizar variáveis globais para armazenar valores setados pelos eventos de click dos RadioButtons
+            }
 
             Triador triador = new Triador
             {
@@ -109,7 +124,7 @@ namespace HemoSoft.View
             {
                 BebidaAlcoolica = false,
                 BebidaAlcoolicaUltimaVez = 0,
-                Gravidez = false,
+                Gravidez = Gravidez.PartoNormal,
                 GravidezUltimaVez = 0,
                 Gripe = false,
                 GripeUltimaVez = 0,

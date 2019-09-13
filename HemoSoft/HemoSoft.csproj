@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201909082137551_DatabaseCreation.Designer.cs">
       <DependentUpon>201909082137551_DatabaseCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909132254182_doacao-gravidez.cs" />
+    <Compile Include="Migrations\201909132254182_doacao-gravidez.Designer.cs">
+      <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BuscarDoador.xaml.cs">
       <DependentUpon>BuscarDoador.xaml</DependentUpon>
     </Compile>
@@ -162,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201909082137551_DatabaseCreation.resx">
       <DependentUpon>201909082137551_DatabaseCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909132254182_doacao-gravidez.resx">
+      <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
