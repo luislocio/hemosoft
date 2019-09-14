@@ -26,7 +26,7 @@
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Estado Civil: " x:Name="textEstadoCivilGui" Width="150" TextAlignment="Right" FontFamily="Roboto"></TextBlock>
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textEstadoCivil" FontFamily="Roboto"></TextBlock>
             </StackPanel>
-            <StackPanel Margin="0,40" Width="400">
+            <StackPanel Margin="0,40" Width="450">
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" FontFamily="Roboto"/>
                 <DataGrid x:Name="dataGridDoacao"  Height="200" Margin="0,10" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>

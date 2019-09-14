@@ -91,6 +91,9 @@
     <Compile Include="View\CadastrarDoador.xaml.cs">
       <DependentUpon>CadastrarDoador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExibirDoacao.xaml.cs">
+      <DependentUpon>ExibirDoacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExibirDoador.xaml.cs">
       <DependentUpon>ExibirDoador.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CadastrarDoador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExibirDoacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
