@@ -1,19 +1,8 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HemoSoft.View
 {
@@ -22,14 +11,20 @@ namespace HemoSoft.View
     /// </summary>
     public partial class CadastrarDoacao : UserControl
     {
-        bool bebida;
-        bool gripe;
-        bool tatuagem;
-        Gravidez gravidez;
+        Doador doador;
+        Triador triador;
+        Boolean? bebida;
+        Boolean? gripe;
+        Boolean? tatuagem;
+        Gravidez? gravidez;
 
-        public CadastrarDoacao()
+
+        public CadastrarDoacao(Triador t, Doador d)
         {
             InitializeComponent();
+            this.doador = d;
+            this.triador = t;
+
         }
         private void RadioButtonBebidaNao_Click(object sender, RoutedEventArgs e)
         {
@@ -88,39 +83,76 @@ namespace HemoSoft.View
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            if (textPeso.Text.Equals("") || textPulso.Text.Equals("") || textTemperatura.Text.Equals(""))
+            if (IsTriagemClinicaComplete() && IsImpetimentosTemporariosComplete())
             {
+                // Informações do formulário.
+                ImpedimentosTemporarios impedimentosTemporarios = CreateImpetimentosTemporarios();
+                TriagemClinica triagemClinica = CreateTriagemClinica();
 
+                // Informações que serão preenchidas após recebimento do exame laboratorial.
+                ImpedimentosDefinitivos impedimentosDefinitivos = new ImpedimentosDefinitivos { };
+                TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial { };
+
+                Doacao doacao = new Doacao
+                {
+                    DataDoacao = DateTime.Now,
+                    StatusDoacao = StatusDoacao.AguardandoAtendimento,
+                    Doador = this.doador,
+                    Triador = this.triador,
+                    TriagemClinica = triagemClinica,
+                    TriagemLaboratorial = triagemLaboratorial,
+                    ImpedimentosTemporarios = impedimentosTemporarios,
+                    ImpedimentosDefinitivos = impedimentosDefinitivos
+                };
+
+                DoacaoDAO.CadastrarDoacao(doacao);
+
+                MessageBox.Show("Doação cadastrada com sucesso");
+
+                var janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.CarregarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+            }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos!");
+            }
+        }
+
+
+
+        private bool IsImpetimentosTemporariosComplete()
+        {
+            if (this.bebida == null || this.gravidez == null || this.gripe == null || this.tatuagem == null)
+            {
+                return false;
+            }
+            else
+            {
+                if ((textBebida.IsEnabled && textBebida.Text.Equals(""))
+                    || (textGravidez.IsEnabled && textGravidez.Text.Equals(""))
+                    || (textGripe.IsEnabled && textGripe.Text.Equals(""))
+                    || (textTatuagem.IsEnabled && textTatuagem.Text.Equals("")))
+                {
+                    return false;
+                }
             }
 
-            Triador triador = new Triador
+            return true;
+        }
+
+        private bool IsTriagemClinicaComplete()
+        {
+            if (textPeso.Text.Equals("") || textPulso.Text.Equals("") || textTemperatura.Text.Equals(""))
             {
-                NomeCompleto = "triador1",
-                Matricula = "triador1",
-                Senha = "senhatriador1",
-                StatusUsuario = StatusUsuario.Ativo,
-            };
+                return false;
+            }
 
-            Doador doador = new Doador
-            {
-                NomeCompleto = "doador1",
-                Cpf = "012345678901",
-                Genero = Genero.Feminino,
-                EstadoCivil = EstadoCivil.Separadx
-            };
+            return true;
+        }
 
-            TriagemClinica triagemClinica = new TriagemClinica
-            {
-                Peso = double.Parse(textPeso.Text),
-                Pulso = int.Parse(textPulso.Text),
-                Temperatura = int.Parse(textTemperatura.Text),
-            };
-
-            TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial { };
-
-            ImpedimentosDefinitivos impedimentosDefinitivos = new ImpedimentosDefinitivos { };
-
-            ImpedimentosTemporarios impedimentosTemporarios = new ImpedimentosTemporarios
+        private static ImpedimentosTemporarios CreateImpetimentosTemporarios()
+        {
+            return new ImpedimentosTemporarios
             {
                 BebidaAlcoolica = false,
                 BebidaAlcoolicaUltimaVez = 0,
@@ -131,22 +163,16 @@ namespace HemoSoft.View
                 Tatuagem = false,
                 TatuagemUltimaVez = 0
             };
+        }
 
-            Doacao doacao = new Doacao
+        private TriagemClinica CreateTriagemClinica()
+        {
+            return new TriagemClinica
             {
-                DataDoacao = DateTime.Now,
-                StatusDoacao = StatusDoacao.AguardandoAtendimento,
-                Doador = doador,
-                Triador = triador,
-                TriagemClinica = triagemClinica,
-                TriagemLaboratorial = triagemLaboratorial,
-                ImpedimentosTemporarios = impedimentosTemporarios,
-                ImpedimentosDefinitivos = impedimentosDefinitivos
+                Peso = double.Parse(textPeso.Text),
+                Pulso = int.Parse(textPulso.Text),
+                Temperatura = int.Parse(textTemperatura.Text),
             };
-
-            TriadorDAO.CadastrarTriador(triador);
-            DoadorDAO.CadastrarDoador(doador);
-            DoacaoDAO.CadastrarDoacao(doacao);
         }
     }
 }

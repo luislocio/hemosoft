@@ -23,14 +23,10 @@ namespace HemoSoft.View
         {
             if (textNome.Text.Equals("") || textCpf.Text.Equals("") || boxEstadoCivil.SelectionBoxItem.Equals("") || boxGenero.SelectionBoxItem.Equals(""))
             {
-                MessageBox.Show("Campo vazio!");
+                MessageBox.Show("Favor preencher todos os campos!");
             }
             else
             {
-                MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
-                Grid GridPage = (Grid)parentWindow.FindName("GridPage");
-                GridPage.Children.Clear();
-
                 Doador doador = new Doador
                 {
                     NomeCompleto = textNome.Text,
@@ -47,10 +43,10 @@ namespace HemoSoft.View
                 else
                 {
                     MessageBox.Show("Cliente já cadastrado!");
-
-                    UserControl usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
-                    GridPage.Children.Add(usc);
                 }
+
+                var janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.CarregarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             }
         }
     }

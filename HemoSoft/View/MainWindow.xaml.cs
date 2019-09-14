@@ -11,6 +11,10 @@ namespace HemoSoft.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        // TODO: Implementar o atributo triador para janela principal
+        // Triador triador;
+        private static UserControl usc;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,79 +34,12 @@ namespace HemoSoft.View
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UserControl usc = null;
-            GridPage.Children.Clear();
+            // InicializarBancoDeDados();
 
-            //Triador triador = new Triador
-            //{
-            //    NomeCompleto = "triador1",
-            //    Matricula = "triador1",
-            //    Senha = "senhatriador1",
-            //    StatusUsuario = StatusUsuario.Ativo,
-            //};
+            LimparPagina();
 
-            //Doador doador = new Doador
-            //{
-            //    NomeCompleto = "doador1",
-            //    Cpf = "012345678901",
-            //    Genero = Genero.Feminino,
-            //    EstadoCivil = EstadoCivil.Separadx
-            //};
-
-            //TriagemClinica triagemClinica = new TriagemClinica
-            //{
-            //    Peso = 80,
-            //    Pulso = 80,
-            //    Temperatura = 60,
-            //    StatusTriagem = StatusTriagem.Aprovado
-            //};
-
-            //TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial
-            //{
-            //    FatorRh = FatorRh.Negativo,
-            //    HepatiteB = false,
-            //    HepatiteC = false,
-            //    Hiv = false,
-            //    StatusTriagem = StatusTriagem.Aprovado,
-            //    TipoSanguineo = TipoSanguineo.A,
-            //};
-
-            //ImpedimentosDefinitivos impedimentosDefinitivos = new ImpedimentosDefinitivos
-            //{
-            //    AntecedenteAvc = false,
-            //    HepatiteB = false,
-            //    HepatiteC = false,
-            //    Hiv = false,
-            //};
-
-            //ImpedimentosTemporarios impedimentosTemporarios = new ImpedimentosTemporarios
-            //{
-            //    BebidaAlcoolica = false,
-            //    BebidaAlcoolicaUltimaVez = 0,
-            //    Gravidez = false,
-            //    GravidezUltimaVez = 0,
-            //    Gripe = false,
-            //    GripeUltimaVez = 0,
-            //    Tatuagem = false,
-            //    TatuagemUltimaVez = 0
-            //};
-
-            //Doacao doacao = new Doacao
-            //{
-            //    DataDoacao = DateTime.Now,
-            //    StatusDoacao = StatusDoacao.Disponivel,
-            //    Doador = doador,
-            //    Triador = triador,
-            //    TriagemClinica = triagemClinica,
-            //    TriagemLaboratorial = triagemLaboratorial,
-            //    ImpedimentosTemporarios = impedimentosTemporarios,
-            //    ImpedimentosDefinitivos = impedimentosDefinitivos
-            //};
-
-            //TriadorDAO.CadastrarTriador(triador);
-            //DoadorDAO.CadastrarDoador(doador);
-            //DoacaoDAO.CadastrarDoacao(doacao);
-
+            Triador triador = TriadorDAO.BuscarTriadorPorMatricula(new Triador { Matricula = "triador1" });
+            Doador doador = DoadorDAO.BuscarDoadorPorCpf(new Doador { Cpf = "012345678901" });
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
@@ -115,12 +52,99 @@ namespace HemoSoft.View
                     GridPage.Children.Add(usc);
                     break;
                 case "CadastrarDoacao":
-                    usc = new CadastrarDoacao();
+                    usc = new CadastrarDoacao(triador, doador);
                     GridPage.Children.Add(usc);
                     break;
                 default:
                     break;
             }
         }
+
+        public void LimparPagina()
+        {
+            usc = null;
+            GridPage.Children.Clear();
+        }
+
+        public void CarregarPerfilDoador(Doador doador)
+        {
+            LimparPagina();
+            usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+            GridPage.Children.Add(usc);
+        }
+
+        private static void InicializarBancoDeDados()
+        {
+            Triador triadorInit = new Triador
+            {
+                NomeCompleto = "triador1",
+                Matricula = "triador1",
+                Senha = "senhatriador1",
+                StatusUsuario = StatusUsuario.Ativo,
+            };
+
+            Doador doadorInit = new Doador
+            {
+                NomeCompleto = "doador1",
+                Cpf = "012345678901",
+                Genero = Genero.Feminino,
+                EstadoCivil = EstadoCivil.Separadx
+            };
+
+            TriagemClinica triagemClinicaInit = new TriagemClinica
+            {
+                Peso = 80,
+                Pulso = 80,
+                Temperatura = 60,
+                StatusTriagem = StatusTriagem.Aprovado
+            };
+
+            TriagemLaboratorial triagemLaboratorialInit = new TriagemLaboratorial
+            {
+                FatorRh = FatorRh.Negativo,
+                HepatiteB = false,
+                HepatiteC = false,
+                Hiv = false,
+                StatusTriagem = StatusTriagem.Aprovado,
+                TipoSanguineo = TipoSanguineo.A,
+            };
+
+            ImpedimentosDefinitivos impedimentosDefinitivosInit = new ImpedimentosDefinitivos
+            {
+                AntecedenteAvc = false,
+                HepatiteB = false,
+                HepatiteC = false,
+                Hiv = false,
+            };
+
+            ImpedimentosTemporarios impedimentosTemporariosInit = new ImpedimentosTemporarios
+            {
+                BebidaAlcoolica = false,
+                BebidaAlcoolicaUltimaVez = 0,
+                Gravidez = Gravidez.Nenhuma,
+                GravidezUltimaVez = 0,
+                Gripe = false,
+                GripeUltimaVez = 0,
+                Tatuagem = false,
+                TatuagemUltimaVez = 0
+            };
+
+            Doacao doacaoInit = new Doacao
+            {
+                DataDoacao = DateTime.Now,
+                StatusDoacao = StatusDoacao.Disponivel,
+                Doador = doadorInit,
+                Triador = triadorInit,
+                TriagemClinica = triagemClinicaInit,
+                TriagemLaboratorial = triagemLaboratorialInit,
+                ImpedimentosTemporarios = impedimentosTemporariosInit,
+                ImpedimentosDefinitivos = impedimentosDefinitivosInit
+            };
+
+            TriadorDAO.CadastrarTriador(triadorInit);
+            DoadorDAO.CadastrarDoador(doadorInit);
+            DoacaoDAO.CadastrarDoacao(doacaoInit);
+        }
+
     }
 }

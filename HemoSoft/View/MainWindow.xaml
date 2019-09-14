@@ -11,7 +11,6 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Icon="Assets/home.png"
-        ShowInTaskbar="False"
         Title="HemoSoft">
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">

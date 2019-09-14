@@ -27,7 +27,7 @@ namespace HemoSoft.View
             InitializeComponent();
         }
 
-        private void ButtonBuscar_Click(object sender, RoutedEventArgs e)
+        public  void ButtonBuscar_Click(object sender, RoutedEventArgs e)
         {
             Doador doadorBusca = new Doador { Cpf = textCpf.Text };
             Doador doadorResultado = DoadorDAO.BuscarDoadorPorCpf(doadorBusca);

@@ -21,7 +21,7 @@ namespace HemoSoft.View
 
             if (txtUsuario.Text.Equals("") || txtSenha.Equals(""))
             {
-                MessageBox.Show("Campo vazio!");
+                MessageBox.Show("Favor preencher todos os campos!");
             }
             else
             {
@@ -74,8 +74,7 @@ namespace HemoSoft.View
             {
                 Matricula = txtUsuario.Text
             };
-
-
+            
             Triador triadorResultado = TriadorDAO.BuscarTriadorPorMatricula(triadorBusca);
             if (triadorResultado != null)
             {

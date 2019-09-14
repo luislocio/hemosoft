@@ -12,7 +12,6 @@ namespace HemoSoft.DAL
         {
             ctx.Doacoes.Add(d);
             ctx.SaveChanges();
-
         }
 
         public static List<Doacao> BuscarDoacaoPorDoador(Doador d)
