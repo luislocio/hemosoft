@@ -17,7 +17,7 @@ namespace HemoSoft.Model
         [Key] public int IdImpedimentosTemporarios { get; set; }
         public bool? BebidaAlcoolica { get; set; }
         public int? BebidaAlcoolicaUltimaVez { get; set; }
-        public Gravidez Gravidez { get; set; }
+        public Gravidez? Gravidez { get; set; }
         public int? GravidezUltimaVez { get; set; }
         public bool? Gripe { get; set; }
         public int? GripeUltimaVez { get; set; }
