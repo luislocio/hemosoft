@@ -1,38 +1,69 @@
-﻿<UserControl x:Class="HemoSoft.View.ExibirDoador"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HemoSoft.View"
-             mc:Ignorable="d" 
-             VerticalAlignment="Center"
-             HorizontalAlignment="Center"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+﻿<UserControl
+    x:Class="HemoSoft.View.ExibirDoador"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HemoSoft.View"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    HorizontalAlignment="Center"
+    VerticalAlignment="Center"
+    mc:Ignorable="d">
     <Grid>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Nome: " x:Name="textNomeGui" Width="150" TextAlignment="Right" FontFamily="Roboto"></TextBlock>
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textNome" FontFamily="Roboto"></TextBlock>
+        <StackPanel Margin="0,50">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBox
+                    x:Name="textNome"
+                    Width="150"
+                    Margin="0,2"
+                    materialDesign:HintAssist.Hint="Nome:"
+                    IsReadOnly="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="CPF: " x:Name="textCpfGui" Width="150" TextAlignment="Right" FontFamily="Roboto"></TextBlock>
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textCpf" FontFamily="Roboto"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBox
+                    x:Name="textCpf"
+                    Width="150"
+                    Margin="0,2"
+                    materialDesign:HintAssist.Hint="CPF:"
+                    IsReadOnly="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Genero: " x:Name="textGeneroGui" Width="150" TextAlignment="Right" FontFamily="Roboto"></TextBlock>
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textGenero" FontFamily="Roboto"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBox
+                    x:Name="textGenero"
+                    Width="150"
+                    Margin="0,2"
+                    materialDesign:HintAssist.Hint="Genero:"
+                    IsReadOnly="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Estado Civil: " x:Name="textEstadoCivilGui" Width="150" TextAlignment="Right" FontFamily="Roboto"></TextBlock>
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="" x:Name="textEstadoCivil" FontFamily="Roboto"></TextBlock>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBox
+                    x:Name="textEstadoCivil"
+                    Width="150"
+                    Margin="0,2"
+                    materialDesign:HintAssist.Hint="EstadoCivil:"
+                    IsReadOnly="True"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <StackPanel Margin="0,40" Width="450">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" FontFamily="Roboto"/>
-                <DataGrid x:Name="dataGridDoacao"  Height="200" Margin="0,10" AutoGenerateColumns="False" IsReadOnly="True">
+            <StackPanel
+                Width="450"
+                Margin="0,40"
+                HorizontalAlignment="Center">
+                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" />
+                <DataGrid
+                    x:Name="dataGridDoacao"
+                    Height="200"
+                    Margin="0,10"
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    MouseDoubleClick="DataGridDoacao_MouseDoubleClick"
+                    SelectionUnit="FullRow">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="#Doação" Binding="{Binding IdDoacao}"/>
-                        <DataGridTextColumn Header="Data" Binding="{Binding DataDoacao}"/>
-                        <DataGridTextColumn Header="Status" Binding="{Binding StatusDoacao}"/>
+                        <DataGridTextColumn Binding="{Binding IdDoacao}" Header="#Doação" />
+                        <DataGridTextColumn Binding="{Binding DataDoacao}" Header="Data" />
+                        <DataGridTextColumn Binding="{Binding StatusDoacao}" Header="Status" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

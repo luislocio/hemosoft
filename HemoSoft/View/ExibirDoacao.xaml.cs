@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using HemoSoft.Model;
+using System;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HemoSoft.View
 {
@@ -20,9 +9,61 @@ namespace HemoSoft.View
     /// </summary>
     public partial class ExibirDoacao : UserControl
     {
-        public ExibirDoacao()
+        Doacao Doacao;
+        public ExibirDoacao(Doacao d)
         {
             InitializeComponent();
+            this.Doacao = d;
+            CarregarDoacao();
+        }
+
+        private void CarregarDoacao()
+        {
+            // Triagem Clinica
+            textId.Text = "#" + Convert.ToString(Doacao.IdDoacao);
+            textPeso.Text = Convert.ToString(Doacao.TriagemClinica.Peso) + " Kg";
+            textPulso.Text = Convert.ToString(Doacao.TriagemClinica.Pulso) + " bpm";
+            textTemperatura.Text = Convert.ToString(Doacao.TriagemClinica.Temperatura) + " °C";
+
+            // Impedimentos Temporários
+            textBebida.Text = GetStatusBebida();
+            textGravidez.Text = GetStatusGravidez();
+            textGripe.Text = GetStatusGripe();
+            textTatuagem.Text = GetStatusTatuagem();
+
+            // Triagem Laboratorial/Impedimentos Definitivos
+        }
+
+        private String GetStatusBebida()
+        {
+            if (Doacao.ImpedimentosTemporarios.BebidaAlcoolica == true)
+            {
+                return "Sim";
+            }
+            return "Não";
+        }
+
+        private String GetStatusGravidez()
+        {
+            return Doacao.ImpedimentosTemporarios.Gravidez.ToString();
+        }
+
+        private String GetStatusGripe()
+        {
+            if (Doacao.ImpedimentosTemporarios.Gripe == true)
+            {
+                return "Sim";
+            }
+            return "Não";
+        }
+
+        private String GetStatusTatuagem()
+        {
+            if (Doacao.ImpedimentosTemporarios.Tatuagem == true)
+            {
+                return "Sim";
+            }
+            return "Não";
         }
     }
 }

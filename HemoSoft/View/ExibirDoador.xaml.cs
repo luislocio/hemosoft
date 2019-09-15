@@ -43,7 +43,17 @@ namespace HemoSoft.View
             textEstadoCivil.Text = Doador.EstadoCivil.ToString();
             textGenero.Text = Doador.Genero.ToString();
 
-            dataGridDoacao.ItemsSource = DoacaoDAO.BuscarDoacaoPorDoador(Doador); ;
+            dataGridDoacao.ItemsSource = Doador.Doacoes; ;
+        }
+
+        private void DataGridDoacao_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Doacao doacaoSelecionada = dataGridDoacao.SelectedItem as Doacao;
+            if (doacaoSelecionada != null)
+            {
+            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+            janelaPrincipal.CarregarDoacao(DoacaoDAO.BuscarDoacaoPorId(doacaoSelecionada));
+            }
         }
     }
 }

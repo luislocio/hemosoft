@@ -18,6 +18,7 @@ namespace HemoSoft.View
         public MainWindow()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -70,6 +71,13 @@ namespace HemoSoft.View
         {
             LimparPagina();
             usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+            GridPage.Children.Add(usc);
+        }
+
+        public void CarregarDoacao(Doacao doacao)
+        {
+            LimparPagina();
+            usc = new ExibirDoacao(DoacaoDAO.BuscarDoacaoPorId(doacao));
             GridPage.Children.Add(usc);
         }
 

@@ -17,7 +17,12 @@ namespace HemoSoft.DAL
             ctx.Doadores.Add(d);
             ctx.SaveChanges();
             return true;
+        }
 
+        public static Doador BuscarDoadorPorCpf(Doador d)
+        {
+            return ctx.Doadores.Include("Doacoes").FirstOrDefault
+                (x => x.Cpf.Equals(d.Cpf));
         }
 
         public static Doador BuscarDoadorPorNomeCompleto(Doador d)
@@ -26,20 +31,11 @@ namespace HemoSoft.DAL
                 (x => x.NomeCompleto.Equals(d.NomeCompleto));
         }
 
-
         public static List<Doador> BuscarDoadorPorParteNome(Doador d)
         {
-            //Where: é método que retorna todas as
-            //ocorrências em uma busca
+            //Where: é método que retorna todas as ocorrências em uma busca
             return ctx.Doadores.Where
                 (x => x.NomeCompleto.Contains(d.NomeCompleto)).ToList();
-        }
-
-
-        public static Doador BuscarDoadorPorCpf(Doador d)
-        {
-            return ctx.Doadores.FirstOrDefault
-                (x => x.Cpf.Equals(d.Cpf));
         }
 
         public static Doador BuscarDoadorPorEstadoCivil(Doador d)
@@ -48,15 +44,11 @@ namespace HemoSoft.DAL
                 (x => x.EstadoCivil.Equals(d.EstadoCivil));
         }
 
-
         public static Doador BuscarDoadorPorGenero(Doador d)
         {
             return ctx.Doadores.FirstOrDefault
                 (x => x.Genero.Equals(d.Genero));
         }
-
-
-
     }
 }
 

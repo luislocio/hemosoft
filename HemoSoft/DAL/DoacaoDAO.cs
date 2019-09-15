@@ -6,7 +6,6 @@ namespace HemoSoft.DAL
 {
     class DoacaoDAO
     {
-
         private static Context ctx = SingletonContext.GetInstance();
         public static void CadastrarDoacao(Doacao d)
         {
@@ -20,6 +19,19 @@ namespace HemoSoft.DAL
             //ocorrências em uma busca
             return ctx.Doacoes.Where
                 (x => x.Doador.IdDoador.Equals(d.IdDoador)).ToList();
+        }
+
+        public static Doacao BuscarDoacaoPorId(Doacao d)
+        {
+            //Where: é método que retorna todas as
+            //ocorrências em uma busca
+            return ctx.Doacoes
+                .Include("TriagemClinica")
+                .Include("TriagemLaboratorial")
+                .Include("ImpedimentosTemporarios")
+                .Include("ImpedimentosDefinitivos")
+                .FirstOrDefault
+                (x => x.IdDoacao.Equals(d.IdDoacao));
         }
     }
 }

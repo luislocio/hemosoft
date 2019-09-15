@@ -31,8 +31,7 @@ namespace HemoSoft.DAL
 
         public static List<Solicitante> BuscarProdutosPorParteNome(Solicitante s)
         {
-            //Where: é método que retorna todas as
-            //ocorrências em uma busca
+            //Where: é método que retorna todas as ocorrências em uma busca
             return ctx.Solicitantes.Where
                 (x => x.RazaoSocial.Contains(s.RazaoSocial)).ToList();
         }

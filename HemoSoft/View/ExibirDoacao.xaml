@@ -9,64 +9,68 @@
     HorizontalAlignment="Center"
     VerticalAlignment="Center"
     mc:Ignorable="d">
-    <Grid>
-        <StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBlock
-                    x:Name="textNomeGui"
-                    Width="150"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="Nome: "
-                    TextAlignment="Right" />
-                <TextBlock
-                    x:Name="textNome"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="" />
+    <ScrollViewer VerticalScrollBarVisibility="Visible">
+        <Grid Width="300" Margin="40,0">
+            <StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textId"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="ID: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textPeso"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Peso: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textPulso"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Pulso: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textTemperatura"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Temperatura: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <Separator Margin="0,20,0,2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                <StackPanel Margin="0,0,0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textBebida"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Bebida nas ultimas 12 horas: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textGravidez"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Gravidez recente: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textGripe"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Gripe/resfriado nos ultimos 12 dias: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel Margin="0,2" Orientation="Horizontal">
+                    <TextBox
+                        x:Name="textTatuagem"
+                        Width="270"
+                        materialDesign:HintAssist.Hint="Tatuagem nos ultimos 12 meses: "
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <Separator Margin="0,20,0,2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBlock
-                    x:Name="textCpfGui"
-                    Width="150"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="CPF: "
-                    TextAlignment="Right" />
-                <TextBlock
-                    x:Name="textCpf"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="" />
-            </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBlock
-                    x:Name="textGeneroGui"
-                    Width="150"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="Genero: "
-                    TextAlignment="Right" />
-                <TextBlock
-                    x:Name="textGenero"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="" />
-            </StackPanel>
-            <StackPanel Margin="5" Orientation="Horizontal">
-                <TextBlock
-                    x:Name="textEstadoCivilGui"
-                    Width="150"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="Estado Civil: "
-                    TextAlignment="Right" />
-                <TextBlock
-                    x:Name="textEstadoCivil"
-                    FontFamily="Roboto"
-                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                    Text="" />
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>
