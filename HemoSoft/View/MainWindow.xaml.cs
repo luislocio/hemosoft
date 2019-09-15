@@ -12,18 +12,31 @@ namespace HemoSoft.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TODO: Implementar o atributo triador para janela principal e receber via parametro
-        Triador triador = TriadorDAO.BuscarTriadorPorMatricula(new Triador { Matricula = "triador1" });
-
+        private static Usuario usuario;
         private static UserControl usc;
+
+        public MainWindow(Usuario u)
+        {
+            InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
+            usuario = u;
+            // InicializarBancoDeDados();
+        }
 
         public MainWindow()
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
+
+            // TODO: REMOVER HARDCODED
+            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
+            //usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
+
+            RenderizarMenuLateral();
             // InicializarBancoDeDados();
         }
 
+        #region Eventos de Cliques
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
@@ -39,14 +52,24 @@ namespace HemoSoft.View
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LimparPagina();
-            
-            Doador doador = DoadorDAO.BuscarDoadorPorCpf(new Doador { Cpf = "012345678901" });
 
-            RenderizarPaginasPrincipais(sender, triador, doador);
+            RenderizarPaginasPrincipais(sender);
+        }
+        #endregion
+
+        #region Renderização das telas principais
+        private void RenderizarMenuLateral()
+        {
+            if (usuario.TipoUsuario == TipoUsuario.Solicitante)
+            {
+                MenuLateral.Items.Remove(CadastrarDoador);
+                MenuLateral.Items.Remove(BuscarDoador);
+                MenuLateral.Items.Remove(CadastrarExame);
+
+            }
         }
 
-        // Criar uma variavel para armazenar o usuário (Triador/Solicitante)
-        private void RenderizarPaginasPrincipais(object sender, Triador triador, Doador doador)
+        private void RenderizarPaginasPrincipais(object sender)
         {
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
@@ -73,7 +96,10 @@ namespace HemoSoft.View
             usc = null;
             GridPage.Children.Clear();
         }
+        #endregion
 
+
+        #region Renderização de telas auxiliares
         public void RenderizarPerfilDoador(Doador doador)
         {
             LimparPagina();
@@ -90,12 +116,14 @@ namespace HemoSoft.View
 
         public void RenderizarCadastroDoacao(Doador doador)
         {
+            // TODO: Remover HARD CODE
+            Triador triador = new Triador();
             LimparPagina();
             usc = new CadastrarDoacao(doador, triador);
             GridPage.Children.Add(usc);
         }
 
-        public void RenderizarCadastroExame (Doacao doacao)
+        public void RenderizarCadastroExame(Doacao doacao)
         {
             LimparPagina();
             usc = new CadastrarExame(doacao);
@@ -107,9 +135,8 @@ namespace HemoSoft.View
             LimparPagina();
             usc = new ExibirListaDoacoes(doacoes);
             GridPage.Children.Add(usc);
-        }
-
-
+        } 
+        #endregion
 
         private static void InicializarBancoDeDados()
         {

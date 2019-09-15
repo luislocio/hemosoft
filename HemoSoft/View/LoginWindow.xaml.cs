@@ -17,7 +17,7 @@ namespace HemoSoft.View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            bool autenticacaoDoUsuario = false;
+            Usuario usuario = null;
 
             if (txtUsuario.Text.Equals("") || txtSenha.Equals(""))
             {
@@ -27,28 +27,30 @@ namespace HemoSoft.View
             {
                 if (txtUsuario.Text.Length == 14)
                 {
-                    autenticacaoDoUsuario = AutenticarSolicitante(txtUsuario, txtSenha);
-                } else
-                {
-                    autenticacaoDoUsuario = AutenticarTriador(txtUsuario, txtSenha);
+                    usuario = AutenticarSolicitante(txtUsuario, txtSenha);
                 }
-                
+                else
+                {
+                    usuario = AutenticarTriador(txtUsuario, txtSenha);
+                }
+
             }
 
-            if (autenticacaoDoUsuario == true)
+            if (usuario != null)
             {
                 // TODO: Passar usuario como parametro
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(usuario);
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Dados Inválidos.");
             }
         }
 
-        private bool AutenticarTriador(TextBox txtUsuario, PasswordBox txtSenha)
+        private Usuario AutenticarTriador(TextBox txtUsuario, PasswordBox txtSenha)
         {
             Triador triadorBusca = new Triador
             {
@@ -60,31 +62,37 @@ namespace HemoSoft.View
             {
                 if (triadorResultado.Matricula.Equals(txtUsuario.Text) && triadorResultado.Senha.Equals(txtSenha.Password))
                 {
-                    return true;
+                    return new Usuario
+                    {
+                        IdUsuario = triadorResultado.IdTriador,
+                        NomeDeUsuario = triadorResultado.NomeCompleto,
+                        TipoUsuario = TipoUsuario.Triador
+                    };
                 }
             }
 
-            return false;
+            return null;
         }
 
-        // TODO: Implementar login do solicitante
-        private bool AutenticarSolicitante(TextBox txtUsuario, PasswordBox txtSenha)
+        private Usuario AutenticarSolicitante(TextBox txtUsuario, PasswordBox txtSenha)
         {
-            Triador triadorBusca = new Triador
+            Solicitante solicitanteBusca = new Solicitante { Cnpj = txtUsuario.Text };
+            Solicitante solicitanteResultado = SolicitanteDAO.BuscarSolicitantePorCnpj(solicitanteBusca);
+
+            if (solicitanteResultado != null)
             {
-                Matricula = txtUsuario.Text
-            };
-            
-            Triador triadorResultado = TriadorDAO.BuscarTriadorPorMatricula(triadorBusca);
-            if (triadorResultado != null)
-            {
-                if (triadorResultado.Matricula.Equals(txtUsuario.Text) && triadorResultado.Senha.Equals(txtSenha.Password))
+                if (solicitanteResultado.Cnpj.Equals(txtUsuario.Text) && solicitanteResultado.Senha.Equals(txtSenha.Password))
                 {
-                    return true;
+                    return new Usuario
+                    {
+                        IdUsuario = solicitanteResultado.IdSolicitante,
+                        NomeDeUsuario = solicitanteResultado.RazaoSocial,
+                        TipoUsuario = TipoUsuario.Solicitante
+                    };
                 }
             }
 
-            return false;
+            return null;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace HemoSoft.View
             textGripe.Text = GetStatusGripe();
             textTatuagem.Text = GetStatusTatuagem();
 
-            // TODO: Triagem Laboratorial/Impedimentos Definitivos
+            // Triagem Laboratorial/Impedimentos Definitivos
             textAntecedenteAvc.Text = GetStatusAntecedenteAvc();
             textHepatiteB.Text = GetStatusHepatiteB();
             textHepatiteC.Text = GetStatusHepatiteC();

@@ -13,6 +13,7 @@
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+
     <Window.Resources>
         <Storyboard x:Key="MenuOpen">
             <DoubleAnimationUsingKeyFrames Storyboard.Target="{Binding ElementName=GridMenu}" Storyboard.TargetProperty="(FrameworkElement.Width)">
@@ -179,7 +180,6 @@
                 </ListView>
             </StackPanel>
         </Grid>
-
         <Grid
             x:Name="GridPage"
             Width="729"
