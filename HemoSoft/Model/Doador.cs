@@ -20,6 +20,21 @@ namespace HemoSoft.Model
         Feminino
     }
 
+    public enum FatorRh
+    {
+        Negativo,
+        Positivo
+    }
+
+    public enum TipoSanguineo
+    {
+        A,
+        B,
+        AB,
+        O,
+        Indefinido
+    }
+
     [Table("Doadores")]
     public class Doador
     {
@@ -29,6 +44,8 @@ namespace HemoSoft.Model
         public string NomeCompleto { get; set; }
         public Genero Genero { get; set; }
         public List<Doacao> Doacoes { get; set; }
+        public FatorRh? FatorRh { get; set; }
+        public TipoSanguineo? TipoSanguineo { get; set; }
 
         public override string ToString()
         {

@@ -1,19 +1,9 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HemoSoft.View
 {
@@ -22,7 +12,7 @@ namespace HemoSoft.View
     /// </summary>
     public partial class ExibirDoador : UserControl
     {
-        Doador Doador;
+        Doador doador;
 
         public ExibirDoador()
         {
@@ -32,23 +22,37 @@ namespace HemoSoft.View
         public ExibirDoador(Doador d)
         {
             InitializeComponent();
-            this.Doador = d;
+            this.doador = d;
             CarregarDoador();
         }
 
         private void CarregarDoador()
         {
-            textNome.Text = Doador.NomeCompleto;
-            textCpf.Text = Doador.Cpf;
-            textEstadoCivil.Text = Doador.EstadoCivil.ToString();
-            textGenero.Text = Doador.Genero.ToString();
+            textNome.Text = doador.NomeCompleto;
+            textCpf.Text = doador.Cpf;
+            textEstadoCivil.Text = doador.EstadoCivil.ToString();
+            textGenero.Text = doador.Genero.ToString();
+            textTipoSanguineo.Text = GetStatusTipoSaguineo();
 
-            dataGridDoacao.ItemsSource = Doador.Doacoes; ;
+
+            dataGridDoacao.ItemsSource = doador.Doacoes; ;
+        }
+
+        private String GetStatusTipoSaguineo()
+        {
+            if (doador.TipoSanguineo != null &&
+                doador.FatorRh != null)
+            {
+                return doador.TipoSanguineo + " " + doador.FatorRh;
+            }
+
+            return "Aguardando resultados";
         }
 
         private void DataGridDoacao_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Doacao doacaoSelecionada = dataGridDoacao.SelectedItem as Doacao;
+
             if (doacaoSelecionada != null)
             {
                 MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
@@ -59,8 +63,7 @@ namespace HemoSoft.View
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
             MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-
-            janelaPrincipal.RenderizarCadastroDoacao(Doador);
+            janelaPrincipal.RenderizarCadastroDoacao(doador);
         }
     }
 }

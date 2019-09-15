@@ -11,7 +11,7 @@ namespace HemoSoft.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TODO: Implementar o atributo triador para janela principal
+        // TODO: Implementar o atributo triador para janela principal e receber via parametro
         Triador triador = TriadorDAO.BuscarTriadorPorMatricula(new Triador { Matricula = "triador1" });
 
         private static UserControl usc;
@@ -20,6 +20,7 @@ namespace HemoSoft.View
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
+            // InicializarBancoDeDados();
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -36,10 +37,7 @@ namespace HemoSoft.View
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // InicializarBancoDeDados();
-
             LimparPagina();
-
             
             Doador doador = DoadorDAO.BuscarDoadorPorCpf(new Doador { Cpf = "012345678901" });
 
@@ -59,11 +57,7 @@ namespace HemoSoft.View
                     usc = new BuscarDoador();
                     GridPage.Children.Add(usc);
                     break;
-                case "CadastrarExame":
-                    //TODO: remover hard code
-                    Doacao doacao = DoacaoDAO.BuscarDoacaoPorId(new Doacao { IdDoacao = 3 });
-                    usc = new CadastrarExame(doacao);
-                    GridPage.Children.Add(usc);
+                case "BuscarDoacoes":
                     break;
                 default:
                     break;
@@ -97,7 +91,13 @@ namespace HemoSoft.View
             GridPage.Children.Add(usc);
         }
 
-
+        public void RenderizarCadastroExame (Doacao doacao)
+        {
+            LimparPagina();
+            usc = new CadastrarExame(doacao);
+            GridPage.Children.Add(usc);
+        }
+        
         private static void InicializarBancoDeDados()
         {
             Triador triadorInit = new Triador
@@ -113,7 +113,9 @@ namespace HemoSoft.View
                 NomeCompleto = "doador1",
                 Cpf = "012345678901",
                 Genero = Genero.Feminino,
-                EstadoCivil = EstadoCivil.Separadx
+                EstadoCivil = EstadoCivil.Separadx,
+                TipoSanguineo = TipoSanguineo.A,
+                FatorRh = FatorRh.Negativo,
             };
 
             TriagemClinica triagemClinicaInit = new TriagemClinica
@@ -126,12 +128,10 @@ namespace HemoSoft.View
 
             TriagemLaboratorial triagemLaboratorialInit = new TriagemLaboratorial
             {
-                FatorRh = FatorRh.Negativo,
                 HepatiteB = false,
                 HepatiteC = false,
                 Hiv = false,
-                StatusTriagem = StatusTriagem.Aprovado,
-                TipoSanguineo = TipoSanguineo.A,
+                StatusTriagem = StatusTriagem.Aprovado
             };
 
             ImpedimentosDefinitivos impedimentosDefinitivosInit = new ImpedimentosDefinitivos
@@ -170,6 +170,5 @@ namespace HemoSoft.View
             DoadorDAO.CadastrarDoador(doadorInit);
             DoacaoDAO.CadastrarDoacao(doacaoInit);
         }
-
     }
 }

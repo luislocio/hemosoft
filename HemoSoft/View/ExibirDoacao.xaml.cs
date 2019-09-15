@@ -1,5 +1,6 @@
 ﻿using HemoSoft.Model;
 using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HemoSoft.View
@@ -9,21 +10,27 @@ namespace HemoSoft.View
     /// </summary>
     public partial class ExibirDoacao : UserControl
     {
-        Doacao Doacao;
+        Doacao doacao;
+
         public ExibirDoacao(Doacao d)
         {
             InitializeComponent();
-            this.Doacao = d;
+            this.doacao = d;
             CarregarDoacao();
         }
 
         private void CarregarDoacao()
         {
+            if (doacao.TriagemLaboratorial.StatusTriagem != null)
+            {
+                ButtonCadastrar.IsEnabled = false;
+            }
+
             // Triagem Clinica
-            textId.Text = "#" + Convert.ToString(Doacao.IdDoacao);
-            textPeso.Text = Convert.ToString(Doacao.TriagemClinica.Peso) + " Kg";
-            textPulso.Text = Convert.ToString(Doacao.TriagemClinica.Pulso) + " bpm";
-            textTemperatura.Text = Convert.ToString(Doacao.TriagemClinica.Temperatura) + " °C";
+            textId.Text = "#" + Convert.ToString(doacao.IdDoacao);
+            textPeso.Text = Convert.ToString(doacao.TriagemClinica.Peso) + " Kg";
+            textPulso.Text = Convert.ToString(doacao.TriagemClinica.Pulso) + " bpm";
+            textTemperatura.Text = Convert.ToString(doacao.TriagemClinica.Temperatura) + " °C";
 
             // Impedimentos Temporários
             textBebida.Text = GetStatusBebida();
@@ -33,11 +40,14 @@ namespace HemoSoft.View
 
             // TODO: Triagem Laboratorial/Impedimentos Definitivos
             textAntecedenteAvc.Text = GetStatusAntecedenteAvc();
+            textHepatiteB.Text = GetStatusHepatiteB();
+            textHepatiteC.Text = GetStatusHepatiteC();
+            textHiv.Text = GetStatusHiv();
         }
 
         private String GetStatusBebida()
         {
-            if (Doacao.ImpedimentosTemporarios.BebidaAlcoolica == true)
+            if (doacao.ImpedimentosTemporarios.BebidaAlcoolica == true)
             {
                 return "Sim";
             }
@@ -46,12 +56,12 @@ namespace HemoSoft.View
 
         private String GetStatusGravidez()
         {
-            return Doacao.ImpedimentosTemporarios.Gravidez.ToString();
+            return doacao.ImpedimentosTemporarios.Gravidez.ToString();
         }
 
         private String GetStatusGripe()
         {
-            if (Doacao.ImpedimentosTemporarios.Gripe == true)
+            if (doacao.ImpedimentosTemporarios.Gripe == true)
             {
                 return "Sim";
             }
@@ -60,7 +70,7 @@ namespace HemoSoft.View
 
         private String GetStatusTatuagem()
         {
-            if (Doacao.ImpedimentosTemporarios.Tatuagem == true)
+            if (doacao.ImpedimentosTemporarios.Tatuagem == true)
             {
                 return "Sim";
             }
@@ -69,7 +79,7 @@ namespace HemoSoft.View
 
         private String GetStatusAntecedenteAvc()
         {
-            if (Doacao.ImpedimentosDefinitivos.AntecedenteAvc == true)
+            if (doacao.ImpedimentosDefinitivos.AntecedenteAvc == true)
             {
                 return "Positivo";
             }
@@ -77,9 +87,55 @@ namespace HemoSoft.View
             return "Negativo";
         }
 
+        private string GetStatusHepatiteB()
+        {
+            if (doacao.ImpedimentosDefinitivos.HepatiteB == true)
+            {
+                return "Positivo";
+            }
+
+            if (doacao.ImpedimentosDefinitivos.HepatiteB == false)
+            {
+                return "Negativo";
+            }
+
+            return "Aguardando resultados";
+        }
+
+        private String GetStatusHepatiteC()
+        {
+            if (doacao.ImpedimentosDefinitivos.HepatiteC == true)
+            {
+                return "Positivo";
+            }
+
+            if (doacao.ImpedimentosDefinitivos.HepatiteC == false)
+            {
+                return "Negativo";
+            }
+
+            return "Aguardando resultados";
+        }
+
+        private String GetStatusHiv()
+        {
+            if (doacao.ImpedimentosDefinitivos.Hiv == true)
+            {
+                return "Positivo";
+            }
+
+            if (doacao.ImpedimentosDefinitivos.Hiv == false)
+            {
+                return "Negativo";
+            }
+
+            return "Aguardando resultados";
+        }
+
         private void ButtonCadastrarExame_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+            janelaPrincipal.RenderizarCadastroExame(doacao);
         }
     }
 }

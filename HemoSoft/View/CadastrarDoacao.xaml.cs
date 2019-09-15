@@ -200,7 +200,7 @@ namespace HemoSoft.View
         {
             if (textBebida.IsEnabled == true)
             {
-                return Convert.ToInt32(textGravidez.Text);
+                return Convert.ToInt32(textBebida.Text);
             }
             return null;
         }

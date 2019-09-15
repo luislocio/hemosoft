@@ -1,5 +1,6 @@
 ﻿using HemoSoft.Model;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace HemoSoft.DAL
@@ -32,6 +33,12 @@ namespace HemoSoft.DAL
                 .Include("ImpedimentosDefinitivos")
                 .FirstOrDefault
                 (x => x.IdDoacao.Equals(d.IdDoacao));
+        }
+
+        public static void AlterarDoacao(Doacao d)
+        {
+            ctx.Entry(d).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

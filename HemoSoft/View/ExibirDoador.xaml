@@ -26,6 +26,13 @@
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
+                        x:Name="textTipoSanguineo"
+                        Width="150"
+                        Margin="0,2"
+                        materialDesign:HintAssist.Hint="Tipo Saguineo: "
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
                         x:Name="textCpf"
                         Width="150"
                         Margin="0,2"

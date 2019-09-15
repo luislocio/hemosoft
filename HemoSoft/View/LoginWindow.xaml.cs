@@ -17,7 +17,7 @@ namespace HemoSoft.View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            bool usuarioAutenticado = false;
+            bool autenticacaoDoUsuario = false;
 
             if (txtUsuario.Text.Equals("") || txtSenha.Equals(""))
             {
@@ -27,15 +27,15 @@ namespace HemoSoft.View
             {
                 if (txtUsuario.Text.Length == 14)
                 {
-                    usuarioAutenticado = AutenticarSolicitante(txtUsuario, txtSenha);
+                    autenticacaoDoUsuario = AutenticarSolicitante(txtUsuario, txtSenha);
                 } else
                 {
-                    usuarioAutenticado = AutenticarTriador(txtUsuario, txtSenha);
+                    autenticacaoDoUsuario = AutenticarTriador(txtUsuario, txtSenha);
                 }
                 
             }
 
-            if (usuarioAutenticado == true)
+            if (autenticacaoDoUsuario == true)
             {
                 // TODO: Passar usuario como parametro
                 MainWindow main = new MainWindow();
@@ -67,7 +67,7 @@ namespace HemoSoft.View
             return false;
         }
 
-
+        // TODO: Implementar login do solicitante
         private bool AutenticarSolicitante(TextBox txtUsuario, PasswordBox txtSenha)
         {
             Triador triadorBusca = new Triador

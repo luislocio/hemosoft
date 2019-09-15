@@ -1,19 +1,8 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HemoSoft.View
 {
@@ -31,6 +20,7 @@ namespace HemoSoft.View
         {
             InitializeComponent();
             this.doacao = d;
+            CarregarDadosExistentes();
         }
 
         #region Radio Buttons
@@ -70,10 +60,13 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                TriagemLaboratorial triagemLaboratorial = CriarTriagemLaboratorial();
-                ImpedimentosDefinitivos impedimentosDefinitivos = CriarImpetimentosDefinitivos(triagemLaboratorial);
+                doacao.TriagemLaboratorial = AtualizarTriagemLaboratorial();
+                doacao.ImpedimentosDefinitivos = AtualizarImpedimentosDefinitivos(doacao.TriagemLaboratorial);
+                doacao.Doador = AtualizarDadosDoSangue(); 
+                
+                DoacaoDAO.AlterarDoacao(doacao);
 
-                MessageBox.Show("Exame laboratorial com sucesso");
+                MessageBox.Show("Exame laboratorial cadastrado com sucesso");
 
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilDoacao(doacao);
@@ -84,29 +77,31 @@ namespace HemoSoft.View
             }
         }
 
-        private ImpedimentosDefinitivos CriarImpetimentosDefinitivos(TriagemLaboratorial triagemLaboratorial)
+
+        private void CarregarDadosExistentes()
         {
-            return new ImpedimentosDefinitivos()
+            if (doacao.Doador.FatorRh != null && doacao.Doador.TipoSanguineo != null)
             {
-                AntecedenteAvc = doacao.ImpedimentosDefinitivos.AntecedenteAvc,
-                HepatiteB = triagemLaboratorial.HepatiteB,
-                HepatiteC = triagemLaboratorial.HepatiteC,
-                Hiv = triagemLaboratorial.Hiv,
+                boxFatorRh.SelectedItem = doacao.Doador.FatorRh;
+                boxFatorRh.IsEnabled = false;
+
+                boxTipoSanguineo.SelectedItem = doacao.Doador.TipoSanguineo;
+                boxTipoSanguineo.IsEnabled = false;
             };
         }
 
-        private TriagemLaboratorial CriarTriagemLaboratorial()
+        private TriagemLaboratorial AtualizarTriagemLaboratorial()
         {
-            return new TriagemLaboratorial
-            {
-                HepatiteB = statusHepatiteB,
-                HepatiteC = statusHepatiteC,
-                Hiv = statusHiv,
-                StatusTriagem = VerificarResultadoDoExame(),
-                FatorRh = (FatorRh)Enum.Parse(typeof(FatorRh), boxFatorRh.Text),
-                TipoSanguineo = (TipoSanguineo)Enum.Parse(typeof(TipoSanguineo), boxTipoSanguineo.Text)
-            };
+            TriagemLaboratorial triagemLaboratorial = doacao.TriagemLaboratorial;
+
+            triagemLaboratorial.HepatiteB = statusHepatiteB;
+            triagemLaboratorial.HepatiteC = statusHepatiteC;
+            triagemLaboratorial.Hiv = statusHiv;
+            triagemLaboratorial.StatusTriagem = VerificarResultadoDoExame();
+
+            return triagemLaboratorial;
         }
+
 
         private StatusTriagem VerificarResultadoDoExame()
         {
@@ -119,13 +114,35 @@ namespace HemoSoft.View
             return StatusTriagem.Aprovado;
         }
 
+        private ImpedimentosDefinitivos AtualizarImpedimentosDefinitivos(TriagemLaboratorial triagemLaboratorial)
+        {
+            ImpedimentosDefinitivos impedimentosDefinitivos = doacao.ImpedimentosDefinitivos;
+
+            impedimentosDefinitivos.AntecedenteAvc = doacao.ImpedimentosDefinitivos.AntecedenteAvc;
+            impedimentosDefinitivos.HepatiteB = triagemLaboratorial.HepatiteB;
+            impedimentosDefinitivos.HepatiteC = triagemLaboratorial.HepatiteC;
+            impedimentosDefinitivos.Hiv = triagemLaboratorial.Hiv;
+
+            return impedimentosDefinitivos;
+        }
+
+        private Doador AtualizarDadosDoSangue()
+        {
+            Doador doador = doacao.Doador;
+
+            doador.TipoSanguineo = (TipoSanguineo)Enum.Parse(typeof(TipoSanguineo), boxTipoSanguineo.Text);
+            doador.FatorRh = (FatorRh)Enum.Parse(typeof(FatorRh), boxFatorRh.Text);
+
+            return doador;
+        }
+
         private bool FormularioEstaCompleto()
         {
             if (this.statusHepatiteB == null ||
                 this.statusHepatiteC == null ||
                 this.statusHiv == null ||
-                boxFatorRh.SelectedItem.Equals("") ||
-                boxTipoSanguineo.SelectedItem.Equals(""))
+                boxFatorRh.SelectedItem == null ||
+                boxTipoSanguineo.SelectedItem == null)
             {
                 return false;
             }

@@ -86,6 +86,10 @@
     <Compile Include="Migrations\201909150402490_Nullable Gravidez.Designer.cs">
       <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909151715462_tipoSanguineoDoador.cs" />
+    <Compile Include="Migrations\201909151715462_tipoSanguineoDoador.Designer.cs">
+      <DependentUpon>201909151715462_tipoSanguineoDoador.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BuscarDoador.xaml.cs">
       <DependentUpon>BuscarDoador.xaml</DependentUpon>
     </Compile>
@@ -195,10 +199,14 @@
     <EmbeddedResource Include="Migrations\201909150402490_Nullable Gravidez.resx">
       <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151715462_tipoSanguineoDoador.resx">
+      <DependentUpon>201909151715462_tipoSanguineoDoador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
