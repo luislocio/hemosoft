@@ -29,8 +29,8 @@ namespace HemoSoft.View
             Style = (Style)FindResource(typeof(Window));
 
             // TODO: REMOVER HARDCODED
-            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
-            //usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
+            // usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
+            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
 
             RenderizarMenuLateral();
             // InicializarBancoDeDados();
@@ -85,6 +85,7 @@ namespace HemoSoft.View
                     usc = new BuscarDoacoes();
                     GridPage.Children.Add(usc);
                     break;
+
                 default:
                     break;
             }
@@ -97,7 +98,6 @@ namespace HemoSoft.View
             GridPage.Children.Clear();
         }
         #endregion
-
 
         #region Renderização de telas auxiliares
         public void RenderizarPerfilDoador(Doador doador)
@@ -116,8 +116,8 @@ namespace HemoSoft.View
 
         public void RenderizarCadastroDoacao(Doador doador)
         {
-            // TODO: Remover HARD CODE
-            Triador triador = new Triador();
+            Triador triador = TriadorDAO.BuscarTriadorPorId(new Triador {IdTriador = usuario.IdUsuario });
+
             LimparPagina();
             usc = new CadastrarDoacao(doador, triador);
             GridPage.Children.Add(usc);

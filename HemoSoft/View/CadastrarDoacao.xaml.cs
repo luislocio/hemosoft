@@ -26,7 +26,7 @@ namespace HemoSoft.View
             this.triador = t;
         }
 
-        #region Radio Buttons
+        #region Eventos de radioButtons
         // Radio buttons - Bebida        
         private void RadioButtonBebidaNao_Click(object sender, RoutedEventArgs e)
         {
@@ -100,14 +100,15 @@ namespace HemoSoft.View
 
         #endregion
 
+        #region Eventos de cliques
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
             if (FormularioTriagemClinicaEstaCompleto() && FormularioImpedimentosTemporariosEstaCompleto())
             {
                 // Informações do formulário.
+                ImpedimentosDefinitivos impedimentosDefinitivos = CriarImpedimentosDefinitivos();
                 ImpedimentosTemporarios impedimentosTemporarios = CriarImpedimentosTemporarios();
                 TriagemClinica triagemClinica = CriarTriagemClinica();
-                ImpedimentosDefinitivos impedimentosDefinitivos = CriarImpedimentosDefinitivos();
 
                 // Informações que serão preenchidas após recebimento do exame laboratorial.
                 TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial { };
@@ -124,28 +125,10 @@ namespace HemoSoft.View
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
-        }
+        } 
+        #endregion
 
-        private Doacao CriarDoacao(ImpedimentosTemporarios impedimentosTemporarios, TriagemClinica triagemClinica, ImpedimentosDefinitivos impedimentosDefinitivos, TriagemLaboratorial triagemLaboratorial)
-        {
-            return new Doacao
-            {
-                DataDoacao = DateTime.Now,
-                StatusDoacao = StatusDoacao.AguardandoAtendimento,
-                Doador = this.doador,
-                Triador = this.triador,
-                TriagemClinica = triagemClinica,
-                TriagemLaboratorial = triagemLaboratorial,
-                ImpedimentosTemporarios = impedimentosTemporarios,
-                ImpedimentosDefinitivos = impedimentosDefinitivos
-            };
-        }
-
-        private ImpedimentosDefinitivos CriarImpedimentosDefinitivos()
-        {
-            return new ImpedimentosDefinitivos { AntecedenteAvc = statusAntecedenteAvc };
-        }
-
+        #region Validação dos formulários
         private bool FormularioImpedimentosTemporariosEstaCompleto()
         {
             if (this.statusBebida == null || this.statusGravidez == null || this.statusGripe == null || this.statusTatuagem == null)
@@ -174,6 +157,28 @@ namespace HemoSoft.View
 
             return true;
         }
+        #endregion
+
+        #region Criação de objetos para cadastro
+        private Doacao CriarDoacao(ImpedimentosTemporarios impedimentosTemporarios, TriagemClinica triagemClinica, ImpedimentosDefinitivos impedimentosDefinitivos, TriagemLaboratorial triagemLaboratorial)
+        {
+            return new Doacao
+            {
+                DataDoacao = DateTime.Now,
+                StatusDoacao = StatusDoacao.AguardandoAtendimento,
+                Doador = this.doador,
+                Triador = this.triador,
+                TriagemClinica = triagemClinica,
+                TriagemLaboratorial = triagemLaboratorial,
+                ImpedimentosTemporarios = impedimentosTemporarios,
+                ImpedimentosDefinitivos = impedimentosDefinitivos
+            };
+        }
+
+        private ImpedimentosDefinitivos CriarImpedimentosDefinitivos()
+        {
+            return new ImpedimentosDefinitivos { AntecedenteAvc = statusAntecedenteAvc };
+        }
 
         private ImpedimentosTemporarios CriarImpedimentosTemporarios()
         {
@@ -182,11 +187,11 @@ namespace HemoSoft.View
                 BebidaAlcoolica = statusBebida,
                 BebidaAlcoolicaUltimaVez = GetPeriodoBebida(),
                 Gravidez = statusGravidez,
-                GravidezUltimaVez = 0,
+                GravidezUltimaVez = GetPeriodoGravidez(),
                 Gripe = statusGripe,
-                GripeUltimaVez = 0,
+                GripeUltimaVez = GetPeriodoGripe(),
                 Tatuagem = statusGripe,
-                TatuagemUltimaVez = 0
+                TatuagemUltimaVez = GetPeriodoTatuagem()
             };
         }
 
@@ -200,6 +205,9 @@ namespace HemoSoft.View
             };
         }
 
+        #endregion
+
+        #region Validação de status e atributos
         private int? GetPeriodoBebida()
         {
             if (textBebida.IsEnabled == true)
@@ -234,7 +242,8 @@ namespace HemoSoft.View
                 return Convert.ToInt32(textTatuagem.Text);
             }
             return null;
-        }
+        } 
+        #endregion
     }
 }
 

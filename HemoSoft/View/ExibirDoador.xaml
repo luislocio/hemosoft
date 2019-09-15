@@ -17,38 +17,36 @@
                 VerticalAlignment="Top"
                 Text="PERFIL DOADOR" />
             <Grid>
-                <StackPanel Margin="15,15,0,0" HorizontalAlignment="Left">
+                <StackPanel
+                    Width="200"
+                    Margin="15,15,0,0"
+                    HorizontalAlignment="Left">
                     <TextBox
                         x:Name="textNome"
-                        Width="150"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="Nome:"
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         x:Name="textTipoSanguineo"
-                        Width="150"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="Tipo Saguineo: "
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         x:Name="textCpf"
-                        Width="150"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="CPF:"
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         x:Name="textGenero"
-                        Width="150"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="Genero:"
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         x:Name="textEstadoCivil"
-                        Width="150"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="EstadoCivil:"
                         IsReadOnly="True"

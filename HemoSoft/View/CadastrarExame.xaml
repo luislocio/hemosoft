@@ -11,9 +11,10 @@
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
     mc:Ignorable="d">
+
     <UserControl.Resources>
         <ObjectDataProvider
-            x:Key="tipoSanguineoValues"
+            x:Key="opcoesTipoSanguineo"
             MethodName="GetValues"
             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -21,7 +22,7 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
         <ObjectDataProvider
-            x:Key="fatorRhValues"
+            x:Key="opcoesFatorRh"
             MethodName="GetValues"
             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -29,6 +30,7 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
+
     <StackPanel>
         <TextBlock
             Margin="15"
@@ -40,13 +42,13 @@
                 x:Name="boxTipoSanguineo"
                 Margin="0,0,5,0"
                 materialDesign:HintAssist.Hint="TipoSanguineo"
-                ItemsSource="{Binding Source={StaticResource tipoSanguineoValues}}"
+                ItemsSource="{Binding Source={StaticResource opcoesTipoSanguineo}}"
                 Style="{StaticResource MaterialDesignComboBox}" />
             <ComboBox
                 x:Name="boxFatorRh"
                 Margin="5,0,0,0"
                 materialDesign:HintAssist.Hint="Fator RH"
-                ItemsSource="{Binding Source={StaticResource fatorRhValues}}"
+                ItemsSource="{Binding Source={StaticResource opcoesFatorRh}}"
                 Style="{StaticResource MaterialDesignComboBox}" />
         </StackPanel>
         <StackPanel Margin="0,15,0,0">

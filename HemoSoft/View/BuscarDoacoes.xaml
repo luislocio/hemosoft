@@ -13,7 +13,7 @@
     mc:Ignorable="d">
     <UserControl.Resources>
         <ObjectDataProvider
-            x:Key="statusDoacaoValues"
+            x:Key="opcoesStatusDoacao"
             MethodName="GetValues"
             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -30,9 +30,9 @@
         <StackPanel Margin="0,20" VerticalAlignment="center">
             <ComboBox
                 x:Name="boxStatus"
-                Margin="0,10"
+                Margin="0,22"
                 materialDesign:HintAssist.Hint="Status"
-                ItemsSource="{Binding Source={StaticResource statusDoacaoValues}}"
+                ItemsSource="{Binding Source={StaticResource opcoesStatusDoacao}}"
                 Style="{StaticResource MaterialDesignComboBox}" />
             <Button
                 x:Name="ButtonBuscarStatus"
