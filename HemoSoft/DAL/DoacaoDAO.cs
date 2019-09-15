@@ -35,6 +35,19 @@ namespace HemoSoft.DAL
                 (x => x.IdDoacao.Equals(d.IdDoacao));
         }
 
+        public static List<Doacao> BuscarDoacaoPorStatus(Doacao d)
+        {
+            //Where: é método que retorna todas as
+            //ocorrências em uma busca
+            return ctx.Doacoes
+                .Include("TriagemClinica")
+                .Include("TriagemLaboratorial")
+                .Include("ImpedimentosTemporarios")
+                .Include("ImpedimentosDefinitivos")
+                .Where
+                (x => x.StatusDoacao == d.StatusDoacao).ToList();
+        }
+
         public static void AlterarDoacao(Doacao d)
         {
             ctx.Entry(d).State = EntityState.Modified;

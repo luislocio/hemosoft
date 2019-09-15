@@ -33,9 +33,8 @@ namespace HemoSoft.View
             textEstadoCivil.Text = doador.EstadoCivil.ToString();
             textGenero.Text = doador.Genero.ToString();
             textTipoSanguineo.Text = GetStatusTipoSaguineo();
-
-
-            dataGridDoacao.ItemsSource = doador.Doacoes; ;
+            
+            dataGridDoacao.ItemsSource = doador.Doacoes;
         }
 
         private String GetStatusTipoSaguineo()

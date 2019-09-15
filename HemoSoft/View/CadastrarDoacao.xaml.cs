@@ -112,18 +112,7 @@ namespace HemoSoft.View
                 // Informações que serão preenchidas após recebimento do exame laboratorial.
                 TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial { };
 
-                Doacao doacao = new Doacao
-                {
-                    DataDoacao = DateTime.Now,
-                    StatusDoacao = StatusDoacao.AguardandoAtendimento,
-                    Doador = this.doador,
-                    Triador = this.triador,
-                    TriagemClinica = triagemClinica,
-                    TriagemLaboratorial = triagemLaboratorial,
-                    ImpedimentosTemporarios = impedimentosTemporarios,
-                    ImpedimentosDefinitivos = impedimentosDefinitivos
-                };
-
+                Doacao doacao = CriarDoacao(impedimentosTemporarios, triagemClinica, impedimentosDefinitivos, triagemLaboratorial);
                 DoacaoDAO.CadastrarDoacao(doacao);
 
                 MessageBox.Show("Doação cadastrada com sucesso");
@@ -135,6 +124,21 @@ namespace HemoSoft.View
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
+        }
+
+        private Doacao CriarDoacao(ImpedimentosTemporarios impedimentosTemporarios, TriagemClinica triagemClinica, ImpedimentosDefinitivos impedimentosDefinitivos, TriagemLaboratorial triagemLaboratorial)
+        {
+            return new Doacao
+            {
+                DataDoacao = DateTime.Now,
+                StatusDoacao = StatusDoacao.AguardandoAtendimento,
+                Doador = this.doador,
+                Triador = this.triador,
+                TriagemClinica = triagemClinica,
+                TriagemLaboratorial = triagemLaboratorial,
+                ImpedimentosTemporarios = impedimentosTemporarios,
+                ImpedimentosDefinitivos = impedimentosDefinitivos
+            };
         }
 
         private ImpedimentosDefinitivos CriarImpedimentosDefinitivos()

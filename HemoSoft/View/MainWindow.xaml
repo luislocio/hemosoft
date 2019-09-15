@@ -95,7 +95,10 @@
                             Kind="Menu" />
                     </Button>
                 </Grid>
-                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListView_SelectionChanged">
+                <ListView
+                    x:Name="MenuLateral"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    SelectionChanged="ListView_SelectionChanged">
                     <ListViewItem x:Name="CadastrarDoador" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon
@@ -126,7 +129,7 @@
                                 Text="Buscar Doador" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="BuscarDoacao" Height="60">
+                    <ListViewItem x:Name="BuscarDoacoes" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <Viewbox
                                 Width="25"

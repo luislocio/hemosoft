@@ -1,6 +1,7 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -41,11 +42,11 @@ namespace HemoSoft.View
             
             Doador doador = DoadorDAO.BuscarDoadorPorCpf(new Doador { Cpf = "012345678901" });
 
-            RenderizarMenu(sender, triador, doador);
+            RenderizarPaginasPrincipais(sender, triador, doador);
         }
 
         // Criar uma variavel para armazenar o usuário (Triador/Solicitante)
-        private void RenderizarMenu(object sender, Triador triador, Doador doador)
+        private void RenderizarPaginasPrincipais(object sender, Triador triador, Doador doador)
         {
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
@@ -58,6 +59,8 @@ namespace HemoSoft.View
                     GridPage.Children.Add(usc);
                     break;
                 case "BuscarDoacoes":
+                    usc = new BuscarDoacoes();
+                    GridPage.Children.Add(usc);
                     break;
                 default:
                     break;
@@ -66,6 +69,7 @@ namespace HemoSoft.View
 
         public void LimparPagina()
         {
+            // TODO: MenuLateral.SelectedItems.Clear();
             usc = null;
             GridPage.Children.Clear();
         }
@@ -97,7 +101,16 @@ namespace HemoSoft.View
             usc = new CadastrarExame(doacao);
             GridPage.Children.Add(usc);
         }
-        
+
+        public void RenderizarListaDoacoes(List<Doacao> doacoes)
+        {
+            LimparPagina();
+            usc = new ExibirListaDoacoes(doacoes);
+            GridPage.Children.Add(usc);
+        }
+
+
+
         private static void InicializarBancoDeDados()
         {
             Triador triadorInit = new Triador
@@ -164,6 +177,15 @@ namespace HemoSoft.View
                 TriagemLaboratorial = triagemLaboratorialInit,
                 ImpedimentosTemporarios = impedimentosTemporariosInit,
                 ImpedimentosDefinitivos = impedimentosDefinitivosInit
+            };
+
+            Solicitante solicitanteInit = new Solicitante
+            {
+                Cnpj = "01234567891234",
+                RazaoSocial = "Clinica 1",
+                Responsavel = "Seu Zé",
+                Senha = "senhaclinica1",
+                StatusUsuario = StatusUsuario.Ativo
             };
 
             TriadorDAO.CadastrarTriador(triadorInit);

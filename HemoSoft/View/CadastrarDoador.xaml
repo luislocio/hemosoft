@@ -9,7 +9,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     HorizontalAlignment="Center"
-    VerticalAlignment="Center"
+    VerticalAlignment="Top"
     mc:Ignorable="d">
 
     <UserControl.Resources>

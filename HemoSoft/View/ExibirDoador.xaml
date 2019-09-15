@@ -7,7 +7,7 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     HorizontalAlignment="Center"
-    VerticalAlignment="Center"
+    VerticalAlignment="Top"
     mc:Ignorable="d">
     <Grid>
         <StackPanel Margin="0">
@@ -65,26 +65,28 @@
                         Content="Cadastrar Doação" />
                 </StackPanel>
             </Grid>
-            <StackPanel
-                Width="450"
-                Margin="0,15"
-                HorizontalAlignment="Center">
-                <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" />
-                <DataGrid
-                    x:Name="dataGridDoacao"
-                    Height="200"
-                    Margin="0,10"
-                    AutoGenerateColumns="False"
-                    IsReadOnly="True"
-                    MouseDoubleClick="DataGridDoacao_MouseDoubleClick"
-                    SelectionUnit="FullRow">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding IdDoacao}" Header="#Doação" />
-                        <DataGridTextColumn Binding="{Binding DataDoacao}" Header="Data" />
-                        <DataGridTextColumn Binding="{Binding StatusDoacao}" Header="Status" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel
+                    Width="450"
+                    Margin="0,15"
+                    HorizontalAlignment="Center">
+                    <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" />
+                    <DataGrid
+                        x:Name="dataGridDoacao"
+                        Height="200"
+                        Margin="0,10"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        MouseDoubleClick="DataGridDoacao_MouseDoubleClick"
+                        SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding IdDoacao}" Header="#Doação" />
+                            <DataGridTextColumn Binding="{Binding DataDoacao}" Header="Data" />
+                            <DataGridTextColumn Binding="{Binding StatusDoacao}" Header="Status" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </ScrollViewer>
         </StackPanel>
     </Grid>
 </UserControl>

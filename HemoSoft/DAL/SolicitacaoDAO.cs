@@ -16,14 +16,5 @@ namespace HemoSoft.DAL
             ctx.Solicitacoes.Add(so);
             ctx.SaveChanges();
         }
-
-        //public static Solicitacao BuscarProdutoPorData(DateTime data)
-        //{
-            //return ctx.Solicitacoes.FirstOrDefault
-                //(x => x.CriadoEm.Day == data.Day &&
-                  //  x.CriadoEm.Month == data.Month &&
-                    //x.CriadoEm.Year == data.Year);
-        //}
-
     }
 }

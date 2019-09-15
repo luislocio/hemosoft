@@ -7,10 +7,10 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     HorizontalAlignment="Center"
-    VerticalAlignment="Center"
+    VerticalAlignment="Top"
     mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <StackPanel Margin="0,0,10,0" VerticalAlignment="Center">
+        <StackPanel Margin="0,0,10,0">
             <TextBlock
                 Margin="5"
                 HorizontalAlignment="Center"
