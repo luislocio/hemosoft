@@ -21,20 +21,13 @@ namespace HemoSoft.View
 
         private void ButtonCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (textNome.Text.Equals("") || textCpf.Text.Equals("") || boxEstadoCivil.SelectionBoxItem.Equals("") || boxGenero.SelectionBoxItem.Equals(""))
+            if (FormularioEstaCompleto())
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
             else
             {
-                Doador doador = new Doador
-                {
-                    NomeCompleto = textNome.Text,
-                    Cpf = textCpf.Text,
-                    EstadoCivil = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), boxEstadoCivil.Text),
-                    Genero = (Genero)Enum.Parse(typeof(Genero), boxGenero.Text)
-                };
-
+                Doador doador = CriarDoador();
 
                 if (DoadorDAO.CadastrarDoador(doador))
                 {
@@ -46,8 +39,28 @@ namespace HemoSoft.View
                 }
 
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
-                janelaPrincipal.CarregarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+                janelaPrincipal.RenderizarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             }
+        }
+
+        private bool FormularioEstaCompleto()
+        {
+            return
+                textNome.Text.Equals("") ||
+                textCpf.Text.Equals("") ||
+                boxEstadoCivil.SelectionBoxItem.Equals("") ||
+                boxGenero.SelectionBoxItem.Equals("");
+        }
+
+        private Doador CriarDoador()
+        {
+            return new Doador
+            {
+                NomeCompleto = textNome.Text,
+                Cpf = textCpf.Text,
+                EstadoCivil = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), boxEstadoCivil.Text),
+                Genero = (Genero)Enum.Parse(typeof(Genero), boxGenero.Text)
+            };
         }
     }
 }

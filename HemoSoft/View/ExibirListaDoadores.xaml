@@ -8,5 +8,38 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-    <Grid />
+    <Grid>
+        <DockPanel
+            Width="200"
+            Height="200"
+            Background="PowderBlue">
+            <TextBlock DockPanel.Dock="Top">Something</TextBlock>
+            <TextBlock DockPanel.Dock="Top">Something else</TextBlock>
+            <DockPanel
+                Height="Auto"
+                Margin="10"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+
+                <GroupBox
+                    Width="100"
+                    Height="Auto"
+                    VerticalAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    Background="Beige"
+                    DockPanel.Dock="Right"
+                    Header="Help">
+                    <TextBlock Text="This is the help that is available on the news screen." TextWrapping="Wrap" />
+                </GroupBox>
+
+                <StackPanel
+                    Width="Auto"
+                    Margin="10"
+                    HorizontalAlignment="Stretch"
+                    DockPanel.Dock="Left">
+                    <TextBlock Text="Here is the news that should wrap around." TextWrapping="Wrap" />
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
 </UserControl>

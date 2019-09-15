@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="HemoSoft"
     Width="800"
-    Height="600"
+    Height="650"
     Icon="Assets/home.png"
     ResizeMode="NoResize"
     WindowStartupLocation="CenterScreen"
@@ -126,14 +126,14 @@
                                 Text="Buscar Doador" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="CadastrarDoacao" Height="60">
+                    <ListViewItem x:Name="BuscarDoacao" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <Viewbox
                                 Width="25"
                                 Height="25"
                                 Margin="10">
                                 <Canvas Width="24" Height="24">
-                                    <Path Data="M14 1H10C5 1 5 3 5 3V15C5 15 5 17 10                                            17V19H11V20C11 21.21 11.8 23 14                                            23H18V21H14C13.19 21 13 20.45 13                                            20V19H14V17C19 17 19 15 19 15V3C19 3 19 1 14 1M17                                            12H14V11H17V12M17 5H14V6H17V8H14V9H17V10H7V3.5C7.3 3.32 8.13 3 10                                            3H14C15.88 3 16.7 3.32 17 3.5V5Z" Fill="White" />
+                                    <Path Data="M14 1H10C5 1 5 3 5 3V15C5 15 5 17 10 17V19H11V20C11 21.21 11.8 23 14 23H18V21H14C13.19 21 13 20.45 13 20V19H14V17C19 17 19 15 19 15V3C19 3 19 1 14 1M17                                            12H14V11H17V12M17 5H14V6H17V8H14V9H17V10H7V3.5C7.3 3.32 8.13 3 10                                            3H14C15.88 3 16.7 3.32 17 3.5V5Z" Fill="White" />
                                 </Canvas>
                             </Viewbox>
                             <TextBlock
@@ -141,6 +141,21 @@
                                 VerticalAlignment="Center"
                                 Foreground="White"
                                 Text="Buscar Doações" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="CadastrarExame" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="10"
+                                Foreground="White"
+                                Kind="ClipboardPulse" />
+                            <TextBlock
+                                Margin="20,10"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Cadastrar Exame" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60">
@@ -164,10 +179,9 @@
 
         <Grid
             x:Name="GridPage"
-            Width="734"
-            Height="511"
+            Width="729"
+            Margin="0,65,0,0"
             HorizontalAlignment="Right"
-            VerticalAlignment="Bottom" />
-
+            VerticalAlignment="Stretch" />
     </Grid>
 </Window>

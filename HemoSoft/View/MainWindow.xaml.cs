@@ -12,7 +12,8 @@ namespace HemoSoft.View
     public partial class MainWindow : Window
     {
         // TODO: Implementar o atributo triador para janela principal
-        // Triador triador;
+        Triador triador = TriadorDAO.BuscarTriadorPorMatricula(new Triador { Matricula = "triador1" });
+
         private static UserControl usc;
 
         public MainWindow()
@@ -39,9 +40,15 @@ namespace HemoSoft.View
 
             LimparPagina();
 
-            Triador triador = TriadorDAO.BuscarTriadorPorMatricula(new Triador { Matricula = "triador1" });
+            
             Doador doador = DoadorDAO.BuscarDoadorPorCpf(new Doador { Cpf = "012345678901" });
 
+            RenderizarMenu(sender, triador, doador);
+        }
+
+        // Criar uma variavel para armazenar o usuário (Triador/Solicitante)
+        private void RenderizarMenu(object sender, Triador triador, Doador doador)
+        {
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "CadastrarDoador":
@@ -52,8 +59,10 @@ namespace HemoSoft.View
                     usc = new BuscarDoador();
                     GridPage.Children.Add(usc);
                     break;
-                case "CadastrarDoacao":
-                    usc = new CadastrarDoacao(triador, doador);
+                case "CadastrarExame":
+                    //TODO: remover hard code
+                    Doacao doacao = DoacaoDAO.BuscarDoacaoPorId(new Doacao { IdDoacao = 3 });
+                    usc = new CadastrarExame(doacao);
                     GridPage.Children.Add(usc);
                     break;
                 default:
@@ -67,19 +76,27 @@ namespace HemoSoft.View
             GridPage.Children.Clear();
         }
 
-        public void CarregarPerfilDoador(Doador doador)
+        public void RenderizarPerfilDoador(Doador doador)
         {
             LimparPagina();
             usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             GridPage.Children.Add(usc);
         }
 
-        public void CarregarDoacao(Doacao doacao)
+        public void RenderizarPerfilDoacao(Doacao doacao)
         {
             LimparPagina();
             usc = new ExibirDoacao(DoacaoDAO.BuscarDoacaoPorId(doacao));
             GridPage.Children.Add(usc);
         }
+
+        public void RenderizarCadastroDoacao(Doador doador)
+        {
+            LimparPagina();
+            usc = new CadastrarDoacao(doador, triador);
+            GridPage.Children.Add(usc);
+        }
+
 
         private static void InicializarBancoDeDados()
         {

@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201909132254182_doacao-gravidez.Designer.cs">
       <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909150402490_Nullable Gravidez.cs" />
+    <Compile Include="Migrations\201909150402490_Nullable Gravidez.Designer.cs">
+      <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\BuscarDoador.xaml.cs">
       <DependentUpon>BuscarDoador.xaml</DependentUpon>
     </Compile>
@@ -90,6 +94,9 @@
     </Compile>
     <Compile Include="View\CadastrarDoador.xaml.cs">
       <DependentUpon>CadastrarDoador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CadastrarExame.xaml.cs">
+      <DependentUpon>CadastrarExame.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExibirDoacao.xaml.cs">
       <DependentUpon>ExibirDoacao.xaml</DependentUpon>
@@ -116,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CadastrarDoador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CadastrarExame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909132254182_doacao-gravidez.resx">
       <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909150402490_Nullable Gravidez.resx">
+      <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

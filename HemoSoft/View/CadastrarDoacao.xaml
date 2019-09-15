@@ -6,147 +6,160 @@
     xmlns:local="clr-namespace:HemoSoft.View"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Height="490"
     HorizontalAlignment="Center"
     VerticalAlignment="Center"
     mc:Ignorable="d">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <Grid Width="380" Margin="40,0">
+        <StackPanel VerticalAlignment="Center">
             <TextBlock
                 Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
                 Text="CADASTRO DOAÇÃO" />
-            <StackPanel Margin="0,20" VerticalAlignment="Center">
-                <TextBox
-                    x:Name="textPeso"
-                    Margin="0,3"
-                    materialDesign:HintAssist.Hint="Peso"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <TextBox
-                    x:Name="textPulso"
-                    Margin="0,3"
-                    materialDesign:HintAssist.Hint="Pulso"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <TextBox
-                    x:Name="textTemperatura"
-                    Margin="0,3"
-                    materialDesign:HintAssist.Hint="Temperatura"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="Bebeu nas ultimas 12 horas?" />
-                        <TextBox
-                            x:Name="textBebida"
-                            Margin="20,0"
-                            HorizontalAlignment="Right"
-                            materialDesign:HintAssist.Hint="# Horas"
-                            IsEnabled="False"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </StackPanel>
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonBebidaNao_Click"
-                        Content="Não"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                    <RadioButton
-                        Margin="0,2"
+            <TextBox
+                x:Name="textPeso"
+                Margin="0,3"
+                materialDesign:HintAssist.Hint="Peso"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox
+                x:Name="textPulso"
+                Margin="0,3"
+                materialDesign:HintAssist.Hint="Pulso"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox
+                x:Name="textTemperatura"
+                Margin="0,3"
+                materialDesign:HintAssist.Hint="Temperatura"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
                         VerticalAlignment="Bottom"
-                        Click="RadioButtonBebidaSim_Click"
-                        Content="Sim"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="Bebeu nas ultimas 12 horas?" />
+                    <TextBox
+                        x:Name="textBebida"
+                        Margin="20,0"
+                        HorizontalAlignment="Right"
+                        materialDesign:HintAssist.Hint="# Horas"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </StackPanel>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="Gravidez recente?" />
-                        <TextBox
-                            x:Name="textGravidez"
-                            Margin="20,0"
-                            HorizontalAlignment="Right"
-                            materialDesign:HintAssist.Hint="# Dias"
-                            IsEnabled="False"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </StackPanel>
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonGravidezNao_Click"
-                        Content="Não"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonGravidezNormal_Click"
-                        Content="Parto Normal(90 dias)"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonGravidezCesarea_Click"
-                        Content="Parto Cesárea(180 dias)"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                </StackPanel>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="Gripe/resfriado nos ultimos 7 dias?" />
-                        <TextBox
-                            x:Name="textGripe"
-                            Margin="20,0"
-                            HorizontalAlignment="Right"
-                            materialDesign:HintAssist.Hint="# Dias"
-                            IsEnabled="False"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </StackPanel>
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonGripeNao_Click"
-                        Content="Não"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonGripeSim_Click"
-                        Content="Sim"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                </StackPanel>
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Bottom"
-                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                            Text="Tatuagem nos ultimos 12 meses?" />
-                        <TextBox
-                            x:Name="textTatuagem"
-                            Margin="20,0"
-                            HorizontalAlignment="Right"
-                            materialDesign:HintAssist.Hint="# Meses"
-                            IsEnabled="False"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </StackPanel>
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonTatuagemNao_Click"
-                        Content="Não"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                    <RadioButton
-                        Margin="0,2"
-                        Click="RadioButtonTatuagemSim_Click"
-                        Content="Sim"
-                        Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
-                </StackPanel>
-                <Button
-                    x:Name="ButtonCadastrar"
-                    Width="100"
-                    Margin="0,15,0,0"
-                    HorizontalAlignment="Right"
-                    Click="ButtonCadastrar_Click"
-                    Content="Cadastrar" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonBebidaNao_Click"
+                    Content="Não"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    VerticalAlignment="Bottom"
+                    Click="RadioButtonBebidaSim_Click"
+                    Content="Sim"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
             </StackPanel>
-        </Grid>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="Gravidez recente?" />
+                    <TextBox
+                        x:Name="textGravidez"
+                        Margin="20,0"
+                        HorizontalAlignment="Right"
+                        materialDesign:HintAssist.Hint="# Dias"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonGravidezNao_Click"
+                    Content="Não"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonGravidezNormal_Click"
+                    Content="Parto Normal(90 dias)"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonGravidezCesarea_Click"
+                    Content="Parto Cesárea(180 dias)"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="Gripe/resfriado nos ultimos 7 dias?" />
+                    <TextBox
+                        x:Name="textGripe"
+                        Margin="20,0"
+                        HorizontalAlignment="Right"
+                        materialDesign:HintAssist.Hint="# Dias"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonGripeNao_Click"
+                    Content="Não"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonGripeSim_Click"
+                    Content="Sim"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+            </StackPanel>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        VerticalAlignment="Bottom"
+                        Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                        Text="Tatuagem nos ultimos 12 meses?" />
+                    <TextBox
+                        x:Name="textTatuagem"
+                        Margin="20,0"
+                        HorizontalAlignment="Right"
+                        materialDesign:HintAssist.Hint="# Meses"
+                        IsEnabled="False"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonTatuagemNao_Click"
+                    Content="Não"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonTatuagemSim_Click"
+                    Content="Sim"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+            </StackPanel>
+            <StackPanel>
+                <TextBlock
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                    Text="Antecedente de AVC?" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonAntecedenteAvcNao_Click"
+                    Content="Não"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+                <RadioButton
+                    Margin="0,2"
+                    Click="RadioButtonAntecedenteAvcSim_Click"
+                    Content="Sim"
+                    Style="{StaticResource MaterialDesignUserForegroundRadioButton}" />
+            </StackPanel>
+            <Button
+                x:Name="ButtonCadastrar"
+                Width="100"
+                Margin="0,15,0,0"
+                HorizontalAlignment="Right"
+                Click="ButtonCadastrar_Click"
+                Content="Cadastrar" />
+        </StackPanel>
     </ScrollViewer>
 </UserControl>

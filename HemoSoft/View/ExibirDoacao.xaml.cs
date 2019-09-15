@@ -31,7 +31,8 @@ namespace HemoSoft.View
             textGripe.Text = GetStatusGripe();
             textTatuagem.Text = GetStatusTatuagem();
 
-            // Triagem Laboratorial/Impedimentos Definitivos
+            // TODO: Triagem Laboratorial/Impedimentos Definitivos
+            textAntecedenteAvc.Text = GetStatusAntecedenteAvc();
         }
 
         private String GetStatusBebida()
@@ -64,6 +65,21 @@ namespace HemoSoft.View
                 return "Sim";
             }
             return "Não";
+        }
+
+        private String GetStatusAntecedenteAvc()
+        {
+            if (Doacao.ImpedimentosDefinitivos.AntecedenteAvc == true)
+            {
+                return "Positivo";
+            }
+
+            return "Negativo";
+        }
+
+        private void ButtonCadastrarExame_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
     }
 }

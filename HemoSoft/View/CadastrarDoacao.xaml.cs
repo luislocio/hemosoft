@@ -13,84 +13,103 @@ namespace HemoSoft.View
     {
         Doador doador;
         Triador triador;
-        Boolean? bebida;
-        Boolean? gripe;
-        Boolean? tatuagem;
-        Gravidez? gravidez;
+        Boolean? statusAntecedenteAvc;
+        Boolean? statusBebida;
+        Boolean? statusGripe;
+        Boolean? statusTatuagem;
+        Gravidez? statusGravidez;
 
-
-        public CadastrarDoacao(Triador t, Doador d)
+        public CadastrarDoacao(Doador d, Triador t)
         {
             InitializeComponent();
             this.doador = d;
             this.triador = t;
-
         }
+
+        #region Radio Buttons
+        // Radio buttons - Bebida        
         private void RadioButtonBebidaNao_Click(object sender, RoutedEventArgs e)
         {
             textBebida.IsEnabled = false;
-            this.bebida = false;
+            this.statusBebida = false;
         }
 
         private void RadioButtonBebidaSim_Click(object sender, RoutedEventArgs e)
         {
             textBebida.IsEnabled = true;
-            this.bebida = true;
+            this.statusBebida = true;
         }
 
+        // Radio buttons - Gravidez
         private void RadioButtonGravidezNao_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = false;
-            this.gravidez = Gravidez.Nenhuma;
+            this.statusGravidez = Gravidez.Nenhuma;
         }
 
         private void RadioButtonGravidezNormal_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = true;
-            this.gravidez = Gravidez.PartoNormal;
+            this.statusGravidez = Gravidez.PartoNormal;
         }
 
         private void RadioButtonGravidezCesarea_Click(object sender, RoutedEventArgs e)
         {
             textGravidez.IsEnabled = true;
-            this.gravidez = Gravidez.Cesarea;
+            this.statusGravidez = Gravidez.Cesarea;
         }
 
+        // Radio buttons - Gripe
         private void RadioButtonGripeNao_Click(object sender, RoutedEventArgs e)
         {
             textGripe.IsEnabled = false;
-            this.gripe = false;
+            this.statusGripe = false;
         }
 
         private void RadioButtonGripeSim_Click(object sender, RoutedEventArgs e)
         {
             textGripe.IsEnabled = true;
-            this.gripe = true;
+            this.statusGripe = true;
         }
 
+        // Radio buttons - Tatuagem
         private void RadioButtonTatuagemNao_Click(object sender, RoutedEventArgs e)
         {
             textTatuagem.IsEnabled = false;
-            this.tatuagem = false;
+            this.statusTatuagem = false;
         }
 
         private void RadioButtonTatuagemSim_Click(object sender, RoutedEventArgs e)
         {
-            textTatuagem.IsEnabled = true;
-            this.tatuagem = true;
 
+            textTatuagem.IsEnabled = true;
+            this.statusTatuagem = true;
         }
+
+        // Radio buttons - Antecedente AVC
+        private void RadioButtonAntecedenteAvcNao_Click(object sender, RoutedEventArgs e)
+        {
+            this.statusAntecedenteAvc = false;
+        }
+
+        private void RadioButtonAntecedenteAvcSim_Click(object sender, RoutedEventArgs e)
+        {
+            this.statusAntecedenteAvc = true;
+        }
+
+
+        #endregion
 
         private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            if (IsTriagemClinicaComplete() && IsImpetimentosTemporariosComplete())
+            if (FormularioTriagemClinicaEstaCompleto() && FormularioImpedimentosTemporariosEstaCompleto())
             {
                 // Informações do formulário.
-                ImpedimentosTemporarios impedimentosTemporarios = CreateImpetimentosTemporarios();
-                TriagemClinica triagemClinica = CreateTriagemClinica();
+                ImpedimentosTemporarios impedimentosTemporarios = CriarImpedimentosTemporarios();
+                TriagemClinica triagemClinica = CriarTriagemClinica();
+                ImpedimentosDefinitivos impedimentosDefinitivos = CriarImpedimentosDefinitivos();
 
                 // Informações que serão preenchidas após recebimento do exame laboratorial.
-                ImpedimentosDefinitivos impedimentosDefinitivos = new ImpedimentosDefinitivos { };
                 TriagemLaboratorial triagemLaboratorial = new TriagemLaboratorial { };
 
                 Doacao doacao = new Doacao
@@ -110,7 +129,7 @@ namespace HemoSoft.View
                 MessageBox.Show("Doação cadastrada com sucesso");
 
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
-                janelaPrincipal.CarregarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+                janelaPrincipal.RenderizarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             }
             else
             {
@@ -118,11 +137,14 @@ namespace HemoSoft.View
             }
         }
 
-
-
-        private bool IsImpetimentosTemporariosComplete()
+        private ImpedimentosDefinitivos CriarImpedimentosDefinitivos()
         {
-            if (this.bebida == null || this.gravidez == null || this.gripe == null || this.tatuagem == null)
+            return new ImpedimentosDefinitivos { AntecedenteAvc = statusAntecedenteAvc };
+        }
+
+        private bool FormularioImpedimentosTemporariosEstaCompleto()
+        {
+            if (this.statusBebida == null || this.statusGravidez == null || this.statusGripe == null || this.statusTatuagem == null)
             {
                 return false;
             }
@@ -136,11 +158,10 @@ namespace HemoSoft.View
                     return false;
                 }
             }
-
             return true;
         }
 
-        private bool IsTriagemClinicaComplete()
+        private bool FormularioTriagemClinicaEstaCompleto()
         {
             if (textPeso.Text.Equals("") || textPulso.Text.Equals("") || textTemperatura.Text.Equals(""))
             {
@@ -150,22 +171,22 @@ namespace HemoSoft.View
             return true;
         }
 
-        private static ImpedimentosTemporarios CreateImpetimentosTemporarios()
+        private ImpedimentosTemporarios CriarImpedimentosTemporarios()
         {
             return new ImpedimentosTemporarios
             {
-                BebidaAlcoolica = false,
-                BebidaAlcoolicaUltimaVez = 0,
-                Gravidez = Gravidez.PartoNormal,
+                BebidaAlcoolica = statusBebida,
+                BebidaAlcoolicaUltimaVez = GetPeriodoBebida(),
+                Gravidez = statusGravidez,
                 GravidezUltimaVez = 0,
-                Gripe = false,
+                Gripe = statusGripe,
                 GripeUltimaVez = 0,
-                Tatuagem = false,
+                Tatuagem = statusGripe,
                 TatuagemUltimaVez = 0
             };
         }
 
-        private TriagemClinica CreateTriagemClinica()
+        private TriagemClinica CriarTriagemClinica()
         {
             return new TriagemClinica
             {
@@ -174,5 +195,43 @@ namespace HemoSoft.View
                 Temperatura = int.Parse(textTemperatura.Text),
             };
         }
+
+        private int? GetPeriodoBebida()
+        {
+            if (textBebida.IsEnabled == true)
+            {
+                return Convert.ToInt32(textGravidez.Text);
+            }
+            return null;
+        }
+
+        private int? GetPeriodoGravidez()
+        {
+            if (textGravidez.IsEnabled == true)
+            {
+                return Convert.ToInt32(textGravidez.Text);
+            }
+            return null;
+        }
+
+        private int? GetPeriodoGripe()
+        {
+            if (textGripe.IsEnabled == true)
+            {
+                return Convert.ToInt32(textGripe.Text);
+            }
+            return null;
+        }
+
+        private int? GetPeriodoTatuagem()
+        {
+            if (textTatuagem.IsEnabled == true)
+            {
+                return Convert.ToInt32(textTatuagem.Text);
+            }
+            return null;
+        }
     }
 }
+
+

@@ -51,9 +51,16 @@ namespace HemoSoft.View
             Doacao doacaoSelecionada = dataGridDoacao.SelectedItem as Doacao;
             if (doacaoSelecionada != null)
             {
-            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-            janelaPrincipal.CarregarDoacao(DoacaoDAO.BuscarDoacaoPorId(doacaoSelecionada));
+                MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.RenderizarPerfilDoacao(DoacaoDAO.BuscarDoacaoPorId(doacaoSelecionada));
             }
+        }
+
+        private void ButtonCadastrar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+
+            janelaPrincipal.RenderizarCadastroDoacao(Doador);
         }
     }
 }

@@ -10,46 +10,57 @@
     VerticalAlignment="Center"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel Margin="0,50">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBox
-                    x:Name="textNome"
-                    Width="150"
-                    Margin="0,2"
-                    materialDesign:HintAssist.Hint="Nome:"
-                    IsReadOnly="True"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBox
-                    x:Name="textCpf"
-                    Width="150"
-                    Margin="0,2"
-                    materialDesign:HintAssist.Hint="CPF:"
-                    IsReadOnly="True"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBox
-                    x:Name="textGenero"
-                    Width="150"
-                    Margin="0,2"
-                    materialDesign:HintAssist.Hint="Genero:"
-                    IsReadOnly="True"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <TextBox
-                    x:Name="textEstadoCivil"
-                    Width="150"
-                    Margin="0,2"
-                    materialDesign:HintAssist.Hint="EstadoCivil:"
-                    IsReadOnly="True"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            </StackPanel>
+        <StackPanel Margin="0">
+            <TextBlock
+                Margin="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Text="PERFIL DOADOR" />
+            <Grid>
+                <StackPanel Margin="15,15,0,0" HorizontalAlignment="Left">
+                    <TextBox
+                        x:Name="textNome"
+                        Width="150"
+                        Margin="0,2"
+                        materialDesign:HintAssist.Hint="Nome:"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        x:Name="textCpf"
+                        Width="150"
+                        Margin="0,2"
+                        materialDesign:HintAssist.Hint="CPF:"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        x:Name="textGenero"
+                        Width="150"
+                        Margin="0,2"
+                        materialDesign:HintAssist.Hint="Genero:"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox
+                        x:Name="textEstadoCivil"
+                        Width="150"
+                        Margin="0,2"
+                        materialDesign:HintAssist.Hint="EstadoCivil:"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                </StackPanel>
+                <StackPanel
+                    Width="164"
+                    Margin="0,15,15,0"
+                    HorizontalAlignment="Right">
+                    <Button
+                        x:Name="ButtonCadastrar"
+                        Width="150"
+                        Click="ButtonCadastrar_Click"
+                        Content="Cadastrar Doação" />
+                </StackPanel>
+            </Grid>
             <StackPanel
                 Width="450"
-                Margin="0,40"
+                Margin="0,15"
                 HorizontalAlignment="Center">
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Text="Doações:" />
                 <DataGrid
