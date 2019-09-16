@@ -14,11 +14,6 @@ namespace HemoSoft.View
     {
         Doador doador;
 
-        public ExibirDoador()
-        {
-            InitializeComponent();
-        }
-
         public ExibirDoador(Doador d)
         {
             InitializeComponent();
@@ -48,6 +43,7 @@ namespace HemoSoft.View
             return "Aguardando resultados";
         }
 
+        #region Eventos de cliques
         private void DataGridDoacao_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Doacao doacaoSelecionada = dataGridDoacao.SelectedItem as Doacao;
@@ -63,6 +59,7 @@ namespace HemoSoft.View
         {
             MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
             janelaPrincipal.RenderizarCadastroDoacao(doador);
-        }
+        } 
+        #endregion
     }
 }

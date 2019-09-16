@@ -19,19 +19,19 @@ namespace HemoSoft.View
         {
             Usuario usuario = SingletonUsuario.GetInstance();
 
-            if (txtUsuario.Text.Equals("") || txtSenha.Equals(""))
+            if (textUsuario.Text.Equals("") || textSenha.Equals(""))
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
             else
             {
-                if (txtUsuario.Text.Length == 14)
+                if (textUsuario.Text.Length == 14)
                 {
-                    usuario = AutenticarSolicitante(txtUsuario, txtSenha);
+                    usuario = AutenticarSolicitante(textUsuario, textSenha);
                 }
                 else
                 {
-                    usuario = AutenticarTriador(txtUsuario, txtSenha);
+                    usuario = AutenticarTriador(textUsuario, textSenha);
                 }
 
             }
@@ -49,17 +49,17 @@ namespace HemoSoft.View
             }
         }
 
-        private Usuario AutenticarTriador(TextBox txtUsuario, PasswordBox txtSenha)
+        private Usuario AutenticarTriador(TextBox textUsuario, PasswordBox textSenha)
         {
             Triador triadorBusca = new Triador
             {
-                Matricula = txtUsuario.Text
+                Matricula = this.textUsuario.Text
             };
 
             Triador triadorResultado = TriadorDAO.BuscarTriadorPorMatricula(triadorBusca);
             if (triadorResultado != null)
             {
-                if (triadorResultado.Matricula.Equals(txtUsuario.Text) && triadorResultado.Senha.Equals(txtSenha.Password))
+                if (triadorResultado.Matricula.Equals(textUsuario.Text) && triadorResultado.Senha.Equals(textSenha.Password))
                 {
                     return new Usuario
                     {
@@ -73,14 +73,14 @@ namespace HemoSoft.View
             return null;
         }
 
-        private Usuario AutenticarSolicitante(TextBox txtUsuario, PasswordBox txtSenha)
+        private Usuario AutenticarSolicitante(TextBox textUsuario, PasswordBox textSenha)
         {
-            Solicitante solicitanteBusca = new Solicitante { Cnpj = txtUsuario.Text };
+            Solicitante solicitanteBusca = new Solicitante { Cnpj = textUsuario.Text };
             Solicitante solicitanteResultado = SolicitanteDAO.BuscarSolicitantePorCnpj(solicitanteBusca);
 
             if (solicitanteResultado != null)
             {
-                if (solicitanteResultado.Cnpj.Equals(txtUsuario.Text) && solicitanteResultado.Senha.Equals(txtSenha.Password))
+                if (solicitanteResultado.Cnpj.Equals(textUsuario.Text) && solicitanteResultado.Senha.Equals(textSenha.Password))
                 {
                     return new Usuario
                     {

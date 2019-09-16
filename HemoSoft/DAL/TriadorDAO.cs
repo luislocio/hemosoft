@@ -11,10 +11,17 @@ namespace HemoSoft.DAL
     {
         private static Context ctx = SingletonContext.GetInstance();
 
-        public static void CadastrarTriador(Triador t)
+        public static bool CadastrarTriador(Triador t)
         {
+            if (BuscarTriadorPorMatricula(t) != null)
+            {
+                return false;
+            }
+
             ctx.Triadores.Add(t);
             ctx.SaveChanges();
+
+            return true;
         }
 
         public static Triador BuscarTriadorPorMatricula(Triador t)

@@ -162,6 +162,21 @@
                                 Text="Cadastrar Exame" />
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem x:Name="CadastrarTriador" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                Margin="10"
+                                Foreground="White"
+                                Kind="Doctor" />
+                            <TextBlock
+                                Margin="20,10"
+                                VerticalAlignment="Center"
+                                Foreground="White"
+                                Text="Cadastrar Triador" />
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon

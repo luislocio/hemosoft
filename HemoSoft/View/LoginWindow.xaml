@@ -58,12 +58,12 @@
                 Text="LOGIN" />
             <StackPanel Margin="10" VerticalAlignment="center">
                 <TextBox
-                    x:Name="txtUsuario"
+                    x:Name="textUsuario"
                     Margin="0,10"
                     materialDesign:HintAssist.Hint="Matricula/CNPJ"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <PasswordBox
-                    x:Name="txtSenha"
+                    x:Name="textSenha"
                     Margin="0,10"
                     materialDesign:HintAssist.Hint="Senha"
                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
