@@ -21,8 +21,9 @@ namespace HemoSoft.DAL
 
         public static Doador BuscarDoadorPorCpf(Doador d)
         {
-            return ctx.Doadores.Include("Doacoes").FirstOrDefault
-                (x => x.Cpf.Equals(d.Cpf));
+            return ctx.Doadores
+                .Include("Doacoes")
+                .FirstOrDefault(x => x.Cpf.Equals(d.Cpf));
         }
 
         public static Doador BuscarDoadorPorNomeCompleto(Doador d)

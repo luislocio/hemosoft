@@ -21,8 +21,8 @@ namespace HemoSoft.View
             Style = (Style)FindResource(typeof(Window));
 
             // TODO: REMOVER HARDCODED
-            // usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
-            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
+            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
+            // usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
 
             RenderizarMenuLateral();
             // InicializarBancoDeDados();
@@ -56,7 +56,6 @@ namespace HemoSoft.View
             {
                 MenuLateral.Items.Remove(CadastrarDoador);
                 MenuLateral.Items.Remove(BuscarDoador);
-                MenuLateral.Items.Remove(ListarSolicitacoes);
                 MenuLateral.Items.Remove(CadastrarTriador);
                 MenuLateral.Items.Remove(CadastrarSolicitante);
             }

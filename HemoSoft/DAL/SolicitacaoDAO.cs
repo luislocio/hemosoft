@@ -19,7 +19,10 @@ namespace HemoSoft.DAL
 
         public static List<Solicitacao> BuscarSolicitacoesPorSolicitante(Solicitacao s)
         {
-            return ctx.Solicitacoes.Include("Solicitante").Where(x => x.Solicitante == s.Solicitante).ToList();
+            return ctx.Solicitacoes
+                .Include("Solicitante")
+                .Where(x => x.Solicitante.IdSolicitante.Equals(s.Solicitante.IdSolicitante))
+                .ToList();
 
         }
 
