@@ -21,7 +21,7 @@ namespace HemoSoft.View
         {
             textNome.Text = triador.NomeCompleto;
             textMatricula.Text = triador.Matricula;
-            textStatus.Text = triador.StatusUsuario.ToString();
+            boxStatusUsuario.SelectedItem = triador.StatusUsuario;
         }
     }
 }

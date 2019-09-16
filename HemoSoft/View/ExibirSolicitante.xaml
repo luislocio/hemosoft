@@ -2,6 +2,8 @@
     x:Class="HemoSoft.View.ExibirSolicitante"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Model="clr-namespace:HemoSoft.Model"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HemoSoft.View"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -9,6 +11,17 @@
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
     mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="opcoesStatusUsuario"
+            MethodName="GetValues"
+            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Model:StatusUsuario" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Margin="0">
             <TextBlock
@@ -34,12 +47,13 @@
                 materialDesign:HintAssist.Hint="Responsavel:"
                 IsReadOnly="True"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-            <TextBox
-                x:Name="textStatus"
-                Margin="0,2"
+            <ComboBox
+                x:Name="boxStatusUsuario"
+                Margin="0,10"
                 materialDesign:HintAssist.Hint="Status:"
-                IsReadOnly="True"
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                IsEnabled="False"
+                ItemsSource="{Binding Source={StaticResource opcoesStatusUsuario}}"
+                Style="{StaticResource MaterialDesignComboBox}" />
         </StackPanel>
 
     </Grid>

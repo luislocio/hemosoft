@@ -147,7 +147,7 @@
                                 Text="Buscar Doações" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem x:Name="CadastrarExame" Height="60">
+                    <ListViewItem x:Name="ListarSolicitacoes" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="25"
@@ -159,7 +159,7 @@
                                 Margin="20,10"
                                 VerticalAlignment="Center"
                                 Foreground="White"
-                                Text="Cadastrar Exame" />
+                                Text="Listar Solicitações" />
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="CadastrarTriador" Height="60">

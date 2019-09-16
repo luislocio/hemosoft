@@ -22,7 +22,7 @@ namespace HemoSoft.View
             textCnpj.Text = solicitante.Cnpj;
             textRazaoSocial.Text = solicitante.RazaoSocial;
             textResponsavel.Text = solicitante.Responsavel;
-            textStatus.Text = solicitante.StatusUsuario.ToString();
+            boxStatusUsuario.SelectedItem = solicitante.StatusUsuario;
         }
     }
 }

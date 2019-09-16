@@ -125,6 +125,9 @@
     <Compile Include="View\ExibirListaDoacoes.xaml.cs">
       <DependentUpon>ExibirListaDoacoes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExibirListaSolicitacoes.xaml.cs">
+      <DependentUpon>ExibirListaSolicitacoes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ExibirTriador.xaml.cs">
       <DependentUpon>ExibirTriador.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExibirListaDoacoes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExibirListaSolicitacoes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

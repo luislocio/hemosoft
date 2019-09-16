@@ -56,7 +56,7 @@ namespace HemoSoft.View
             {
                 MenuLateral.Items.Remove(CadastrarDoador);
                 MenuLateral.Items.Remove(BuscarDoador);
-                MenuLateral.Items.Remove(CadastrarExame);
+                MenuLateral.Items.Remove(ListarSolicitacoes);
                 MenuLateral.Items.Remove(CadastrarTriador);
                 MenuLateral.Items.Remove(CadastrarSolicitante);
             }
@@ -78,6 +78,11 @@ namespace HemoSoft.View
                         break;
                     case "BuscarDoacoes":
                         usc = new BuscarDoacoes();
+                        GridPage.Children.Add(usc);
+                        break;
+                    case "ListarSolicitacoes":
+                        List<Solicitacao> solicitacoes = GetListaSolicitacoes();
+                        usc = new ExibirListaSolicitacoes(solicitacoes);
                         GridPage.Children.Add(usc);
                         break;
                     case "CadastrarTriador":
@@ -167,6 +172,17 @@ namespace HemoSoft.View
             GridPage.Children.Add(usc);
         }
         #endregion
+
+        private List<Solicitacao> GetListaSolicitacoes()
+        {
+            if (usuario.TipoUsuario == TipoUsuario.Triador)
+            {
+                return SolicitacaoDAO.ListarSolicitacoes();
+            }
+
+            Solicitante solicitante = SolicitanteDAO.BuscarSolicitantePorId(new Solicitante { IdSolicitante = usuario.IdUsuario });
+            return SolicitacaoDAO.BuscarSolicitacoesPorSolicitante(new Solicitacao { Solicitante = solicitante });
+        }
 
         private static void InicializarBancoDeDados()
         {

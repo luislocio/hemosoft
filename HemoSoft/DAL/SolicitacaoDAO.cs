@@ -16,5 +16,16 @@ namespace HemoSoft.DAL
             ctx.Solicitacoes.Add(so);
             ctx.SaveChanges();
         }
+
+        public static List<Solicitacao> BuscarSolicitacoesPorSolicitante(Solicitacao s)
+        {
+            return ctx.Solicitacoes.Include("Solicitante").Where(x => x.Solicitante == s.Solicitante).ToList();
+
+        }
+
+        public static List<Solicitacao> ListarSolicitacoes()
+        {
+            return ctx.Solicitacoes.Include("Solicitante").ToList();
+        }
     }
 }

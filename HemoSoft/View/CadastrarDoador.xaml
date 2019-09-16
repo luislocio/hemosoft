@@ -30,6 +30,7 @@
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
     </UserControl.Resources>
+
     <Grid Width="300">
         <TextBlock
             Margin="5"
