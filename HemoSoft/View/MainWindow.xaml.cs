@@ -12,16 +12,8 @@ namespace HemoSoft.View
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static Usuario usuario;
+        private static Usuario usuario = SingletonUsuario.GetInstance();
         private static UserControl usc;
-
-        public MainWindow(Usuario u)
-        {
-            InitializeComponent();
-            Style = (Style)FindResource(typeof(Window));
-            usuario = u;
-            // InicializarBancoDeDados();
-        }
 
         public MainWindow()
         {
@@ -36,7 +28,7 @@ namespace HemoSoft.View
             // InicializarBancoDeDados();
         }
 
-        #region Eventos de Cliques
+        #region Eventos de cliques
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
@@ -65,35 +57,36 @@ namespace HemoSoft.View
                 MenuLateral.Items.Remove(CadastrarDoador);
                 MenuLateral.Items.Remove(BuscarDoador);
                 MenuLateral.Items.Remove(CadastrarExame);
-
             }
         }
 
         private void RenderizarPaginasPrincipais(object sender)
         {
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            if (MenuLateral.SelectedItems.Count > 0)
             {
-                case "CadastrarDoador":
-                    usc = new CadastrarDoador();
-                    GridPage.Children.Add(usc);
-                    break;
-                case "BuscarDoador":
-                    usc = new BuscarDoador();
-                    GridPage.Children.Add(usc);
-                    break;
-                case "BuscarDoacoes":
-                    usc = new BuscarDoacoes();
-                    GridPage.Children.Add(usc);
-                    break;
+                switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+                {
+                    case "CadastrarDoador":
+                        usc = new CadastrarDoador();
+                        GridPage.Children.Add(usc);
+                        break;
+                    case "BuscarDoador":
+                        usc = new BuscarDoador();
+                        GridPage.Children.Add(usc);
+                        break;
+                    case "BuscarDoacoes":
+                        usc = new BuscarDoacoes();
+                        GridPage.Children.Add(usc);
+                        break;
 
-                default:
-                    break;
+                    default:
+                        break;
+                }
             }
         }
 
         public void LimparPagina()
         {
-            // TODO: MenuLateral.SelectedItems.Clear();
             usc = null;
             GridPage.Children.Clear();
         }
@@ -103,6 +96,8 @@ namespace HemoSoft.View
         public void RenderizarPerfilDoador(Doador doador)
         {
             LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
             usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             GridPage.Children.Add(usc);
         }
@@ -110,15 +105,19 @@ namespace HemoSoft.View
         public void RenderizarPerfilDoacao(Doacao doacao)
         {
             LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
             usc = new ExibirDoacao(DoacaoDAO.BuscarDoacaoPorId(doacao));
             GridPage.Children.Add(usc);
         }
 
         public void RenderizarCadastroDoacao(Doador doador)
         {
-            Triador triador = TriadorDAO.BuscarTriadorPorId(new Triador {IdTriador = usuario.IdUsuario });
+            Triador triador = TriadorDAO.BuscarTriadorPorId(new Triador { IdTriador = usuario.IdUsuario });
 
             LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
             usc = new CadastrarDoacao(doador, triador);
             GridPage.Children.Add(usc);
         }
@@ -126,6 +125,8 @@ namespace HemoSoft.View
         public void RenderizarCadastroExame(Doacao doacao)
         {
             LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
             usc = new CadastrarExame(doacao);
             GridPage.Children.Add(usc);
         }
@@ -133,9 +134,11 @@ namespace HemoSoft.View
         public void RenderizarListaDoacoes(List<Doacao> doacoes)
         {
             LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
             usc = new ExibirListaDoacoes(doacoes);
             GridPage.Children.Add(usc);
-        } 
+        }
         #endregion
 
         private static void InicializarBancoDeDados()
@@ -143,15 +146,15 @@ namespace HemoSoft.View
             Triador triadorInit = new Triador
             {
                 NomeCompleto = "triador1",
-                Matricula = "triador1",
-                Senha = "senhatriador1",
+                Matricula = "1234567",
+                Senha = "senhatriador",
                 StatusUsuario = StatusUsuario.Ativo,
             };
 
             Doador doadorInit = new Doador
             {
                 NomeCompleto = "doador1",
-                Cpf = "012345678901",
+                Cpf = "12345678901",
                 Genero = Genero.Feminino,
                 EstadoCivil = EstadoCivil.Separadx,
                 TipoSanguineo = TipoSanguineo.A,
@@ -208,14 +211,16 @@ namespace HemoSoft.View
 
             Solicitante solicitanteInit = new Solicitante
             {
-                Cnpj = "01234567891234",
+                Cnpj = "12345678901234",
                 RazaoSocial = "Clinica 1",
-                Responsavel = "Seu Zé",
-                Senha = "senhaclinica1",
+                Responsavel = "Responsavel 1",
+                Senha = "senhasolicitante",
                 StatusUsuario = StatusUsuario.Ativo
             };
 
             TriadorDAO.CadastrarTriador(triadorInit);
+            SolicitanteDAO.CadastrarSolicitante(solicitanteInit);
+
             DoadorDAO.CadastrarDoador(doadorInit);
             DoacaoDAO.CadastrarDoacao(doacaoInit);
         }

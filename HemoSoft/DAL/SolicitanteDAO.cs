@@ -22,6 +22,12 @@ namespace HemoSoft.DAL
                 (x => x.Cnpj.Equals(s.Cnpj));
         }
 
+        public static Solicitante BuscarSolicitantePorId(Solicitante s)
+        {
+            return ctx.Solicitantes.FirstOrDefault
+                (x => x.IdSolicitante.Equals(s.IdSolicitante));
+        }
+
         public static Solicitante BuscarSolicitantePorRazaoSocial(Solicitante s)
         {
             return ctx.Solicitantes.FirstOrDefault

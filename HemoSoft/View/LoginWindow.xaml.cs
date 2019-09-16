@@ -17,7 +17,7 @@ namespace HemoSoft.View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Usuario usuario = null;
+            Usuario usuario = SingletonUsuario.GetInstance();
 
             if (txtUsuario.Text.Equals("") || txtSenha.Equals(""))
             {
@@ -38,8 +38,7 @@ namespace HemoSoft.View
 
             if (usuario != null)
             {
-                // TODO: Passar usuario como parametro
-                MainWindow main = new MainWindow(usuario);
+                MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();

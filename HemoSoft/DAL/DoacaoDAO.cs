@@ -27,6 +27,7 @@ namespace HemoSoft.DAL
             //Where: é método que retorna todas as
             //ocorrências em uma busca
             return ctx.Doacoes
+                .Include("Doador")
                 .Include("TriagemClinica")
                 .Include("TriagemLaboratorial")
                 .Include("ImpedimentosTemporarios")

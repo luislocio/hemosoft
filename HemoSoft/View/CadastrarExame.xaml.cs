@@ -23,6 +23,18 @@ namespace HemoSoft.View
             CarregarDadosExistentes();
         }
 
+        private void CarregarDadosExistentes()
+        {
+            if (doacao.Doador.FatorRh != null && doacao.Doador.TipoSanguineo != null)
+            {
+                boxFatorRh.SelectedItem = doacao.Doador.FatorRh;
+                boxFatorRh.IsEnabled = false;
+
+                boxTipoSanguineo.SelectedItem = doacao.Doador.TipoSanguineo;
+                boxTipoSanguineo.IsEnabled = false;
+            };
+        }
+
         #region Radio Buttons
 
         private void RadioButtonHepatiteBNegativo_Click(object sender, RoutedEventArgs e)
@@ -56,14 +68,16 @@ namespace HemoSoft.View
         }
         #endregion
 
+        #region Eventos de cliques
         private void ButtonCadastrarExame_Click(object sender, RoutedEventArgs e)
         {
             if (FormularioEstaCompleto())
             {
                 doacao.TriagemLaboratorial = AtualizarTriagemLaboratorial();
                 doacao.ImpedimentosDefinitivos = AtualizarImpedimentosDefinitivos(doacao.TriagemLaboratorial);
-                doacao.Doador = AtualizarDadosDoSangue(); 
-                
+                doacao.Doador = AtualizarDadosDoSangue();
+                doacao.StatusDoacao = GetStatusDoacao();
+
                 DoacaoDAO.AlterarDoacao(doacao);
 
                 MessageBox.Show("Exame laboratorial cadastrado com sucesso");
@@ -75,21 +89,10 @@ namespace HemoSoft.View
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
-        }
+        } 
+        #endregion
 
-
-        private void CarregarDadosExistentes()
-        {
-            if (doacao.Doador.FatorRh != null && doacao.Doador.TipoSanguineo != null)
-            {
-                boxFatorRh.SelectedItem = doacao.Doador.FatorRh;
-                boxFatorRh.IsEnabled = false;
-
-                boxTipoSanguineo.SelectedItem = doacao.Doador.TipoSanguineo;
-                boxTipoSanguineo.IsEnabled = false;
-            };
-        }
-
+        #region Atualização de atributos da doação
         private TriagemLaboratorial AtualizarTriagemLaboratorial()
         {
             TriagemLaboratorial triagemLaboratorial = doacao.TriagemLaboratorial;
@@ -97,21 +100,9 @@ namespace HemoSoft.View
             triagemLaboratorial.HepatiteB = statusHepatiteB;
             triagemLaboratorial.HepatiteC = statusHepatiteC;
             triagemLaboratorial.Hiv = statusHiv;
-            triagemLaboratorial.StatusTriagem = VerificarResultadoDoExame();
+            triagemLaboratorial.StatusTriagem = GetStatusExameLaboratorial();
 
             return triagemLaboratorial;
-        }
-
-
-        private StatusTriagem VerificarResultadoDoExame()
-        {
-            if (statusHepatiteB == true ||
-                statusHepatiteC == true ||
-                statusHiv == true)
-            {
-                return StatusTriagem.Reprovado;
-            }
-            return StatusTriagem.Aprovado;
         }
 
         private ImpedimentosDefinitivos AtualizarImpedimentosDefinitivos(TriagemLaboratorial triagemLaboratorial)
@@ -134,8 +125,35 @@ namespace HemoSoft.View
             doador.FatorRh = (FatorRh)Enum.Parse(typeof(FatorRh), boxFatorRh.Text);
 
             return doador;
+        } 
+        #endregion
+
+        #region Validação de status e atributos
+        private StatusTriagem GetStatusExameLaboratorial()
+        {
+            if (doacao.ImpedimentosDefinitivos.AntecedenteAvc == true ||
+                statusHepatiteB == true ||
+                statusHepatiteC == true ||
+                statusHiv == true)
+            {
+                return StatusTriagem.Reprovado;
+            }
+            return StatusTriagem.Aprovado;
         }
 
+        private StatusDoacao GetStatusDoacao()
+        {
+            if (doacao.TriagemLaboratorial.StatusTriagem == StatusTriagem.Aprovado &&
+                doacao.TriagemClinica.StatusTriagem == StatusTriagem.Aprovado)
+            {
+                return StatusDoacao.Disponivel;
+            }
+
+            return StatusDoacao.NaoDisponivel;
+        }
+        #endregion
+
+        #region Validação dos campos do formulário
         private bool FormularioEstaCompleto()
         {
             if (this.statusHepatiteB == null ||
@@ -147,6 +165,7 @@ namespace HemoSoft.View
                 return false;
             }
             return true;
-        }
+        } 
+        #endregion
     }
 }

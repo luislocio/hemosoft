@@ -19,6 +19,7 @@
                 Text="LISTA DOAÇÕES" />
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel
+                    x:Name="formBuscaDoacao"
                     Width="450"
                     Margin="0,15"
                     HorizontalAlignment="Center">
@@ -27,6 +28,7 @@
                         Margin="0,10"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"
+                        MouseDoubleClick="DataGridDoacoes_MouseDoubleClick"
                         SelectionMode="Extended"
                         SelectionUnit="FullRow">
                         <DataGrid.Columns>

@@ -71,6 +71,7 @@
     <Compile Include="DAL\DoacaoDAO.cs" />
     <Compile Include="DAL\DoadorDAO.cs" />
     <Compile Include="DAL\SingletonContext.cs" />
+    <Compile Include="DAL\SingletonUsuario.cs" />
     <Compile Include="DAL\SolicitacaoDAO.cs" />
     <Compile Include="DAL\SolicitanteDAO.cs" />
     <Compile Include="DAL\TriadorDAO.cs" />

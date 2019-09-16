@@ -9,10 +9,10 @@
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
     mc:Ignorable="d">
-    <Grid>
+    <Grid Width="350">
         <ScrollViewer VerticalScrollBarVisibility="Visible">
             <StackPanel Margin="0,0,10,0">
-                <Grid Width="270">
+                <Grid>
                     <TextBox
                         x:Name="textId"
                         Width="70"
@@ -21,66 +21,55 @@
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
                         x:Name="textStatus"
-                        Width="180"
+                        Width="220"
                         HorizontalAlignment="Right"
                         materialDesign:HintAssist.Hint="Status:"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 </Grid>
                 <TextBox
                     x:Name="textPeso"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Peso:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textPulso"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Pulso:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textTemperatura"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Temperatura:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <Separator Margin="0,20,0,2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <TextBox
                     x:Name="textBebida"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Bebida nas ultimas 12 horas:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textGravidez"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Gravidez recente:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textGripe"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Gripe/resfriado nos ultimos 12 dias:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textTatuagem"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Tatuagem nos ultimos 12 meses:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <Separator Margin="0,20,0,2" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
                 <TextBox
                     x:Name="textAntecedenteAvc"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Antecedente de AVC:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textHepatiteB"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Hepatite B:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textHepatiteC"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Hepatite C"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <TextBox
                     x:Name="textHiv"
-                    Width="270"
                     materialDesign:HintAssist.Hint="Hiv:"
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">

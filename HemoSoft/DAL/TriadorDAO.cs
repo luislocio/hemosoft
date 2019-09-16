@@ -10,6 +10,7 @@ namespace HemoSoft.DAL
     class TriadorDAO
     {
         private static Context ctx = SingletonContext.GetInstance();
+
         public static void CadastrarTriador(Triador t)
         {
             ctx.Triadores.Add(t);

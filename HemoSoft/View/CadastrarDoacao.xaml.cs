@@ -125,7 +125,7 @@ namespace HemoSoft.View
             {
                 MessageBox.Show("Favor preencher todos os campos!");
             }
-        } 
+        }
         #endregion
 
         #region Validação dos formulários
@@ -165,11 +165,11 @@ namespace HemoSoft.View
             return new Doacao
             {
                 DataDoacao = DateTime.Now,
-                StatusDoacao = StatusDoacao.AguardandoAtendimento,
                 Doador = this.doador,
                 Triador = this.triador,
                 TriagemClinica = triagemClinica,
                 TriagemLaboratorial = triagemLaboratorial,
+                StatusDoacao = GetStatusDoacao(triagemClinica, impedimentosDefinitivos),
                 ImpedimentosTemporarios = impedimentosTemporarios,
                 ImpedimentosDefinitivos = impedimentosDefinitivos
             };
@@ -202,6 +202,7 @@ namespace HemoSoft.View
                 Peso = double.Parse(textPeso.Text),
                 Pulso = int.Parse(textPulso.Text),
                 Temperatura = int.Parse(textTemperatura.Text),
+                StatusTriagem = GetStatusTriagemClinica()
             };
         }
 
@@ -242,7 +243,30 @@ namespace HemoSoft.View
                 return Convert.ToInt32(textTatuagem.Text);
             }
             return null;
-        } 
+        }
+
+        private StatusDoacao GetStatusDoacao(TriagemClinica triagemClinica, ImpedimentosDefinitivos impedimentosDefinitivos)
+        {
+            if (triagemClinica.StatusTriagem == StatusTriagem.Aprovado &&
+                impedimentosDefinitivos.AntecedenteAvc == false)
+            {
+                return StatusDoacao.AguardandoAtendimento;
+            }
+
+            return StatusDoacao.AguardandoResultados;
+        }
+        private StatusTriagem GetStatusTriagemClinica()
+        {
+            if (statusBebida == false &&
+                statusGravidez == Gravidez.Nenhuma &&
+                statusGripe == false &&
+                statusTatuagem == false)
+            {
+                return StatusTriagem.Aprovado;
+            }
+
+            return StatusTriagem.Reprovado;
+        }
         #endregion
     }
 }

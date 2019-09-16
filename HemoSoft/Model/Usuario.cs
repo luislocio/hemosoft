@@ -1,4 +1,4 @@
-﻿namespace HemoSoft.View
+﻿namespace HemoSoft.Model
 {
     public enum TipoUsuario
     {

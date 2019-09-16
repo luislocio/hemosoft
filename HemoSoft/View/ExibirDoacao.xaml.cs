@@ -46,7 +46,8 @@ namespace HemoSoft.View
 
         private void ValidarBotoes()
         {
-            if (doacao.StatusDoacao == StatusDoacao.AguardandoAtendimento)
+            if (doacao.StatusDoacao == StatusDoacao.AguardandoAtendimento &&
+                doacao.TriagemClinica.StatusTriagem == StatusTriagem.Aprovado)
             {
                 ButtonConfimar.IsEnabled = true;
             }
@@ -60,6 +61,7 @@ namespace HemoSoft.View
         #region Eventos de cliques
         private void ButtonCadastrarExame_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            // Carrega a tela de cadastro de exames
             MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
             janelaPrincipal.RenderizarCadastroExame(doacao);
         }
@@ -69,8 +71,11 @@ namespace HemoSoft.View
             doacao.StatusDoacao = StatusDoacao.AguardandoResultados;
             DoacaoDAO.AlterarDoacao(doacao);
 
+            MessageBox.Show("Coleta realizada com sucesso.");
+
+            // Retorna para a lista de doações pendentes.
             MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-            janelaPrincipal.RenderizarCadastroExame(doacao);
+            janelaPrincipal.RenderizarListaDoacoes(DoacaoDAO.BuscarDoacaoPorStatus(new Doacao { StatusDoacao = StatusDoacao.AguardandoAtendimento }));
         }
 
         #endregion
