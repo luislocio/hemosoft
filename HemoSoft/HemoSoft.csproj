@@ -110,6 +110,9 @@
     <Compile Include="View\CadastrarExame.xaml.cs">
       <DependentUpon>CadastrarExame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CadastrarSolicitante.xaml.cs">
+      <DependentUpon>CadastrarSolicitante.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CadastrarTriador.xaml.cs">
       <DependentUpon>CadastrarTriador.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="View\ExibirSolicitante.xaml.cs">
+      <DependentUpon>ExibirSolicitante.xaml</DependentUpon>
+    </Compile>
     <Page Include="Themes\MaterialDesignTheme.Overrides.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CadastrarExame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CadastrarSolicitante.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +196,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExibirSolicitante.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

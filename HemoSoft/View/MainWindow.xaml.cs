@@ -58,6 +58,7 @@ namespace HemoSoft.View
                 MenuLateral.Items.Remove(BuscarDoador);
                 MenuLateral.Items.Remove(CadastrarExame);
                 MenuLateral.Items.Remove(CadastrarTriador);
+                MenuLateral.Items.Remove(CadastrarSolicitante);
             }
         }
 
@@ -83,7 +84,10 @@ namespace HemoSoft.View
                         usc = new CadastrarTriador();
                         GridPage.Children.Add(usc);
                         break;
-
+                    case "CadastrarSolicitante":
+                        usc = new CadastrarSolicitante();
+                        GridPage.Children.Add(usc);
+                        break;
                     default:
                         break;
                 }
@@ -116,13 +120,21 @@ namespace HemoSoft.View
             GridPage.Children.Add(usc);
         }
 
-
         internal void RenderizarPerfilTriador(Triador triador)
         {
             LimparPagina();
             MenuLateral.SelectedItems.Clear();
 
             usc = new ExibirTriador(triador);
+            GridPage.Children.Add(usc);
+        }
+
+        internal void RenderizarPerfilSolicitante(Solicitante solicitante)
+        {
+            LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
+            usc = new ExibirSolicitante(solicitante);
             GridPage.Children.Add(usc);
         }
 

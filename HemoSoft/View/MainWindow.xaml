@@ -177,7 +177,7 @@
                                 Text="Cadastrar Triador" />
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem x:Name="CadastrarSolicitante" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon
                                 Width="25"

@@ -10,10 +10,17 @@ namespace HemoSoft.DAL
     class SolicitanteDAO
     {
         private static Context ctx = SingletonContext.GetInstance();
-        public static void CadastrarSolicitante(Solicitante s)
+
+        public static bool CadastrarSolicitante(Solicitante s)
         {
+            if (BuscarSolicitantePorCnpj(s) != null)
+            {
+                return false;
+            }
+
             ctx.Solicitantes.Add(s);
             ctx.SaveChanges();
+            return true;
         }
 
         public static Solicitante BuscarSolicitantePorCnpj(Solicitante s)
