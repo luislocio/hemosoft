@@ -6,7 +6,9 @@ namespace HemoSoft.Model
     {
 
         //Nomear o arquivo do banco de dados
-        public Context() : base("DbHemoSoft") { }
+        public Context() : base("DbHemoSoft") {
+            Database.SetInitializer(new SeedUsuariosPadrao());
+        }
 
         //Definir as classes que são tabelas no banco
         public DbSet<Doacao> Doacoes { get; set; }

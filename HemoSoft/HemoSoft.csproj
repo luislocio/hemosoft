@@ -95,6 +95,7 @@
     <Compile Include="Migrations\201909151844344_doacaoDoacoes.Designer.cs">
       <DependentUpon>201909151844344_doacaoDoacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\SeedUsuariosPadrao.cs" />
     <Compile Include="View\BuscarDoacoes.xaml.cs">
       <DependentUpon>BuscarDoacoes.xaml</DependentUpon>
     </Compile>

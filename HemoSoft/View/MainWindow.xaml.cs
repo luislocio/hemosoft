@@ -15,17 +15,17 @@ namespace HemoSoft.View
         private static Usuario usuario = SingletonUsuario.GetInstance();
         private static UserControl usc;
 
-        public MainWindow()
+        public MainWindow(Usuario u)
         {
             InitializeComponent();
             Style = (Style)FindResource(typeof(Window));
-
+            usuario = u;
             // TODO: REMOVER HARDCODED
-            usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
+            // usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Solicitante };
             // usuario = new Usuario { IdUsuario = 1, NomeDeUsuario = "Teste", TipoUsuario = TipoUsuario.Triador };
+            // InicializarBancoDeDados();
 
             RenderizarMenuLateral();
-            // InicializarBancoDeDados();
         }
 
         #region Eventos de cliques

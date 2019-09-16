@@ -8,8 +8,11 @@ namespace HemoSoft.View
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
-    {
+    public partial class LoginWindow : Window { 
+    
+        // TODO: Singleton perde valores ao mudar de janela
+        // private static Usuario usuario = SingletonUsuario.GetInstance();
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -17,8 +20,7 @@ namespace HemoSoft.View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Usuario usuario = SingletonUsuario.GetInstance();
-
+            Usuario usuario = null;
             if (textUsuario.Text.Equals("") || textSenha.Equals(""))
             {
                 MessageBox.Show("Favor preencher todos os campos!");
@@ -33,12 +35,11 @@ namespace HemoSoft.View
                 {
                     usuario = AutenticarTriador(textUsuario, textSenha);
                 }
-
             }
 
             if (usuario != null)
             {
-                MainWindow main = new MainWindow();
+                MainWindow main = new MainWindow(usuario);
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();
