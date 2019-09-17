@@ -8,10 +8,10 @@ namespace HemoSoft.View
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window { 
-    
-        // TODO: Singleton perde valores ao mudar de janela
-        // private static Usuario usuario = SingletonUsuario.GetInstance();
+    public partial class LoginWindow : Window
+    {
+
+        private static Usuario usuario = SingletonUsuario.GetInstance();
 
         public LoginWindow()
         {
@@ -20,7 +20,6 @@ namespace HemoSoft.View
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Usuario usuario = null;
             if (textUsuario.Text.Equals("") || textSenha.Equals(""))
             {
                 MessageBox.Show("Favor preencher todos os campos!");
@@ -29,17 +28,17 @@ namespace HemoSoft.View
             {
                 if (textUsuario.Text.Length == 14)
                 {
-                    usuario = AutenticarSolicitante(textUsuario, textSenha);
+                    AutenticarSolicitante(textUsuario, textSenha);
                 }
                 else
                 {
-                    usuario = AutenticarTriador(textUsuario, textSenha);
+                    AutenticarTriador(textUsuario, textSenha);
                 }
             }
 
             if (usuario != null)
             {
-                MainWindow main = new MainWindow(usuario);
+                MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
                 this.Close();
                 main.Show();
@@ -50,7 +49,7 @@ namespace HemoSoft.View
             }
         }
 
-        private Usuario AutenticarTriador(TextBox textUsuario, PasswordBox textSenha)
+        private void AutenticarTriador(TextBox textUsuario, PasswordBox textSenha)
         {
             Triador triadorBusca = new Triador
             {
@@ -62,19 +61,14 @@ namespace HemoSoft.View
             {
                 if (triadorResultado.Matricula.Equals(textUsuario.Text) && triadorResultado.Senha.Equals(textSenha.Password))
                 {
-                    return new Usuario
-                    {
-                        IdUsuario = triadorResultado.IdTriador,
-                        NomeDeUsuario = triadorResultado.NomeCompleto,
-                        TipoUsuario = TipoUsuario.Triador
-                    };
+                    usuario.IdUsuario = triadorResultado.IdTriador;
+                    usuario.NomeDeUsuario = triadorResultado.NomeCompleto;
+                    usuario.TipoUsuario = TipoUsuario.Triador;
                 }
             }
-
-            return null;
         }
 
-        private Usuario AutenticarSolicitante(TextBox textUsuario, PasswordBox textSenha)
+        private void AutenticarSolicitante(TextBox textUsuario, PasswordBox textSenha)
         {
             Solicitante solicitanteBusca = new Solicitante { Cnpj = textUsuario.Text };
             Solicitante solicitanteResultado = SolicitanteDAO.BuscarSolicitantePorCnpj(solicitanteBusca);
@@ -83,16 +77,11 @@ namespace HemoSoft.View
             {
                 if (solicitanteResultado.Cnpj.Equals(textUsuario.Text) && solicitanteResultado.Senha.Equals(textSenha.Password))
                 {
-                    return new Usuario
-                    {
-                        IdUsuario = solicitanteResultado.IdSolicitante,
-                        NomeDeUsuario = solicitanteResultado.RazaoSocial,
-                        TipoUsuario = TipoUsuario.Solicitante
-                    };
+                    usuario.IdUsuario = solicitanteResultado.IdSolicitante;
+                    usuario.NomeDeUsuario = solicitanteResultado.RazaoSocial;
+                    usuario.TipoUsuario = TipoUsuario.Solicitante;
                 }
             }
-
-            return null;
         }
     }
 }
