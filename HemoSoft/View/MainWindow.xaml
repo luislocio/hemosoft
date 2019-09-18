@@ -200,6 +200,19 @@
             Width="729"
             Margin="0,65,0,0"
             HorizontalAlignment="Right"
-            VerticalAlignment="Stretch" />
+            VerticalAlignment="Stretch">
+            <Image
+                IsEnabled="False"
+                Opacity="0.3"
+                RenderTransformOrigin="1,1"
+                Source="Assets/blood.png"
+                Stretch="None">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.25" ScaleY="1.25" />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
     </Grid>
 </Window>
