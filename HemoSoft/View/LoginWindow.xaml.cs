@@ -36,7 +36,7 @@ namespace HemoSoft.View
                 }
             }
 
-            if (usuario != null)
+            if (usuario.IdUsuario > 0)
             {
                 MainWindow main = new MainWindow();
                 App.Current.MainWindow = main;
