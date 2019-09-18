@@ -34,6 +34,14 @@
                             <DataGridTextColumn Binding="{Binding IdDoacao}" Header="#Doação" />
                             <DataGridTextColumn Binding="{Binding DataDoacao}" Header="Data" />
                             <DataGridTextColumn Binding="{Binding StatusDoacao}" Header="Status" />
+                            <DataGridTextColumn x:Name="TipoSanguineo" Header="TipoSanguineo">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Doador.TipoSanguineo" />
+                                        <Binding Path="Doador.FatorRh" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button

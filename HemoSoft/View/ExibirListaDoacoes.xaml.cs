@@ -29,7 +29,7 @@ namespace HemoSoft.View
             // Lista de itens selecionados na tabela
             List<Doacao> doacoesSelecionadas = dataGridDoacoes.SelectedItems.Cast<Doacao>().ToList();
 
-            if (doacoesSelecionadas != null)
+            if (doacoesSelecionadas.Count >0)
             {
                 Solicitante solicitante = SolicitanteDAO.BuscarSolicitantePorId(new Solicitante { IdSolicitante = usuario.IdUsuario });
 
@@ -45,12 +45,12 @@ namespace HemoSoft.View
             };
         }
 
-
         private void DataGridDoacoes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Doacao doacaoSelecionada = dataGridDoacoes.SelectedItem as Doacao;
 
-            if (doacaoSelecionada != null)
+            if (doacaoSelecionada != null &&
+                usuario.TipoUsuario != TipoUsuario.Solicitante)
             {
                 MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilDoacao(DoacaoDAO.BuscarDoacaoPorId(doacaoSelecionada));

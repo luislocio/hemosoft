@@ -70,7 +70,15 @@ namespace HemoSoft.View
                         GridPage.Children.Add(usc);
                         break;
                     case "BuscarDoacoes":
-                        usc = new BuscarDoacoes();
+                        if (usuario.TipoUsuario == TipoUsuario.Solicitante)
+                        {
+                            Doacao doacao = new Doacao { StatusDoacao = StatusDoacao.Disponivel };
+                            usc = new ExibirListaDoacoes(DoacaoDAO.BuscarDoacaoPorStatus(doacao));
+                        }
+                        else
+                        {
+                            usc = new BuscarDoacoes();
+                        }
                         GridPage.Children.Add(usc);
                         break;
                     case "ListarSolicitacoes":
