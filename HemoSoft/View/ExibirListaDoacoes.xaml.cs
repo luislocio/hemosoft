@@ -15,11 +15,12 @@ namespace HemoSoft.View
     public partial class ExibirListaDoacoes : UserControl
     {
         private static Usuario usuario = SingletonUsuario.GetInstance();
-
+        List<Doacao> doacoes;
         public ExibirListaDoacoes(List<Doacao> d)
         {
             InitializeComponent();
-            dataGridDoacoes.ItemsSource = d;
+            doacoes = d;
+            dataGridDoacoes.ItemsSource = doacoes;
             ValidarBotoes();
         }
 
@@ -29,15 +30,16 @@ namespace HemoSoft.View
             // Lista de itens selecionados na tabela
             List<Doacao> doacoesSelecionadas = dataGridDoacoes.SelectedItems.Cast<Doacao>().ToList();
 
-            if (doacoesSelecionadas.Count >0)
+            if (doacoesSelecionadas.Count > 0)
             {
                 Solicitante solicitante = SolicitanteDAO.BuscarSolicitantePorId(new Solicitante { IdSolicitante = usuario.IdUsuario });
-
                 Solicitacao solicitacao = CriarSolicitacao(doacoesSelecionadas, solicitante);
-
                 SolicitacaoDAO.CadastrarSolicitacao(solicitacao);
 
                 MessageBox.Show("Solicitação efetuada com sucesso.");
+
+                dataGridDoacoes.ItemsSource = null;
+                dataGridDoacoes.ItemsSource = DoacaoDAO.BuscarDoacaoPorStatus(new Doacao {StatusDoacao = StatusDoacao.Disponivel });
             }
             else
             {
@@ -55,7 +57,7 @@ namespace HemoSoft.View
                 MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilDoacao(DoacaoDAO.BuscarDoacaoPorId(doacaoSelecionada));
             }
-        } 
+        }
         #endregion
 
         private static Solicitacao CriarSolicitacao(List<Doacao> doacoesSelecionadas, Solicitante solicitante)

@@ -4,7 +4,6 @@ namespace HemoSoft.Model
 {
     public class Context : DbContext
     {
-
         //Nomear o arquivo do banco de dados
         public Context() : base("DbHemoSoft") {
             Database.SetInitializer(new SeedUsuariosPadrao());

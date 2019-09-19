@@ -11,6 +11,7 @@ namespace HemoSoft.Model
     {
         protected override void Seed(Context context)
         {
+            #region Seed Triadores
             IList<Triador> triadores = new List<Triador>();
 
             triadores.Add(new Triador()
@@ -30,8 +31,9 @@ namespace HemoSoft.Model
             });
 
             context.Triadores.AddRange(triadores);
+            #endregion
 
-
+            #region Seed Solicitantes
             IList<Solicitante> solicitantes = new List<Solicitante>();
 
             solicitantes.Add(new Solicitante
@@ -59,7 +61,8 @@ namespace HemoSoft.Model
                 Responsavel = "Responsavel 3",
                 Senha = "senhasolicitante",
                 StatusUsuario = StatusUsuario.Inativo
-            });
+            }); 
+            #endregion
 
             context.Solicitantes.AddRange(solicitantes);
 
