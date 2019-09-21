@@ -181,6 +181,15 @@ namespace HemoSoft.View
             usc = new ExibirListaTriadores(triadores);
             GridPage.Children.Add(usc);
         }
+
+        public void RenderizarListaSolicitantes(List<Solicitante> solicitantes)
+        {
+            LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
+            usc = new ExibirListaSolicitantes(solicitantes);
+            GridPage.Children.Add(usc);
+        }
         #endregion
 
         private List<Solicitacao> GetListaSolicitacoes()

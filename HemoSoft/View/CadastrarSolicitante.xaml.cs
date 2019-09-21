@@ -27,6 +27,7 @@ namespace HemoSoft.View
             InitializeComponent();
         }
 
+        #region Eventos de cliques
         private void ButtonCadastrar_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (FormularioEstaCompleto())
@@ -51,6 +52,13 @@ namespace HemoSoft.View
             }
         }
 
+        private void ButtonListar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+            janelaPrincipal.RenderizarListaSolicitantes(SolicitanteDAO.ListarSolicitantes());
+        }
+        #endregion
+
         private bool FormularioEstaCompleto()
         {
             return
@@ -71,6 +79,7 @@ namespace HemoSoft.View
                 StatusUsuario = StatusUsuario.Ativo
             };
         }
+
     }
 }
 
