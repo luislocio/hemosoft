@@ -57,7 +57,7 @@ namespace HemoSoft.View
             };
 
             Triador triadorResultado = TriadorDAO.BuscarTriadorPorMatricula(triadorBusca);
-            if (triadorResultado != null)
+            if (triadorResultado != null && triadorResultado.StatusUsuario != StatusUsuario.Inativo)
             {
                 if (triadorResultado.Matricula.Equals(textUsuario.Text) && triadorResultado.Senha.Equals(textSenha.Password))
                 {
@@ -73,7 +73,7 @@ namespace HemoSoft.View
             Solicitante solicitanteBusca = new Solicitante { Cnpj = textUsuario.Text };
             Solicitante solicitanteResultado = SolicitanteDAO.BuscarSolicitantePorCnpj(solicitanteBusca);
 
-            if (solicitanteResultado != null)
+            if (solicitanteResultado != null && solicitanteResultado.StatusUsuario != StatusUsuario.Inativo)
             {
                 if (solicitanteResultado.Cnpj.Equals(textUsuario.Text) && solicitanteResultado.Senha.Equals(textSenha.Password))
                 {
