@@ -4,13 +4,13 @@ using System.Windows.Controls;
 namespace HemoSoft.View
 {
     /// <summary>
-    /// Interaction logic for ExibirSolicitante.xaml
+    /// Interaction logic for ExibirPerfilSolicitante.xaml
     /// </summary>
-    public partial class ExibirSolicitante : UserControl
+    public partial class ExibirPerfilSolicitante : UserControl
     {
         Solicitante solicitante;
 
-        public ExibirSolicitante(Solicitante s)
+        public ExibirPerfilSolicitante(Solicitante s)
         {
             InitializeComponent();
             this.solicitante = s;

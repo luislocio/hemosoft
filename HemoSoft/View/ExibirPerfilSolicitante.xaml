@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="HemoSoft.View.ExibirTriador"
+    x:Class="HemoSoft.View.ExibirPerfilSolicitante"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:Model="clr-namespace:HemoSoft.Model"
@@ -28,17 +28,23 @@
                 Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Text="PERFIL TRIADOR" />
+                Text="PERFIL SOLICITANTE" />
             <TextBox
-                x:Name="textNome"
+                x:Name="textCnpj"
                 Margin="0,2"
-                materialDesign:HintAssist.Hint="Nome:"
+                materialDesign:HintAssist.Hint="CNPJ:"
                 IsReadOnly="True"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <TextBox
-                x:Name="textMatricula"
+                x:Name="textRazaoSocial"
                 Margin="0,2"
-                materialDesign:HintAssist.Hint="Matricula: "
+                materialDesign:HintAssist.Hint="Razão Social:"
+                IsReadOnly="True"
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+            <TextBox
+                x:Name="textResponsavel"
+                Margin="0,2"
+                materialDesign:HintAssist.Hint="Responsavel:"
                 IsReadOnly="True"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <ComboBox
@@ -48,13 +54,7 @@
                 IsEnabled="False"
                 ItemsSource="{Binding Source={StaticResource opcoesStatusUsuario}}"
                 Style="{StaticResource MaterialDesignComboBox}" />
-            <Button
-                x:Name="buttonEditar"
-                Width="100"
-                Margin="0,15,0,10"
-                HorizontalAlignment="Right"
-                Click="ButtonEditar_Click"
-                Content="Editar" />
         </StackPanel>
+
     </Grid>
 </UserControl>

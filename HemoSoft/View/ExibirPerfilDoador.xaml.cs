@@ -8,13 +8,13 @@ using System.Windows.Input;
 namespace HemoSoft.View
 {
     /// <summary>
-    /// Interaction logic for ExibirDoador.xaml
+    /// Interaction logic for ExibirPerfilDoador.xaml
     /// </summary>
-    public partial class ExibirDoador : UserControl
+    public partial class ExibirPerfilDoador : UserControl
     {
         Doador doador;
 
-        public ExibirDoador(Doador d)
+        public ExibirPerfilDoador(Doador d)
         {
             InitializeComponent();
             this.doador = d;

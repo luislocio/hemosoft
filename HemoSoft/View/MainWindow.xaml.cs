@@ -113,7 +113,7 @@ namespace HemoSoft.View
             LimparPagina();
             MenuLateral.SelectedItems.Clear();
 
-            usc = new ExibirDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
+            usc = new ExibirPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             GridPage.Children.Add(usc);
         }
 
@@ -122,7 +122,7 @@ namespace HemoSoft.View
             LimparPagina();
             MenuLateral.SelectedItems.Clear();
 
-            usc = new ExibirDoacao(DoacaoDAO.BuscarDoacaoPorId(doacao));
+            usc = new ExibirPerfilDoacao(DoacaoDAO.BuscarDoacaoPorId(doacao));
             GridPage.Children.Add(usc);
         }
 
@@ -131,7 +131,7 @@ namespace HemoSoft.View
             LimparPagina();
             MenuLateral.SelectedItems.Clear();
 
-            usc = new ExibirTriador(triador);
+            usc = new ExibirPerfilTriador(triador);
             GridPage.Children.Add(usc);
         }
 
@@ -140,7 +140,7 @@ namespace HemoSoft.View
             LimparPagina();
             MenuLateral.SelectedItems.Clear();
 
-            usc = new ExibirSolicitante(solicitante);
+            usc = new ExibirPerfilSolicitante(solicitante);
             GridPage.Children.Add(usc);
         }
 

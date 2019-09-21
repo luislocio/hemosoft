@@ -117,11 +117,11 @@
     <Compile Include="View\CadastrarTriador.xaml.cs">
       <DependentUpon>CadastrarTriador.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExibirDoacao.xaml.cs">
-      <DependentUpon>ExibirDoacao.xaml</DependentUpon>
+    <Compile Include="View\ExibirPerfilDoacao.xaml.cs">
+      <DependentUpon>ExibirPerfilDoacao.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExibirDoador.xaml.cs">
-      <DependentUpon>ExibirDoador.xaml</DependentUpon>
+    <Compile Include="View\ExibirPerfilDoador.xaml.cs">
+      <DependentUpon>ExibirPerfilDoador.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ExibirListaDoacoes.xaml.cs">
       <DependentUpon>ExibirListaDoacoes.xaml</DependentUpon>
@@ -135,15 +135,15 @@
     <Compile Include="View\ExibirListaTriadores.xaml.cs">
       <DependentUpon>ExibirListaTriadores.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ExibirTriador.xaml.cs">
-      <DependentUpon>ExibirTriador.xaml</DependentUpon>
+    <Compile Include="View\ExibirPerfilTriador.xaml.cs">
+      <DependentUpon>ExibirPerfilTriador.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs" />
-    <Compile Include="View\ExibirSolicitante.xaml.cs">
-      <DependentUpon>ExibirSolicitante.xaml</DependentUpon>
+    <Compile Include="View\ExibirPerfilSolicitante.xaml.cs">
+      <DependentUpon>ExibirPerfilSolicitante.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\MaterialDesignTheme.Overrides.xaml">
       <SubType>Designer</SubType>
@@ -177,11 +177,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExibirDoacao.xaml">
+    <Page Include="View\ExibirPerfilDoacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExibirDoador.xaml">
+    <Page Include="View\ExibirPerfilDoador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,7 +201,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExibirTriador.xaml">
+    <Page Include="View\ExibirPerfilTriador.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,7 +221,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ExibirSolicitante.xaml">
+    <Page Include="View\ExibirPerfilSolicitante.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

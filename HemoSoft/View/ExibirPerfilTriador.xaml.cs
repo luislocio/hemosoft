@@ -7,13 +7,13 @@ using System.Windows.Controls;
 namespace HemoSoft.View
 {
     /// <summary>
-    /// Interaction logic for ExibirTriador.xaml
+    /// Interaction logic for ExibirPerfilTriador.xaml
     /// </summary>
-    public partial class ExibirTriador : UserControl
+    public partial class ExibirPerfilTriador : UserControl
     {
         Triador triador;
 
-        public ExibirTriador(Triador t)
+        public ExibirPerfilTriador(Triador t)
         {
             InitializeComponent();
             this.triador = t;

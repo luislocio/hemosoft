@@ -7,13 +7,13 @@ using System.Windows.Controls;
 namespace HemoSoft.View
 {
     /// <summary>
-    /// Interaction logic for ExibirDoacao.xaml
+    /// Interaction logic for ExibirPerfilDoacao.xaml
     /// </summary>
-    public partial class ExibirDoacao : UserControl
+    public partial class ExibirPerfilDoacao : UserControl
     {
         Doacao doacao;
 
-        public ExibirDoacao(Doacao d)
+        public ExibirPerfilDoacao(Doacao d)
         {
             InitializeComponent();
             this.doacao = d;

@@ -29,7 +29,7 @@ namespace HemoSoft.View
                 MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
                 Grid GridPage = (Grid)parentWindow.FindName("GridPage");
                 GridPage.Children.Clear();
-                UserControl usc = new ExibirDoador(doadorResultado);
+                UserControl usc = new ExibirPerfilDoador(doadorResultado);
                 GridPage.Children.Add(usc);
             }
         }
