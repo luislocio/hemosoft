@@ -1,6 +1,7 @@
 ﻿using HemoSoft.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,12 @@ namespace HemoSoft.DAL
         public static List<Triador> ListarTriadores()
         {
             return ctx.Triadores.ToList();
+        }
+
+        public static void AlterarTriador(Triador t)
+        {
+            ctx.Entry(t).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }
