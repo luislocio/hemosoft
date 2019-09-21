@@ -1,4 +1,5 @@
-﻿using HemoSoft.Model;
+﻿using HemoSoft.DAL;
+using HemoSoft.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,13 @@ namespace HemoSoft.View
 
         private void DataGridSolicitantes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Solicitante solicitanteSelecionado = dataGridSolicitantes.SelectedItem as Solicitante;
 
+            if (solicitanteSelecionado != null)
+            {
+                MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.RenderizarPerfilSolicitante(SolicitanteDAO.BuscarSolicitantePorId(solicitanteSelecionado));
+            }
         }
     }
 }
