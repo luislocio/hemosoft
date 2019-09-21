@@ -32,10 +32,6 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                MessageBox.Show("Favor preencher todos os campos!");
-            }
-            else
-            {
                 Triador triador = CriarTriador();
 
                 if (TriadorDAO.CadastrarTriador(triador))
@@ -50,21 +46,25 @@ namespace HemoSoft.View
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilTriador(TriadorDAO.BuscarTriadorPorMatricula(triador));
             }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos!");
+            }
         }
 
         private void ButtonListar_Click(object sender, RoutedEventArgs e)
         {
             MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
             janelaPrincipal.RenderizarListaTriadores(TriadorDAO.ListarTriadores());
-        } 
+        }
         #endregion
 
         private bool FormularioEstaCompleto()
         {
             return
-                textNome.Text.Equals("") ||
-                textMatricula.Text.Equals("") ||
-                textSenha.Text.Equals("");
+               !textNome.Text.Equals("") ||
+               !textMatricula.Text.Equals("") ||
+               !textSenha.Text.Equals("");
         }
 
         private Triador CriarTriador()
@@ -74,7 +74,7 @@ namespace HemoSoft.View
                 NomeCompleto = textNome.Text,
                 Matricula = textMatricula.Text,
                 Senha = textSenha.Text,
-                StatusUsuario = StatusUsuario.Ativo                
+                StatusUsuario = StatusUsuario.Ativo
             };
         }
 

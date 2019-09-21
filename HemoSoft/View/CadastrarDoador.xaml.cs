@@ -23,10 +23,6 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                MessageBox.Show("Favor preencher todos os campos!");
-            }
-            else
-            {
                 Doador doador = CriarDoador();
 
                 if (DoadorDAO.CadastrarDoador(doador))
@@ -41,15 +37,19 @@ namespace HemoSoft.View
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos!");
+            }
         }
 
         private bool FormularioEstaCompleto()
         {
             return
-                textNome.Text.Equals("") ||
-                textCpf.Text.Equals("") ||
-                boxEstadoCivil.SelectionBoxItem.Equals("") ||
-                boxGenero.SelectionBoxItem.Equals("");
+                !textNome.Text.Equals("") ||
+                !textCpf.Text.Equals("") ||
+                !boxEstadoCivil.SelectionBoxItem.Equals("") ||
+                !boxGenero.SelectionBoxItem.Equals("");
         }
 
         private Doador CriarDoador()

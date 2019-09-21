@@ -32,10 +32,6 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                MessageBox.Show("Favor preencher todos os campos!");
-            }
-            else
-            {
                 Solicitante solicitante = CriarSolicitante();
 
                 if (SolicitanteDAO.CadastrarSolicitante(solicitante))
@@ -50,6 +46,10 @@ namespace HemoSoft.View
                 var janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarPerfilSolicitante(SolicitanteDAO.BuscarSolicitantePorCnpj(solicitante));
             }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos!");
+            }
         }
 
         private void ButtonListar_Click(object sender, RoutedEventArgs e)
@@ -62,10 +62,10 @@ namespace HemoSoft.View
         private bool FormularioEstaCompleto()
         {
             return
-                textCnpj.Text.Equals("") ||
-                textRazaoSocial.Text.Equals("") ||
-                textResponsavel.Text.Equals("") ||
-                textSenha.Text.Equals("");
+                !textCnpj.Text.Equals("") ||
+                !textRazaoSocial.Text.Equals("") ||
+                !textResponsavel.Text.Equals("") ||
+                !textSenha.Text.Equals("");
         }
 
         private Solicitante CriarSolicitante()

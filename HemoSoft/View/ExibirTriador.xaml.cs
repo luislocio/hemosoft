@@ -44,10 +44,6 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                MessageBox.Show("Favor preencher todos os campos.");
-            }
-            else
-            {
                 triador.NomeCompleto = textNome.Text;
                 triador.Matricula = textMatricula.Text;
                 triador.StatusUsuario = (StatusUsuario)Enum.Parse(typeof(StatusUsuario), boxStatusUsuario.Text);
@@ -63,14 +59,18 @@ namespace HemoSoft.View
                 buttonEditar.Click -= new RoutedEventHandler(ButtonSalvar_Click);
                 buttonEditar.Click += new RoutedEventHandler(ButtonEditar_Click);
             }
+            else
+            {
+                MessageBox.Show("Favor preencher todos os campos.");
+            }
         }
 
         private bool FormularioEstaCompleto()
         {
             return
-                textNome.Text.Equals("") ||
-                textMatricula.Text.Equals("") ||
-                boxStatusUsuario.SelectionBoxItem.Equals("");
+                !textNome.Text.Equals("") ||
+                !textMatricula.Text.Equals("") ||
+                !boxStatusUsuario.SelectionBoxItem.Equals("");
         }
     }
 }
