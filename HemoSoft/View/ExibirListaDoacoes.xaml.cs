@@ -15,12 +15,12 @@ namespace HemoSoft.View
     public partial class ExibirListaDoacoes : UserControl
     {
         private static Usuario usuario = SingletonUsuario.GetInstance();
-        List<Doacao> doacoes;
+
+
         public ExibirListaDoacoes(List<Doacao> d)
         {
             InitializeComponent();
-            doacoes = d;
-            dataGridDoacoes.ItemsSource = doacoes;
+            dataGridDoacoes.ItemsSource = d;
             ValidarBotoes();
         }
 
@@ -82,7 +82,7 @@ namespace HemoSoft.View
         {
             if (usuario.TipoUsuario == TipoUsuario.Triador)
             {
-                formBuscaDoacao.Children.Remove(ButtonSolicitar);
+                listaDoacoes.Children.Remove(ButtonSolicitar);
             }
         }
     }

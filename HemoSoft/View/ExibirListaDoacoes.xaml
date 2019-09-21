@@ -19,7 +19,7 @@
                 Text="LISTA DOAÇÕES" />
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel
-                    x:Name="formBuscaDoacao"
+                    x:Name="listaDoacoes"
                     Margin="0,15"
                     HorizontalAlignment="Center">
                     <DataGrid

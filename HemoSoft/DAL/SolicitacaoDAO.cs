@@ -28,7 +28,9 @@ namespace HemoSoft.DAL
 
         public static List<Solicitacao> ListarSolicitacoes()
         {
-            return ctx.Solicitacoes.Include("Solicitante").ToList();
+            return ctx.Solicitacoes
+                .Include("Solicitante")
+                .ToList();
         }
     }
 }

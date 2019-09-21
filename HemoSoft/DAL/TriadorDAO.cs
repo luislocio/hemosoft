@@ -35,5 +35,10 @@ namespace HemoSoft.DAL
             return ctx.Triadores.FirstOrDefault
                 (x => x.IdTriador.Equals(t.IdTriador));
         }
+
+        public static List<Triador> ListarTriadores()
+        {
+            return ctx.Triadores.ToList();
+        }
     }
 }
