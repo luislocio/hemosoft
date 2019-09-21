@@ -13,7 +13,7 @@ namespace HemoSoft.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201909150402490_Nullable Gravidez"; }
+            get { return "201909150402490_NullableGravidez"; }
         }
         
         string IMigrationMetadata.Source

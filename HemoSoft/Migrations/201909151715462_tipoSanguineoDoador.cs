@@ -3,7 +3,7 @@ namespace HemoSoft.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class tipoSanguineoDoador : DbMigration
+    public partial class TipoSanguineoDoador : DbMigration
     {
         public override void Up()
         {

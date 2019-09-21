@@ -7,13 +7,13 @@ namespace HemoSoft.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class tipoSanguineoDoador : IMigrationMetadata
+    public sealed partial class TipoSanguineoDoador : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(tipoSanguineoDoador));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(TipoSanguineoDoador));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909151715462_tipoSanguineoDoador"; }
+            get { return "201909151715462_TipoSanguineoDoador"; }
         }
         
         string IMigrationMetadata.Source

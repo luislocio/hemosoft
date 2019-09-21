@@ -79,21 +79,21 @@
     <Compile Include="Migrations\201909082137551_DatabaseCreation.Designer.cs">
       <DependentUpon>201909082137551_DatabaseCreation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909132254182_doacao-gravidez.cs" />
-    <Compile Include="Migrations\201909132254182_doacao-gravidez.Designer.cs">
-      <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
+    <Compile Include="Migrations\201909132254182_DoacaoGravidez.cs" />
+    <Compile Include="Migrations\201909132254182_DoacaoGravidez.Designer.cs">
+      <DependentUpon>201909132254182_DoacaoGravidez.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909150402490_Nullable Gravidez.cs" />
-    <Compile Include="Migrations\201909150402490_Nullable Gravidez.Designer.cs">
-      <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
+    <Compile Include="Migrations\201909150402490_NullableGravidez.cs" />
+    <Compile Include="Migrations\201909150402490_NullableGravidez.Designer.cs">
+      <DependentUpon>201909150402490_NullableGravidez.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909151715462_tipoSanguineoDoador.cs" />
-    <Compile Include="Migrations\201909151715462_tipoSanguineoDoador.Designer.cs">
-      <DependentUpon>201909151715462_tipoSanguineoDoador.cs</DependentUpon>
+    <Compile Include="Migrations\201909151715462_TipoSanguineoDoador.cs" />
+    <Compile Include="Migrations\201909151715462_TipoSanguineoDoador.Designer.cs">
+      <DependentUpon>201909151715462_TipoSanguineoDoador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201909151844344_doacaoDoacoes.cs" />
-    <Compile Include="Migrations\201909151844344_doacaoDoacoes.Designer.cs">
-      <DependentUpon>201909151844344_doacaoDoacoes.cs</DependentUpon>
+    <Compile Include="Migrations\201909151844344_DoacaoDoacoes.cs" />
+    <Compile Include="Migrations\201909151844344_DoacaoDoacoes.Designer.cs">
+      <DependentUpon>201909151844344_DoacaoDoacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\SeedUsuariosPadrao.cs" />
     <Compile Include="View\BuscarDoacoes.xaml.cs">
@@ -256,17 +256,17 @@
     <EmbeddedResource Include="Migrations\201909082137551_DatabaseCreation.resx">
       <DependentUpon>201909082137551_DatabaseCreation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909132254182_doacao-gravidez.resx">
-      <DependentUpon>201909132254182_doacao-gravidez.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909132254182_DoacaoGravidez.resx">
+      <DependentUpon>201909132254182_DoacaoGravidez.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909150402490_Nullable Gravidez.resx">
-      <DependentUpon>201909150402490_Nullable Gravidez.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909150402490_NullableGravidez.resx">
+      <DependentUpon>201909150402490_NullableGravidez.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909151715462_tipoSanguineoDoador.resx">
-      <DependentUpon>201909151715462_tipoSanguineoDoador.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909151715462_TipoSanguineoDoador.resx">
+      <DependentUpon>201909151715462_TipoSanguineoDoador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201909151844344_doacaoDoacoes.resx">
-      <DependentUpon>201909151844344_doacaoDoacoes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201909151844344_DoacaoDoacoes.resx">
+      <DependentUpon>201909151844344_DoacaoDoacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -3,7 +3,7 @@ namespace HemoSoft.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class doacaogravidez : DbMigration
+    public partial class DoacaoGravidez : DbMigration
     {
         public override void Up()
         {

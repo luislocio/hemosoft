@@ -7,13 +7,13 @@ namespace HemoSoft.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class doacaogravidez : IMigrationMetadata
+    public sealed partial class DoacaoGravidez : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(doacaogravidez));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DoacaoGravidez));
         
         string IMigrationMetadata.Id
         {
-            get { return "201909132254182_doacao-gravidez"; }
+            get { return "201909132254182_DoacaoGravidez"; }
         }
         
         string IMigrationMetadata.Source
