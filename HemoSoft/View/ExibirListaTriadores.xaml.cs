@@ -30,8 +30,13 @@ namespace HemoSoft.View
 
         private void DataGridTriadores_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-            //janelaPrincipal.RenderizarPerfilTriador(TriadorDAO.ListarTriadores());
+            Triador triadorSelecionado = dataGridTriadores.SelectedItem as Triador;
+
+            if (triadorSelecionado != null)
+            {
+                MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.RenderizarPerfilTriador(TriadorDAO.BuscarTriadorPorId(triadorSelecionado));
+            }
         }
     }
 }
