@@ -1,5 +1,7 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
+using HemoSoft.Model.Enum;
+using HemoSoft.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,19 +34,27 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                Solicitante solicitante = CriarSolicitante();
-
-                if (SolicitanteDAO.CadastrarSolicitante(solicitante))
+                if (Validacao.CnpjEhValido(textCnpj.Text))
                 {
-                    MessageBox.Show("Cadastro realizado com sucesso");
+                    Solicitante solicitante = CriarSolicitante();
+
+                    if (SolicitanteDAO.CadastrarSolicitante(solicitante))
+                    {
+                        MessageBox.Show("Cadastro realizado com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Solicitante já cadastrado!");
+                    }
+
+                    var janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                    janelaPrincipal.RenderizarPerfilSolicitante(SolicitanteDAO.BuscarSolicitantePorCnpj(solicitante));
                 }
                 else
                 {
-                    MessageBox.Show("Solicitante já cadastrado!");
-                }
+                    MessageBox.Show("CNPJ inválido");
 
-                var janelaPrincipal = Window.GetWindow(this) as MainWindow;
-                janelaPrincipal.RenderizarPerfilSolicitante(SolicitanteDAO.BuscarSolicitantePorCnpj(solicitante));
+                }
             }
             else
             {

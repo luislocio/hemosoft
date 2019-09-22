@@ -1,6 +1,7 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using HemoSoft.Model.Enum;
+using HemoSoft.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,23 +48,30 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                solicitante.Cnpj = textCnpj.Text;
-                solicitante.RazaoSocial = textRazaoSocial.Text;
-                solicitante.Responsavel = textResponsavel.Text;
-                solicitante.StatusUsuario = (StatusUsuario)Enum.Parse(typeof(StatusUsuario), boxStatusUsuario.Text);
+                if (Validacao.CnpjEhValido(textCnpj.Text))
+                {
+                    solicitante.Cnpj = textCnpj.Text;
+                    solicitante.RazaoSocial = textRazaoSocial.Text;
+                    solicitante.Responsavel = textResponsavel.Text;
+                    solicitante.StatusUsuario = (StatusUsuario)Enum.Parse(typeof(StatusUsuario), boxStatusUsuario.Text);
 
-                SolicitanteDAO.AlterarSolicitante(solicitante);
+                    SolicitanteDAO.AlterarSolicitante(solicitante);
 
-                // Desabilitar edição dos campos do formulário.
-                textCnpj.IsReadOnly = true;
-                textRazaoSocial.IsReadOnly = true;
-                textResponsavel.IsReadOnly = true;
-                boxStatusUsuario.IsEnabled = false;
+                    // Desabilitar edição dos campos do formulário.
+                    textCnpj.IsReadOnly = true;
+                    textRazaoSocial.IsReadOnly = true;
+                    textResponsavel.IsReadOnly = true;
+                    boxStatusUsuario.IsEnabled = false;
 
-                // Transformar botão SALVAR em EDITAR.
-                buttonEditar.Content = "Editar";
-                buttonEditar.Click -= new RoutedEventHandler(ButtonSalvar_Click);
-                buttonEditar.Click += new RoutedEventHandler(ButtonEditar_Click);
+                    // Transformar botão SALVAR em EDITAR.
+                    buttonEditar.Content = "Editar";
+                    buttonEditar.Click -= new RoutedEventHandler(ButtonSalvar_Click);
+                    buttonEditar.Click += new RoutedEventHandler(ButtonEditar_Click);
+                }
+                else
+                {
+                    MessageBox.Show("CNPJ inválido.");
+                }
             }
             else
             {

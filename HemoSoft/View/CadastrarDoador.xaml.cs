@@ -1,6 +1,7 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using HemoSoft.Model.Enum;
+using HemoSoft.Utils;
 using System;
 using System.Collections;
 using System.IO;
@@ -24,19 +25,26 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                Doador doador = CriarDoador();
-
-                if (DoadorDAO.CadastrarDoador(doador))
+                if (Validacao.CpfEhValido(textCpf.Text))
                 {
-                    MessageBox.Show("Cadastro realizado com sucesso");
+                    Doador doador = CriarDoador();
+
+                    if (DoadorDAO.CadastrarDoador(doador))
+                    {
+                        MessageBox.Show("Cadastro realizado com sucesso");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cliente já cadastrado!");
+                    }
+
+                    var janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                    janelaPrincipal.RenderizarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
                 }
                 else
                 {
-                    MessageBox.Show("Cliente já cadastrado!");
+                    MessageBox.Show("CPF inválido.");
                 }
-
-                var janelaPrincipal = Window.GetWindow(this) as MainWindow;
-                janelaPrincipal.RenderizarPerfilDoador(DoadorDAO.BuscarDoadorPorCpf(doador));
             }
             else
             {

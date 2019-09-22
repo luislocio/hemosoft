@@ -1,6 +1,7 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
 using HemoSoft.Model.Enum;
+using HemoSoft.Utils;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -80,24 +81,31 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                doador.Cpf = textCpf.Text;
-                doador.NomeCompleto = textNome.Text;
-                doador.Genero = (Genero)Enum.Parse(typeof(Genero), boxGenero.Text);
-                doador.EstadoCivil = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), boxEstadoCivil.Text);
+                if (Validacao.CnpjEhValido(textCpf.Text))
+                {
+                    doador.Cpf = textCpf.Text;
+                    doador.NomeCompleto = textNome.Text;
+                    doador.Genero = (Genero)Enum.Parse(typeof(Genero), boxGenero.Text);
+                    doador.EstadoCivil = (EstadoCivil)Enum.Parse(typeof(EstadoCivil), boxEstadoCivil.Text);
 
-                DoadorDAO.AlterarDoador(doador);
+                    DoadorDAO.AlterarDoador(doador);
 
-                // Habilitar edição dos campos do formulário.
-                textCpf.IsReadOnly = true;
-                textNome.IsReadOnly = true;
-                boxEstadoCivil.IsEnabled = false;
-                boxGenero.IsEnabled = false;
-                buttonCadastrarDoacao.IsEnabled = true;
+                    // Habilitar edição dos campos do formulário.
+                    textCpf.IsReadOnly = true;
+                    textNome.IsReadOnly = true;
+                    boxEstadoCivil.IsEnabled = false;
+                    boxGenero.IsEnabled = false;
+                    buttonCadastrarDoacao.IsEnabled = true;
 
-                // Transformar botão EDITAR em SALVAR.
-                buttonEditarDoador.Content = "Editar Cadastro";
-                buttonEditarDoador.Click -= new RoutedEventHandler(ButtonSalvarDoador_Click);
-                buttonEditarDoador.Click += new RoutedEventHandler(ButtonEditarDoador_Click);
+                    // Transformar botão EDITAR em SALVAR.
+                    buttonEditarDoador.Content = "Editar Cadastro";
+                    buttonEditarDoador.Click -= new RoutedEventHandler(ButtonSalvarDoador_Click);
+                    buttonEditarDoador.Click += new RoutedEventHandler(ButtonEditarDoador_Click);
+                }
+                else
+                {
+                    MessageBox.Show("CPF inválido");
+                }
             }
             else
             {
