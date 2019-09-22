@@ -20,16 +20,19 @@
                 x:Name="textPeso"
                 Margin="0,3"
                 materialDesign:HintAssist.Hint="Peso"
+                LostFocus="TextPeso_LostFocus"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <TextBox
                 x:Name="textPulso"
                 Margin="0,3"
                 materialDesign:HintAssist.Hint="Pulso"
+                LostFocus="TextPulso_LostFocus"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <TextBox
                 x:Name="textTemperatura"
                 Margin="0,3"
                 materialDesign:HintAssist.Hint="Temperatura"
+                LostFocus="TextTemperatura_LostFocus"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
