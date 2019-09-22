@@ -25,8 +25,15 @@ namespace HemoSoft.Model
 
             triadores.Add(new Triador()
             {
-                Matricula = "2222222",
+                Matricula = "1234567",
                 NomeCompleto = "Triador 2",
+                Senha = "senhatriador",
+                StatusUsuario = StatusUsuario.Ativo
+            });
+            triadores.Add(new Triador()
+            {
+                Matricula = "3333333",
+                NomeCompleto = "Triador 3",
                 Senha = "senhatriador",
                 StatusUsuario = StatusUsuario.Inativo
             });
@@ -48,7 +55,7 @@ namespace HemoSoft.Model
 
             solicitantes.Add(new Solicitante
             {
-                Cnpj = "22222222222222",
+                Cnpj = "12345678901234",
                 RazaoSocial = "Solicitante 2",
                 Responsavel = "Responsavel 2",
                 Senha = "senhasolicitante",
