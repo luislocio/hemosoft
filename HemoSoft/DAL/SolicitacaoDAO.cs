@@ -21,15 +21,26 @@ namespace HemoSoft.DAL
         {
             return ctx.Solicitacoes
                 .Include("Solicitante")
+                .Include("Doacoes")
                 .Where(x => x.Solicitante.IdSolicitante.Equals(s.Solicitante.IdSolicitante))
                 .ToList();
 
+        }
+
+        public static Solicitacao BuscarSolicitacaoPorId(Solicitacao s)
+        {
+            return ctx.Solicitacoes
+                .Include("Solicitante")
+                .Include("Doacoes")
+                .FirstOrDefault
+                (x => x.IdSolicitacao.Equals(s.IdSolicitacao));
         }
 
         public static List<Solicitacao> ListarSolicitacoes()
         {
             return ctx.Solicitacoes
                 .Include("Solicitante")
+                .Include("Doacoes")
                 .ToList();
         }
     }

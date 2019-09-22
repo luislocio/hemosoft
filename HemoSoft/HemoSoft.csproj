@@ -146,6 +146,9 @@
     <Compile Include="View\ExibirPerfilTriador.xaml.cs">
       <DependentUpon>ExibirPerfilTriador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExibirPerfilSolicitacao.xaml.cs">
+      <DependentUpon>ExibirPerfilSolicitacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -210,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ExibirPerfilTriador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExibirPerfilSolicitacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

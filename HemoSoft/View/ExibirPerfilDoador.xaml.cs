@@ -51,6 +51,7 @@ namespace HemoSoft.View
             }
         }
 
+        #region Validação de Impedimentos
         private string ValidarImpedimentosTemporarios(string mensagem, Doacao doacao)
         {
             if (doacao.TriagemLaboratorial.StatusTriagem == StatusTriagem.Reprovado)
@@ -97,7 +98,9 @@ namespace HemoSoft.View
 
             return mensagem;
         }
+        #endregion
 
+        #region Processamentos de dados
         private String GetStatusTipoSaguineo()
         {
             if (doador.TipoSanguineo != null &&
@@ -122,7 +125,8 @@ namespace HemoSoft.View
             }
 
             return limite;
-        }
+        } 
+        #endregion
 
         #region Eventos de cliques
         private void DataGridDoacao_MouseDoubleClick(object sender, MouseButtonEventArgs e)

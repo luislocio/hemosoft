@@ -136,6 +136,15 @@ namespace HemoSoft.View
             GridPage.Children.Add(usc);
         }
 
+        internal void RenderizarPerfilSolicitacao(Solicitacao Solicitacao)
+        {
+            LimparPagina();
+            MenuLateral.SelectedItems.Clear();
+
+            usc = new ExibirPerfilSolicitacao(Solicitacao);
+            GridPage.Children.Add(usc);
+        }
+
         internal void RenderizarPerfilSolicitante(Solicitante solicitante)
         {
             LimparPagina();
