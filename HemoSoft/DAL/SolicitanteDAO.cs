@@ -1,6 +1,7 @@
 ﻿using HemoSoft.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,6 +55,11 @@ namespace HemoSoft.DAL
             return ctx.Solicitantes.ToList();
         }
 
+        public static void AlterarSolicitante(Solicitante s)
+        {
+            ctx.Entry(s).State = EntityState.Modified;
+            ctx.SaveChanges();
+        }
     }
 }
 

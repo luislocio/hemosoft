@@ -54,7 +54,13 @@
                 IsEnabled="False"
                 ItemsSource="{Binding Source={StaticResource opcoesStatusUsuario}}"
                 Style="{StaticResource MaterialDesignComboBox}" />
+            <Button
+                x:Name="buttonEditar"
+                Width="100"
+                Margin="0,15,0,10"
+                HorizontalAlignment="Right"
+                Click="ButtonEditar_Click"
+                Content="Editar" />
         </StackPanel>
-
     </Grid>
 </UserControl>
