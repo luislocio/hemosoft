@@ -1,5 +1,6 @@
 ﻿using HemoSoft.Model;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace HemoSoft.DAL
@@ -45,10 +46,10 @@ namespace HemoSoft.DAL
                 (x => x.EstadoCivil.Equals(d.EstadoCivil));
         }
 
-        public static Doador BuscarDoadorPorGenero(Doador d)
+        public static void AlterarDoador(Doador d)
         {
-            return ctx.Doadores.FirstOrDefault
-                (x => x.Genero.Equals(d.Genero));
+            ctx.Entry(d).State = EntityState.Modified;
+            ctx.SaveChanges();
         }
     }
 }

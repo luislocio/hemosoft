@@ -2,6 +2,8 @@
     x:Class="HemoSoft.View.ExibirPerfilDoador"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Model="clr-namespace:HemoSoft.Model"
+    xmlns:System="clr-namespace:System;assembly=mscorlib"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HemoSoft.View"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -9,6 +11,24 @@
     HorizontalAlignment="Center"
     VerticalAlignment="Top"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ObjectDataProvider
+            x:Key="opcoesGenero"
+            MethodName="GetValues"
+            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Model:Genero" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider
+            x:Key="opcoesEstadoCivil"
+            MethodName="GetValues"
+            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Model:EstadoCivil" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </UserControl.Resources>
     <Grid>
         <StackPanel Margin="0">
             <TextBlock
@@ -22,12 +42,6 @@
                     Margin="15,15,0,0"
                     HorizontalAlignment="Left">
                     <TextBox
-                        x:Name="textNome"
-                        Margin="0,2"
-                        materialDesign:HintAssist.Hint="Nome:"
-                        IsReadOnly="True"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
                         x:Name="textTipoSanguineo"
                         Margin="0,2"
                         materialDesign:HintAssist.Hint="Tipo Saguineo: "
@@ -40,27 +54,41 @@
                         IsReadOnly="True"
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <TextBox
-                        x:Name="textGenero"
+                        x:Name="textNome"
                         Margin="0,2"
+                        materialDesign:HintAssist.Hint="Nome:"
+                        IsReadOnly="True"
+                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <ComboBox
+                        x:Name="boxGenero"
+                        Margin="0,10"
                         materialDesign:HintAssist.Hint="Genero:"
-                        IsReadOnly="True"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    <TextBox
-                        x:Name="textEstadoCivil"
-                        Margin="0,2"
-                        materialDesign:HintAssist.Hint="EstadoCivil:"
-                        IsReadOnly="True"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        IsEnabled="False"
+                        ItemsSource="{Binding Source={StaticResource opcoesGenero}}"
+                        Style="{StaticResource MaterialDesignComboBox}" />
+                    <ComboBox
+                        x:Name="boxEstadoCivil"
+                        Margin="0,10"
+                        materialDesign:HintAssist.Hint="Estado Civil:"
+                        IsEnabled="False"
+                        ItemsSource="{Binding Source={StaticResource opcoesEstadoCivil}}"
+                        Style="{StaticResource MaterialDesignComboBox}" />
                 </StackPanel>
                 <StackPanel
                     Width="164"
                     Margin="0,15,15,0"
                     HorizontalAlignment="Right">
                     <Button
-                        x:Name="ButtonCadastrar"
+                        x:Name="buttonCadastrarDoacao"
                         Width="150"
-                        Click="ButtonCadastrar_Click"
+                        Click="ButtonCadastrarDoacao_Click"
                         Content="Cadastrar Doação" />
+                    <Button
+                        x:Name="buttonEditarDoador"
+                        Width="150"
+                        Margin="0,10"
+                        Click="ButtonEditarDoador_Click"
+                        Content="Editar Cadastro" />
                 </StackPanel>
             </Grid>
             <ScrollViewer VerticalScrollBarVisibility="Auto">
