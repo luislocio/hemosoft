@@ -1,5 +1,6 @@
 ﻿using HemoSoft.DAL;
 using HemoSoft.Model;
+using HemoSoft.Model.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,40 +1,10 @@
-﻿using HemoSoft.DAL;
+﻿using HemoSoft.Model.Enum;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HemoSoft.Model
 {
-    public enum EstadoCivil
-    {
-        Solteirx,
-        Casadx,
-        Divorciadx,
-        Viuvx,
-        Separadx
-    }
-
-    public enum Genero
-    {
-        Masculino,
-        Feminino
-    }
-
-    public enum FatorRh
-    {
-        Negativo,
-        Positivo
-    }
-
-    public enum TipoSanguineo
-    {
-        A,
-        B,
-        AB,
-        O,
-        Indefinido
-    }
-
     [Table("Doadores")]
     public class Doador
     {

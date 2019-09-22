@@ -95,6 +95,13 @@
     <Compile Include="Migrations\201909151844344_DoacaoDoacoes.Designer.cs">
       <DependentUpon>201909151844344_DoacaoDoacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Enum\EstadoCivil.cs" />
+    <Compile Include="Model\Enum\FatorRh.cs" />
+    <Compile Include="Model\Enum\Genero.cs" />
+    <Compile Include="Model\Enum\Gravidez.cs" />
+    <Compile Include="Model\Enum\StatusDoacao.cs" />
+    <Compile Include="Model\Enum\TipoSanguineo.cs" />
+    <Compile Include="Model\Enum\TipoUsuario.cs" />
     <Compile Include="Model\SeedUsuariosPadrao.cs" />
     <Compile Include="View\BuscarDoacoes.xaml.cs">
       <DependentUpon>BuscarDoacoes.xaml</DependentUpon>
@@ -235,8 +242,8 @@
     <Compile Include="Model\ImpedimentosTemporarios.cs" />
     <Compile Include="Model\Solicitacao.cs" />
     <Compile Include="Model\Solicitante.cs" />
-    <Compile Include="Model\StatusTriagem.cs" />
-    <Compile Include="Model\StatusUsuario.cs" />
+    <Compile Include="Model\Enum\StatusTriagem.cs" />
+    <Compile Include="Model\Enum\StatusUsuario.cs" />
     <Compile Include="Model\Triador.cs" />
     <Compile Include="Model\TriagemClinica.cs" />
     <Compile Include="Model\TriagemLaboratorial.cs" />

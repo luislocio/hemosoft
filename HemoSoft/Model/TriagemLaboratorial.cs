@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HemoSoft.Model
 {
-
     [Table("TriagensLaboratoriais")]
     public class TriagemLaboratorial
     {

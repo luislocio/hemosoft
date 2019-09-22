@@ -1,19 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HemoSoft.Model.Enum;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HemoSoft.Model
 {
-    public enum Gravidez
-    {
-        Nenhuma,
-        PartoNormal,
-        Cesarea
-    }
-
     [Table("ImpedimentosTemporarios")]
     public class ImpedimentosTemporarios
     {
-
         [Key] public int IdImpedimentosTemporarios { get; set; }
         public bool? BebidaAlcoolica { get; set; }
         public int? BebidaAlcoolicaUltimaVez { get; set; }

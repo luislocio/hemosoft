@@ -1,17 +1,10 @@
-﻿using System;
+﻿using HemoSoft.Model.Enum;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HemoSoft.Model
 {
-    public enum StatusDoacao
-    {
-        NaoDisponivel,
-        Disponivel,
-        AguardandoAtendimento,
-        AguardandoResultados
-    }
-
     [Table("Doacoes")]
     public class Doacao
     {

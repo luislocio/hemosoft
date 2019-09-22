@@ -1,11 +1,7 @@
-﻿namespace HemoSoft.Model
-{
-    public enum TipoUsuario
-    {
-        Triador,
-        Solicitante
-    }
+﻿using HemoSoft.Model.Enum;
 
+namespace HemoSoft.Model
+{
     public class Usuario
     {
         public int IdUsuario { get; set; }
