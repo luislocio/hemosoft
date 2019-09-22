@@ -21,6 +21,7 @@ namespace HemoSoft.View
             InitializeComponent();
             this.doador = d;
             CarregarDoador();
+            ValidarBotoes();
         }
 
         private void CarregarDoador()
@@ -33,6 +34,70 @@ namespace HemoSoft.View
             dataGridDoacao.ItemsSource = doador.Doacoes;
         }
 
+        private void ValidarBotoes()
+        {
+            Doacao ultimaDoacao = DoacaoDAO.BuscarUltimaDoacaoPorDoador(doador);
+            if (ultimaDoacao != null)
+            {
+                string mensagem = "";
+                mensagem = ValidarImpedimentosDefinitivos(mensagem);
+                mensagem = ValidarImpedimentosTemporarios(mensagem, ultimaDoacao);
+
+                if (!mensagem.Equals(""))
+                {
+                    MessageBox.Show(mensagem);
+                    buttonCadastrarDoacao.IsEnabled = false;
+                }
+            }
+        }
+
+        private string ValidarImpedimentosTemporarios(string mensagem, Doacao doacao)
+        {
+            if (doacao.TriagemLaboratorial.StatusTriagem == StatusTriagem.Reprovado)
+            {
+                if (doacao.ImpedimentosTemporarios.BebidaAlcoolicaUltimaVez > 0 &&
+                    DateTime.Now.Subtract(doacao.DataDoacao).Hours < 7)
+                {
+                    mensagem += "Bebida alcoolica nas ultimas " + DateTime.Now.Subtract(doacao.DataDoacao).Hours + " horas.\n";
+                }
+
+                if (doacao.ImpedimentosTemporarios.GravidezUltimaVez > 0)
+                {
+                    int limite = GetLimiteGravidez(doacao);
+
+                    if (DateTime.Now.Subtract(doacao.DataDoacao).Days < limite)
+                    {
+                        mensagem += "Gravidez nos ultimos " + DateTime.Now.Subtract(doacao.DataDoacao).Days + " meses.\n";
+
+                    }
+                }
+
+                if (doacao.ImpedimentosTemporarios.GripeUltimaVez > 0 &&
+                    DateTime.Now.Subtract(doacao.DataDoacao).Days < 12)
+                {
+                    mensagem += "Gripe nos ultimos " + DateTime.Now.Subtract(doacao.DataDoacao).Days + " dias.\n";
+                }
+
+                if (doacao.ImpedimentosTemporarios.TatuagemUltimaVez > 0 &&
+                    DateTime.Now.Subtract(doacao.DataDoacao).Days < 365)
+                {
+                    mensagem += "Tatuagem no ultimos " + DateTime.Now.Subtract(doacao.DataDoacao).Days / 30 + " meses.\n";
+                }
+            }
+            return mensagem;
+        }
+
+        private string ValidarImpedimentosDefinitivos(string mensagem)
+        {
+            bool possuiImpedimentosDefinitivos = DoacaoDAO.VerificarDoacoesPorStatusTriagemLaboratorial(new TriagemLaboratorial { StatusTriagem = StatusTriagem.Reprovado });
+            if (possuiImpedimentosDefinitivos)
+            {
+                mensagem += "Doador possui impedimentos definitivos.\n";
+            }
+
+            return mensagem;
+        }
+
         private String GetStatusTipoSaguineo()
         {
             if (doador.TipoSanguineo != null &&
@@ -42,6 +107,21 @@ namespace HemoSoft.View
             }
 
             return "Aguardando resultados";
+        }
+
+        private static int GetLimiteGravidez(Doacao doacao)
+        {
+            int limite = 0;
+            if (doacao.ImpedimentosTemporarios.Gravidez == Gravidez.PartoNormal)
+            {
+                limite = 90;
+            }
+            else
+            {
+                limite = 180;
+            }
+
+            return limite;
         }
 
         #region Eventos de cliques
@@ -58,8 +138,17 @@ namespace HemoSoft.View
 
         private void ButtonCadastrarDoacao_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-            janelaPrincipal.RenderizarCadastroDoacao(doador);
+            Doacao ultimaDoacao = DoacaoDAO.BuscarUltimaDoacaoPorDoador(doador);
+            if (DateTime.Now.Subtract(ultimaDoacao.DataDoacao).Days > 180)
+            {
+                MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.RenderizarCadastroDoacao(doador);
+
+            }
+            else
+            {
+                MessageBox.Show("Doação realizada nos ultimos 3 meses.");
+            }
         }
 
         private void ButtonEditarDoador_Click(object sender, RoutedEventArgs e)

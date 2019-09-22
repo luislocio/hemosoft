@@ -202,7 +202,7 @@ namespace HemoSoft.View
             {
                 Peso = double.Parse(textPeso.Text),
                 Pulso = int.Parse(textPulso.Text),
-                Temperatura = int.Parse(textTemperatura.Text),
+                Temperatura = double.Parse(textTemperatura.Text),
                 StatusTriagem = GetStatusTriagemClinica()
             };
         }
@@ -273,42 +273,51 @@ namespace HemoSoft.View
         #region Validação triagem clinica
         private void TextPeso_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToDouble(textPeso.Text) < 50)
+            if (!textPeso.Text.Equals(""))
             {
-                ButtonCadastrar.IsEnabled = false;
-                MessageBox.Show("Doador deve ter mais de 50 kg.");
-            }
-            else
-            {
-                ButtonCadastrar.IsEnabled = true;
+                if (Convert.ToDouble(textPeso.Text) < 50)
+                {
+                    ButtonCadastrar.IsEnabled = false;
+                    MessageBox.Show("Doador deve ter mais de 50 kg.");
+                }
+                else
+                {
+                    ButtonCadastrar.IsEnabled = true;
+                }
             }
         }
 
         private void TextPulso_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToInt32(textPulso.Text) < 60 ||
+            if (!textPulso.Text.Equals(""))
+            {
+                if (Convert.ToInt32(textPulso.Text) < 60 ||
                 Convert.ToInt32(textPulso.Text) > 100)
-            {
-                ButtonCadastrar.IsEnabled = false;
-                MessageBox.Show("Doador deve estar com batimentos entre 60bpm e 100bpm.");
-            }
-            else
-            {
-                ButtonCadastrar.IsEnabled = true;
+                {
+                    ButtonCadastrar.IsEnabled = false;
+                    MessageBox.Show("Doador deve estar com batimentos entre 60bpm e 100bpm.");
+                }
+                else
+                {
+                    ButtonCadastrar.IsEnabled = true;
+                }
             }
         }
 
         private void TextTemperatura_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToDouble(textTemperatura.Text) < 36.1 ||
+            if (!textTemperatura.Text.Equals(""))
+            {
+                if (Convert.ToDouble(textTemperatura.Text) < 36.1 ||
                 Convert.ToDouble(textTemperatura.Text) > 37.2)
-            {
-                ButtonCadastrar.IsEnabled = false;
-                MessageBox.Show("Doador deve estar com temperatura entre 36,1°C e 37.2°C.");
-            }
-            else
-            {
-                ButtonCadastrar.IsEnabled = true;
+                {
+                    ButtonCadastrar.IsEnabled = false;
+                    MessageBox.Show("Doador deve estar com temperatura entre 36,1°C e 37.2°C.");
+                }
+                else
+                {
+                    ButtonCadastrar.IsEnabled = true;
+                }
             }
         }
         #endregion
