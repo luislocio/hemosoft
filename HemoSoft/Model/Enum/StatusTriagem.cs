@@ -1,4 +1,4 @@
-﻿namespace HemoSoft.Model
+﻿namespace HemoSoft.Model.Enum
 {
     public enum StatusTriagem
     {
