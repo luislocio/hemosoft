@@ -125,7 +125,7 @@ namespace HemoSoft.View
             }
 
             return limite;
-        } 
+        }
         #endregion
 
         #region Eventos de cliques
@@ -143,11 +143,11 @@ namespace HemoSoft.View
         private void ButtonCadastrarDoacao_Click(object sender, RoutedEventArgs e)
         {
             Doacao ultimaDoacao = DoacaoDAO.BuscarUltimaDoacaoPorDoador(doador);
-            if (DateTime.Now.Subtract(ultimaDoacao.DataDoacao).Days > 180)
+
+            if (ultimaDoacao == null || DateTime.Now.Subtract(ultimaDoacao.DataDoacao).Days > 180)
             {
                 MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
                 janelaPrincipal.RenderizarCadastroDoacao(doador);
-
             }
             else
             {
