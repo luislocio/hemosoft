@@ -174,7 +174,7 @@ namespace HemoSoft.View
         {
             if (FormularioEstaCompleto())
             {
-                if (Validacao.CnpjEhValido(textCpf.Text))
+                if (Validacao.CpfEhValido(textCpf.Text))
                 {
                     doador.Cpf = textCpf.Text;
                     doador.NomeCompleto = textNome.Text;
