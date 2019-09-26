@@ -16,10 +16,10 @@
                 Margin="5"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Text="LISTA TRIADORES" />
+                Text="LISTA SOLICITANTES" />
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel
-                    x:Name="listaTriadores"
+                    x:Name="listaSolicitantes"
                     Margin="0,15"
                     HorizontalAlignment="Center">
                     <DataGrid
