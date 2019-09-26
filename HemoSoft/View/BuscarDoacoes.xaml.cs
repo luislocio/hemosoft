@@ -30,11 +30,15 @@ namespace HemoSoft.View
 
         private void ButtonBuscarStatus_Click(object sender, RoutedEventArgs e)
         {
-            StatusDoacao statusBusca = (StatusDoacao)Enum.Parse(typeof(StatusDoacao), boxStatus.Text);
-            Doacao doacaoBusca = new Doacao { StatusDoacao = statusBusca };
+            if (boxStatus.SelectedItem != null)
+            {
+                StatusDoacao statusBusca = (StatusDoacao)Enum.Parse(typeof(StatusDoacao), boxStatus.Text);
+                Doacao doacaoBusca = new Doacao { StatusDoacao = statusBusca };
 
-            MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
-            janelaPrincipal.RenderizarListaDoacoes(DoacaoDAO.BuscarDoacaoPorStatus(doacaoBusca));
+                MainWindow janelaPrincipal = Window.GetWindow(this) as MainWindow;
+                janelaPrincipal.RenderizarListaDoacoes(DoacaoDAO.BuscarDoacaoPorStatus(doacaoBusca));
+            }
+
         }
     }
 }
