@@ -157,10 +157,10 @@ namespace HemoSoft.View
         #region Validação dos campos do formulário
         private bool FormularioEstaCompleto()
         {
-            return this.statusHepatiteB != null ||
-                this.statusHepatiteC != null ||
-                this.statusHiv != null ||
-                boxFatorRh.SelectedItem != null ||
+            return this.statusHepatiteB != null &&
+                this.statusHepatiteC != null &&
+                this.statusHiv != null &&
+                boxFatorRh.SelectedItem != null &&
                 boxTipoSanguineo.SelectedItem != null;
         } 
         #endregion

@@ -55,9 +55,9 @@ namespace HemoSoft.View
         private bool FormularioEstaCompleto()
         {
             return
-                !textNome.Text.Equals("") ||
-                !textCpf.Text.Equals("") ||
-                !boxEstadoCivil.SelectionBoxItem.Equals("") ||
+                !textNome.Text.Equals("") &&
+                !textCpf.Text.Equals("") &&
+                !boxEstadoCivil.SelectionBoxItem.Equals("") &&
                 !boxGenero.SelectionBoxItem.Equals("");
         }
 

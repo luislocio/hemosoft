@@ -72,9 +72,9 @@ namespace HemoSoft.View
         private bool FormularioEstaCompleto()
         {
             return
-                !textCnpj.Text.Equals("") ||
-                !textRazaoSocial.Text.Equals("") ||
-                !textResponsavel.Text.Equals("") ||
+                !textCnpj.Text.Equals("") &&
+                !textRazaoSocial.Text.Equals("") &&
+                !textResponsavel.Text.Equals("") &&
                 !textSenha.Text.Equals("");
         }
 
